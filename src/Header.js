@@ -13,15 +13,15 @@ const Header = () => {
 
     return (
         <>
-            <header className="header flex flex-wrap items-center justify-between max-w-[1728px] w-full mx-auto p-5">
+            <header className="header  flex-wrap items-center justify-between  max-w-[1728px] w-full mx-auto p-5">
                 <img src={logo2} alt="Logo" className="logo h-16 sm:h-20" />
-                <nav className="nav-links flex flex-wrap gap-4 sm:gap-8">
+                <nav className="nav-links flex  flex-wrap gap-4 sm:gap-8">
                     <a href="#home" className="hover:text-gray-300">Home</a>
                     <a href="#about" className="hover:text-gray-300">About Us</a>
                     <a href="#products" className="hover:text-gray-300">Products</a>
                     <a href="#contact" className="hover:text-gray-300">Contact Us</a>
                 </nav>
-                <button className="button sign-up-button">Sign Up</button>
+                <button className="button  sign-up-button">Sign Up</button>
             </header>
             <div className="second-frame text-center py-4">
                 <h2>2</h2>
@@ -38,7 +38,7 @@ const Header = () => {
                 </div>
             </div>
             <ScrollImages />
-            <h2 className="w-[638px] ml-[36px] font-bold ">
+            <h2 className="w-[638px] ml-[36px] font-bold">
     Deal Of The Day
 </h2>
 
