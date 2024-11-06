@@ -29,7 +29,7 @@ const ImageSections = () => {
             </button>
             <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full" onClick={nextImage}>
                 &#10095; 
-            </button>
+            </button> 
         </div>
     );
 };
