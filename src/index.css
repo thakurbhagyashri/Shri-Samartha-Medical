@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .header {
-  max-width: 1728px; /* Maximum width */
+  max-width: 1728px; 
   width: 100%; /* Full width */
   height: auto; /* Allow height to adjust */
   background-color: #D6E9FF;
