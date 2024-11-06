@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+  max-width: 1728px; /* Maximum width */
+  width: 100%; /* Full width */
+  height: auto; /* Allow height to adjust */
+  background-color: #D6E9FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  margin: auto; /* Center the header */
+  padding: 0 20px; /* Horizontal padding */
+}
+
+.button {
+  width: 256px; /* Fixed width */
+  height: 68.9px; /* Fixed height */
+  background-color: #497E06;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 100%; /* Ensure it scales down */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px;
+  padding: 3px;  
+  margin-top: 3rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  margin-right: auto;
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.second-frame {
+  max-width: 1728px; /* Maximum width */
+  width: 100%; /* Full width */
+  height: 118px;
+  background-color: #8EC93E;
+  margin: auto; /* Center the frame */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 10px; /* Padding for smaller screens */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack items on smaller screens */
+    padding: 20px 10px; /* Adjust padding */
+  }
+  
+  .nav-links {
+    flex-direction: column; /* Stack links vertically */
+    gap: 1rem; /* Adjust gap */
+    margin: 10px 0; /* Add margin */
+  }
+  
+  .button {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .logo {
+    width: 80%; /* Scale logo down */
+    margin: 0 auto 1rem; /* Center and add margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 20px; /* Smaller font size */
+  }
+
+  .nav-links a {
+    font-size: 14px; /* Smaller link font size */
+  }
+
+  .button {
+    font-size: 14px; /* Smaller button font size */
+  }
+}
