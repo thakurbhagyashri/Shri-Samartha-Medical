@@ -8,3 +8,43 @@
   font-size: 30px;
   font-weight: 500;
 }
+
+.full-width-ad {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 20px 0; /* Optional margin around the image */
+}
+
+.full-width-ad {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px 0;
+}
+
+.trusted-pharmacy-container {
+  position: relative;
+  margin: 20px 100px; /* Adds 100px left and right margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.trusted-pharmacy-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.trusted-pharmacy-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #056E7E;
+  font-size: 40px; /* Increase text size */
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+  border-radius: 8px; /* Optional: adds rounded corners */
+}
+
