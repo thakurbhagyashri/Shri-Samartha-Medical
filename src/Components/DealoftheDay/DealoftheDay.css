@@ -1,0 +1,163 @@
+/* DealoftheDay.css */
+
+/* Container for the slider */
+.deal-slider-wrapper {
+    position: relative;
+    margin: 0 90px;
+    overflow: hidden;
+    height: auto; /* Allow the wrapper to adjust to the image height */
+}
+
+.deal-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1728px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: auto; /* Remove any fixed height if there is one */
+}
+
+/* Flexbox container to hold the images */
+.deal-slider-images {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+/* Reset anchor styles around images */
+.deal-slider-link {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0; /* Ensure no extra margin on the link */
+    padding: 0; /* Ensure no extra padding on the link */
+    line-height: 0; /* Remove any extra space due to line-height */
+}
+
+.deal-slider-link img {
+    height: 300px; /* Set the desired fixed height */
+    max-width: 600px; /* Let the width adjust to maintain aspect ratio */
+    object-fit: cover; /* Crop image if needed to fit the fixed height */
+    border-radius: 15px;
+    display: block;
+    margin: 0 15px;
+}
+
+/* Button styling for previous and next */
+.deal-slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+/* Left button positioning */
+.deal-slider-button-left {
+    left: 70px;
+}
+
+/* Right button positioning */
+.deal-slider-button-right {
+    right: 80px;
+}
+
+/* Left fade effect */ 
+.deal-slider-fade-left {
+    position: absolute;
+    left: 90px;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right, white, transparent);
+    width: 100px;
+    z-index: 5;
+}
+
+/* Right fade effect */
+.deal-slider-fade-right {
+    position: absolute;
+    right: 90px;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to left, white, transparent);
+    width: 100px;
+    z-index: 5;
+}
+
+/* Media query for tablet and smaller devices */
+
+@media (max-width: 768px) {
+    .deal-slider {
+        height: 500px;
+    }
+
+    .deal-slider-wrapper {
+        position: relative;
+        margin: 0 80px 0 25px;
+        overflow: hidden;
+    }
+
+    .deal-slider-images img {
+        width: 600px;/* Adjust the image width for mobile */
+    }
+
+    .deal-slider-button {
+        padding: 6px 12px; /* Even smaller buttons on mobile */
+        font-size: 16px; /* Smaller font for arrows */
+    }
+
+    .deal-slider-button-left {
+        left: 10px; /* Adjust left button positioning */
+    }
+
+    .deal-slider-button-right {
+        right: 65px; /* Adjust right button positioning */
+    }
+    
+    /* Left fade effect */ 
+    .deal-slider-fade-left {
+        width: 100px;
+        left: 20px;
+    }
+
+    /* Right fade effect */
+    .deal-slider-fade-right {
+        width: 100px;
+        right: 70px; 
+    }
+
+}
+
+@media (max-width: 480px) {
+    .deal-slider {
+        height: 100px;
+    }
+
+    .deal-slider-images img {
+        width: 320px; /* Adjust the image width for very small devices */
+    }
+
+    .deal-slider-button {
+        padding: 5px 10px; /* Very small buttons on very small devices */
+        font-size: 14px; /* Even smaller font size for arrows */
+    }
+
+    .deal-slider-button-left {
+        left: 5px; /* Keep left button position */
+    }
+
+    .deal-slider-button-right {
+        right: 5px; /* Keep right button position */
+    }
+
+    /* Left fade effect */ 
+    .deal-slider-fade-left {
+        width: 100px;
+    }
+
+    /* Right fade effect */
+    .deal-slider-fade-right {
+        width: 100px;
+    }
+}

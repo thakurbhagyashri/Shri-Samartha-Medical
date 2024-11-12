@@ -3,7 +3,7 @@ import { MyContext } from './Components/MyContext'; // Import the context
 import MyComponent from './Components/MyComponent'; // Adjust the path for your component
 import Cart from './Components/Cart/Cart';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
-import Header from './Header';
+import Start from './Start';
 
 const App = () => {
     const contextValue = { basename: 'my-base' };
@@ -11,7 +11,7 @@ const App = () => {
     return (
         <MyContext.Provider value={contextValue}>
             <Router>
-                <Header />
+                <Start />
                 <Routes> {/* Use Routes instead of Switch */}
                     <Route path="/" element={<Cart />} /> {/* Use 'element' instead of 'component' */}
                     <Route path="/other" element={<MyComponent />} />

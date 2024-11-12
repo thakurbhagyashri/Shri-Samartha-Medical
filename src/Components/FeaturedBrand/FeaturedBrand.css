@@ -1,0 +1,39 @@
+/* FeatureBrands.css */
+
+/* Container for the brands */
+.feature-brands-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allows the items to wrap on smaller screens */
+}
+
+/* Individual brand image container */
+.feature-brand {
+    width: 12.5rem; /* Default width */
+    height: 5rem;   /* Default height */
+    margin: 1.25rem 0;
+}
+
+/* Image inside the brand container */
+.feature-brand img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .feature-brand {
+        width: 8rem;   /* Adjust width further for mobile */
+        height: 3rem;  /* Adjust height further for mobile */
+    }
+}
+
+/* Media query for very small mobile devices */
+@media (max-width: 480px) {
+    .feature-brand {
+        width: 7rem;   /* Adjust width even further for very small devices */
+        height: 2.5rem; /* Adjust height for very small devices */
+    }
+}
