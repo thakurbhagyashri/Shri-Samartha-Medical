@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faFileArrowUp, faShoppingCart, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import FeatureBrands from './Components/FeaturedBrand';
 import Dealoftheday from './Components/DealoftheDay';
+import Cart from './Components/Cart/Cart';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -78,6 +79,7 @@ const Header = () => {
             <h2 className="w-[638px] ml-[36px] font-bold ">
                 Shop By Category
             </h2>
+            <Cart/>
         </>
     );
 };

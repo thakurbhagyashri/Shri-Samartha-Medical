@@ -26,7 +26,7 @@ const DealoftheDay = () => {
                 </div>
             </div>
 
-            <button className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-black text-white px-4 py-2 z-10 rounded-full" onClick={prevImage}>
+            <button className="absolute left-10     `top-1/2 transform -translate-y-1/2 bg-black text-white px-4 py-2 z-10 rounded-full" onClick={prevImage}>
                 &#10094; {/* Left arrow */}
             </button>
 
