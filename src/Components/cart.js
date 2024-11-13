@@ -1,7 +1,7 @@
 const cartData = [
   {
     "id": 1,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Vitamins.png"),  // Use require for importing image
     "quantity": 100,
     "price": 345,
     "discount": 69,
@@ -17,7 +17,7 @@ const cartData = [
   },
   {
     "id": 2,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Shampoo.png"),  // Use require for importing image
     "quantity": 50,
     "price": 200,
     "discount": 40,
@@ -33,7 +33,7 @@ const cartData = [
   },
   {
     "id": 3,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Ayurvedic.png"),  // Use require for importing image
     "quantity": 75,
     "price": 300,
     "discount": 60,
@@ -49,7 +49,7 @@ const cartData = [
   },
   {
     "id": 4,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Creams.png"),  // Use require for importing image
     "quantity": 150,
     "price": 400,
     "discount": 80,
@@ -65,7 +65,7 @@ const cartData = [
   },
   {
     "id": 5,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Fitness.png"),  // Use require for importing image
     "quantity": 60,
     "price": 290,
     "discount": 50,
@@ -81,7 +81,7 @@ const cartData = [
   },
   {
     "id": 6,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/SkinCare.png"),  // Use require for importing image
     "quantity": 90,
     "price": 250,
     "discount": 50,
@@ -97,7 +97,7 @@ const cartData = [
   },
   {
     "id": 7,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Vitamins.png"),  // Use require for importing image
     "quantity": 80,
     "price": 360,
     "discount": 72,
@@ -113,7 +113,7 @@ const cartData = [
   },
   {
     "id": 8,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Creams.png"),  // Use require for importing image
     "quantity": 130,
     "price": 220,
     "discount": 45,
@@ -129,7 +129,7 @@ const cartData = [
   },
   {
     "id": 9,
-    "imageUrl": require("../Images/shampoos.png"),  // Use require for importing image
+    "imageUrl": require("../Images/Fitness.png"),  // Use require for importing image
     "quantity": 110,
     "price": 325,
     "discount": 65,
