@@ -1,0 +1,45 @@
+.upload {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 5px;
+    padding: 0 15px;
+}
+
+.upload-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.icon {
+    font-size: 16px;
+    padding-left: 3px;
+}
+
+.file-input {
+    display: none; /* Hide the file input */
+}
+
+.upload:hover{
+    font-weight: bold; 
+    padding: 10px 12.5px;
+}
+
+@media (max-width: 768px) {
+    .upload{
+        padding: 10px 15px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .upload-label {   
+        font-size: 14px;
+    }
+    .icon {
+        font-size: 14px;
+    }
+}

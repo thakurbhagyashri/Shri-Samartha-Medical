@@ -1,0 +1,66 @@
+/* Footer container */
+.footer-container {
+    background-color: #023C7F;
+    color: white;
+    padding: 20px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Styling the footer sections */
+.footer-section {
+    flex: 1 1 200px;
+    padding: 10px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+/* Our Payment Partners Section */
+.payment-partners {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.payment-partners h2 {
+    margin: 20px 100px;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.payment-logos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;   
+    margin: 0 100px;
+}
+
+.payment-logos img {
+    width: 150px;  /* Set a fixed width */
+    height: 50px; /* Set a fixed height */
+    object-fit: contain;  /* Ensures the aspect ratio is maintained */
+    margin: 5px;
+}  
+
+/* Copyright Section */
+.copyright {
+    background-color: white;
+    color: #023C7F;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-top: 20px;
+}

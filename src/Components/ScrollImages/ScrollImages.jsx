@@ -1,9 +1,9 @@
-// Shan
 import React, { useState, useEffect } from 'react';
+import './ScrollImages.css'; // Import the CSS file
 
 // Dynamically import all images from the 'Images' directory
 const importAll = (r) => r.keys().map(r);
-const images = importAll(require.context('../Images', false, /scroll\d+\.png$/));
+const images = importAll(require.context('../../Images', false, /scroll\d+\.png$/));
 
 const ScrollImages = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,19 +26,19 @@ const ScrollImages = () => {
     };
 
     return (
-        <div className="relative w-full max-w-[1762px] h-[300px] mx-auto overflow-hidden">
-            <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        <div className="scroll-container">
+            <div className="scroll-wrapper" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {images.map((image, index) => (
-                    <img key={index} src={image} alt={`Image ${index + 1}`} className="w-full h-[300px] object-cover" />
+                    <img key={index} src={image} alt={`Image ${index + 1}`} className="scroll-image" />
                 ))}
             </div>
 
             {/* Dots for navigation */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <div className="nav-dots">
                 {images.map((_, index) => (
                     <button
                         key={index}
-                        className={`w-2 h-2 rounded-full ${index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
+                        className={`nav-dot ${index === currentIndex ? 'active' : ''}`}
                         onClick={() => goToImage(index)}
                     ></button>
                 ))}

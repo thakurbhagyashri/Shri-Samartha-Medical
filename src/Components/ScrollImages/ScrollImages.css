@@ -1,0 +1,94 @@
+/* Container for the scroll images */
+.scroll-container {
+    position: relative;
+    width: 100%;
+    max-width: 1762px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Wrapper for the images */
+.scroll-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Styles for each image */
+.scroll-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Navigation dots at the bottom of the container */
+.nav-dots {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Default dot style */
+.nav-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #d1d5db; /* Default gray color */
+}
+
+/* Active dot style */
+.nav-dot.active {
+    background-color: #3b82f6; /* Active blue color */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    .scroll-container {
+        height: 250px; /* Adjust height for smaller screens */
+    }
+
+    .scroll-image {
+        height: 250px; /* Adjust image height */
+    }
+
+    .nav-dots {
+        bottom: 3px; /* Adjust the bottom position of the dots */
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-container {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+
+    .scroll-image {
+        height: 200px; /* Adjust image height */
+    }
+
+    .nav-dots {
+        bottom: 2px; /* Adjust the bottom position of the dots */
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-container {
+        height: 150px; /* Adjust height for mobile screens */
+    }
+
+    .scroll-image {
+        height: 150px; /* Adjust image height */
+    }
+
+    .nav-dots {
+        bottom: 1px; /* Adjust the bottom position of the dots */
+        gap: 0.3rem; /* Reduce gap between dots on small screens */
+    }
+
+    .nav-dot {
+        width: 0.4rem;
+        height: 0.4rem; /* Adjust dot size for small screens */
+    }
+}
