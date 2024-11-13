@@ -4,6 +4,7 @@ import MyComponent from './Components/MyComponent'; // Adjust the path for your 
 import Cart from './Components/Cart/Cart';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
 import Header from './Header';
+import AdminPanel from './Components/AdminPanel';
 
 const App = () => {
     const contextValue = { basename: 'my-base' };
@@ -12,6 +13,7 @@ const App = () => {
         <MyContext.Provider value={contextValue}>
             <Router>
                 <Header />
+                
                 <Routes> {/* Use Routes instead of Switch */}
                     <Route path="/" element={<Cart />} /> {/* Use 'element' instead of 'component' */}
                     <Route path="/other" element={<MyComponent />} />

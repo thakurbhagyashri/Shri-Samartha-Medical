@@ -22,11 +22,14 @@ const AdminPanel = () => {
         <div className="text-2xl font-bold mb-8">Medical Admin</div>
         <ul>
           <li>
+       
+        <input className="" />
             <Link to="/dashboard" className="block p-3 hover:bg-gray-700">
-              Dashboard
             </Link>
           </li>
           <li>
+          
+          <input className=""/>
             <Link to="/products" className="block p-3 hover:bg-gray-700">
               Products
             </Link>
@@ -58,7 +61,7 @@ const AdminPanel = () => {
             >
               <path
                 stroke-linecap="round"
-                stroke-linejoin="round"
+                stroke-linejoin="round" 
                 stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"
               />
