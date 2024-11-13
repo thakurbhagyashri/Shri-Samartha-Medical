@@ -1,8 +1,8 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import Upload from '../Upload/Upload';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
+import Upload from '../Upload/Upload';
 import './Nav.css';
 
 const Nav = ({ menuOpen }) => {
