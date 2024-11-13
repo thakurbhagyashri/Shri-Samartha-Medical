@@ -1,7 +1,7 @@
 const cartData = [
   {
     "id": 1,
-    "imageUrl": "src\\Images\\FeatureBrand2.png",  // Use require for importing image
+    "imageUrl": require("../Images/Fitness.png"),  // Use require for importing image
     "quantity": 100,
     "price": 345,
     "discount": 69,
