@@ -1,18 +1,23 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+// import { useNavigate } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
 import './Nav.css';
-
+import Signup from '../Admin/Signup';
 
 const Nav = ({ menuOpen }) => {
-    const navigate = useNavigate(); // Initialize useNavigate
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleSignUpClick = () => {
-        navigate('Signup'); // Redirect to the signup page
+    const openModal = () => {
+      setIsModalOpen(true);
     };
+  
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
+    
     return (
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
             <a href="#home">Home</a>
@@ -33,7 +38,10 @@ const Nav = ({ menuOpen }) => {
         
             <div className="flex">
                 <button className="hover:font-bold hover:px-[18px] mr-5 px-5">Login</button>
-                <button className="button" onClick={handleSignUpClick}>Sign Up</button>
+                <button className="button" onClick={openModal}>Sign Up</button>
+            </div>
+            <div>
+                {isModalOpen && <Signup closeModal={closeModal} />}
             </div>
         </nav>
     );

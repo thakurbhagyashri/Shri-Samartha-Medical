@@ -6,8 +6,8 @@ const cartData = [
     },
     {
       "id": 2,
-      "imageUrl": require("../../Images/ShampooProduct.png"),  // Use require for importing image
-      "title": "Shampoo"
+      "imageUrl": require("../../Images/MenGroomingProduct.png"),  // Use require for importing image
+      "title": "Men Grooming"
     },
     {
       "id": 3,
@@ -31,13 +31,13 @@ const cartData = [
     },
     {
       "id": 7,
-      "imageUrl": require("../../Images/MenGroomingProduct.png"),  // Use require for importing image
-      "title": "Men Grooming"
+      "imageUrl": require("../../Images/FeminineHygieneProduct.png"),  // Use require for importing image
+      "title": "Feminine Hygiene"
     },
     {
       "id": 8,
-      "imageUrl": require("../../Images/FeminineHygieneProduct.png"),  // Use require for importing image
-      "title": "Feminine Hygiene"
+      "imageUrl": require("../../Images/ShampooProduct.png"),  // Use require for importing image
+      "title": "Shampoo"
     }
   ];
   

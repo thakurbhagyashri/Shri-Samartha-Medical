@@ -2,22 +2,24 @@
 .popular-category-container {
   display: flex;               /* Flexbox layout */
   justify-content: space-between; /* Space between items */
-  gap: 20px; /* Optional space between images */
+  gap: 5px; /* Optional space between images */
   flex-wrap: wrap; /* Allow wrapping for smaller screen sizes */
-  margin: 20px 0;
+  margin: 20px 150px;
 }
 
 /* Style for each image */
 .category-image {
-  width: 100px;  /* Adjust image size */
-  height: 100px; /* Set height */
+  width: 150px;  /* Adjust image size */
+  height: 150px; /* Set height */
   object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 10px;
   cursor: pointer; /* Make images clickable */
   transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
 /* Hover effect for images */
 .category-image:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
