@@ -1,0 +1,36 @@
+/* Container for the images */
+.popular-category-container {
+  display: flex;               /* Flexbox layout */
+  justify-content: space-between; /* Space between items */
+  gap: 20px; /* Optional space between images */
+  flex-wrap: wrap; /* Allow wrapping for smaller screen sizes */
+  margin: 20px 0;
+}
+
+/* Style for each image */
+.category-image {
+  width: 100px;  /* Adjust image size */
+  height: 100px; /* Set height */
+  object-fit: cover; /* Maintain aspect ratio */
+  cursor: pointer; /* Make images clickable */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for images */
+.category-image:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Style for the anchor tag to remove default styling */
+.category-link {
+  text-decoration: none; /* Remove underline */
+  display: block;
+  text-align: center;
+}
+
+/* Optional: Style for the title */
+.category-link p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}

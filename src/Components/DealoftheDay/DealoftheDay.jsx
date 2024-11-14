@@ -40,7 +40,7 @@ const DealoftheDay = () => {
     const prevImage = () => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
-
+    
     return (
         <div className="deal-slider">
             <div className="deal-slider-wrapper">

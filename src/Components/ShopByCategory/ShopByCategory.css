@@ -1,0 +1,47 @@
+.cart-container {
+  max-width: 1200px; /* Set a max width for the entire cart container */
+  margin: 0 100px; /* Center the container horizontally */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+.cart-items {
+  display: flex; /* Use flexbox for horizontal layout */
+  flex-wrap: wrap; /* Allow wrapping of items if they overflow */
+  gap: 20px; /* Space between the items */
+  justify-content: space-between; /* Distribute items evenly across the row */
+}
+
+.cart-item {
+  width: 23%; /* Set width to ensure 4 items per row */
+  flex-shrink: 0; /* Prevent the items from shrinking */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Add some bottom margin for spacing */
+  background-color: #fff; /* White background for the items */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for each item */
+  border-radius: 8px; /* Rounded corners for the items */
+  overflow: hidden; /* Hide overflow content if needed */
+}
+
+.image-container {
+  position: relative;
+  width: 100%; /* Ensure it fills the container's width */
+  height: 200px; /* Fixed height for the image */
+  overflow: hidden; /* Ensure the image doesn't overflow the container */
+}
+
+.cart-item-image {
+  width: 100%; /* Ensure image covers the entire container width */
+  height: 100%; /* Ensure the image covers the entire container height */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to the image */
+}
+
+.medicine-title {
+  font-size: 1.125rem; /* Title font size */
+  font-weight: bold; /* Bold font for the title */
+  color: #056E7E; /* Text color for the title */
+  text-align: center; /* Center align the title */
+  margin-top: 10px; /* Add space between image and title */
+}
