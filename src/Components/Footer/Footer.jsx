@@ -1,18 +1,18 @@
 import React from 'react';
 import GooglePay from '../../Images/GooglePay.png';
-import Phonpe from '../../Images/PhonePe.png';
 import Paytm from '../../Images/Paytm.png';
+import Phonpe from '../../Images/PhonePe.png';
 import Simpl from '../../Images/Simpl.png';
 import Visa from '../../Images/Visa.png';
 import './Footer.css'; // Assuming you will create a separate CSS file for the footer
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer font-serif">
       <div className="footer-container">
         {/* Company Section */}
         <div className="footer-section">
-          <h3>Company</h3>
+          <h3 className='font-bold'>COMPANY</h3>
           <ul>
             <li><a href="#">About Pharmaceutical</a></li>
             <li><a href="#">Customer Speak</a></li>
@@ -24,7 +24,7 @@ const Footer = () => {
 
         {/* Policies Section */}
         <div className="footer-section">
-          <h3>Our Policies</h3>
+          <h3 className='font-bold'>OUR POLOCIES</h3>
           <ul>
             <li><a href="#">Terms and Conditions</a></li>
             <li><a href="#">Privacy Policy</a></li>
@@ -37,7 +37,7 @@ const Footer = () => {
 
         {/* Shopping Section */}
         <div className="footer-section">
-          <h3>Shopping</h3>
+          <h3>SHOPPING</h3>
           <ul>
             <li><a href="#">Browse by A-Z</a></li>
             <li><a href="#">Browse by Manufacturers</a></li>
@@ -49,7 +49,7 @@ const Footer = () => {
 
         {/* Popular Categories Section */}
         <div className="footer-section">
-          <h3>Popular Categories</h3>
+          <h3>POPULAR CATEGORIES</h3>
           <ul>
             <li><a href="#">Fitness</a></li>
             <li><a href="#">Devices</a></li>
@@ -64,7 +64,7 @@ const Footer = () => {
 
         {/* Social Media Section */}
         <div className="footer-section">
-          <h3>Social</h3>
+          <h3>SOCIAL</h3>
           <ul>
             <li><a href="#">Patients Alike</a></li>
             <li><a href="#">Facebook</a></li>

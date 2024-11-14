@@ -34,7 +34,7 @@ const Start = () => {console.log("Rendering Start component");
             <TrendingProducts />
 
             {/* Image with custom margins, shadow, and overlay text */}
-            <div className="trusted-pharmacy-container m-10 ">
+            <div className="trusted-pharmacy-container ml-5 mr-5 ">
                 <img
                     src={BgPharma}
                     alt="Trusted Pharmacy"
@@ -57,7 +57,7 @@ const Start = () => {console.log("Rendering Start component");
                             Simple.
                         </h1>
 
-                        <ul className="list-disc list-inside mb-6 space-y-1 text-2xl text-gray-700 ml-10">
+                        <ul className="list-disc list-inside mb-6 space-y-1 text-xl text-gray-700 ml-10">
                             <li>Upload valid Prescription</li>
                             <li>Receive a confirmation call</li>
                             <li>Delivery at your door step</li>
@@ -89,8 +89,8 @@ const Start = () => {console.log("Rendering Start component");
                             <span className="text-2xl">💰</span>
                         </div>
                         <div className="flex-row">
-                        <h4 className=" text-3xl">Maximize Your Savings</h4>
-                        <p className="text-gray-600 text-lg  ">
+                        <h4 className=" text-2xl">Maximize Your Savings</h4>
+                        <p className="text-gray-600 text-sm  ">
                             With FlexiRewards. Choose the Reward cash discount or free goods.
                         </p>
                         </div>
@@ -101,8 +101,8 @@ const Start = () => {console.log("Rendering Start component");
                             <span className="text-2xl">🛒</span>
                         </div>
                         <div className="flex-row">
-                        <h4 className=" text-3xl">Click and Pick</h4>
-                        <p className="text-gray-600 text-lg  ">
+                        <h4 className=" text-2xl">Click and Pick</h4>
+                        <p className="text-gray-600 text-sm  ">
                         Click to buy a range of products across categories.
                         </p>
                         </div>
@@ -113,8 +113,8 @@ const Start = () => {console.log("Rendering Start component");
                             <span className="text-2xl">🏠</span>
                         </div>
                         <div className="flex-row">
-                        <h4 className=" text-3xl">Home Delivery</h4>
-                        <p className="text-gray-600 text-lg  ">
+                        <h4 className=" text-2xl">Home Delivery</h4>
+                        <p className="text-gray-600 text-sm ">
                             We offer convenient home delivery ofmedicines & general goods.
                         </p>
                         </div>
@@ -125,8 +125,8 @@ const Start = () => {console.log("Rendering Start component");
                             <span className="text-2xl">📋</span>
                         </div>
                         <div className="flex-row">
-                        <h4 className=" text-3xl">Unlimited Health Records</h4>
-                        <p className="text-gray-600 text-lg ">
+                        <h4 className=" text-2xl">Unlimited Health Records</h4>
+                        <p className="text-gray-600 text-sm ">
                         Save all your health records (Prescriptions,Medical....)
                         </p>
                         </div>

@@ -25,7 +25,7 @@
 
 .trusted-pharmacy-container {
   position: relative;
-  margin: 20px 100px; /* Adds 100px left and right margin */
+  margin: 20px 45px; /* Adds 100px left and right margin */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
 }
 
