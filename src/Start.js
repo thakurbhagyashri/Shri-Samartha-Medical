@@ -32,7 +32,7 @@ const Start = () => {
             <Cart />
 
             {/* Image with custom margins, shadow, and overlay text */}
-            <div className="trusted-pharmacy-container m-10 ">
+            <div className="trusted-pharmacy-container ml-5 mr-5 ">
                 <img
                     src={BgPharma}
                     alt="Trusted Pharmacy"

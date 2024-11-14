@@ -20,6 +20,7 @@ const Cart = () => {
   }
 
   return (
+
     <div className="cart-container max-w-screen-lg mx-auto p-6 flex justify-center items-center min-h-screen">
       <div className="w-full">
         <h2 className="text-2xl font-bold mb-4 text-center">Your Cart</h2>
@@ -43,6 +44,7 @@ const Cart = () => {
           </div>
         )}
       </div>
+
     </div>
   );
 };
