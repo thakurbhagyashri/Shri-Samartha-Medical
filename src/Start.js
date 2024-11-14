@@ -1,6 +1,8 @@
 import React from "react";
-import Cart from "./Components/Cart/Cart";
-import Dealoftheday from "./Components/DealoftheDay/DealoftheDay";
+import ShopByCategory from "./Components/ShopByCategory/ShopByCategory";
+import PopularCategory from "./Components/PopularCategory/PopularCategory";
+import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
+import DealoftheDay from "./Components/DealoftheDay/DealoftheDay";
 import FeatureBrands from "./Components/FeaturedBrand/FeaturedBrand";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
@@ -8,7 +10,7 @@ import ScrollImages from "./Components/ScrollImages/ScrollImages";
 import ads from "./Images/Ads.png";
 import BgPharma from "./Images/BgPharma.png";
 
-const Start = () => {
+const Start = () => {console.log("Rendering Start component");
     return (
         <>
             <Header />
@@ -16,20 +18,20 @@ const Start = () => {
             <FeatureBrands />
             <h2 className="title">Shop By Category</h2>
             {/* Add Cart component here */}
-            <Cart />
+            <ShopByCategory />
 
             <h2 className="title">Deal Of The Day</h2>
-            <Dealoftheday />
+            <DealoftheDay />
 
             <h2 className="title">Popular Category</h2>
             {/* Add Cart component here */}
-            <Cart />
+            <PopularCategory />
             {/* Full-width ad image */}
             <img src={ads} alt="Advertisement" className="full-width-ad" />
 
             <h2 className="title">Trending Products</h2>
             {/* Add Cart component here */}
-            <Cart />
+            <TrendingProducts />
 
             {/* Image with custom margins, shadow, and overlay text */}
             <div className="trusted-pharmacy-container m-10 ">
