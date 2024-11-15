@@ -9,8 +9,10 @@ import Header from "./Components/Header/Header";
 import ScrollImages from "./Components/ScrollImages/ScrollImages";
 import ads from "./Images/Ads.png";
 import BgPharma from "./Images/BgPharma.png";
+
 import AddToCartButton from "./Components/Button/AddToCart";
 const Start = () => {console.log("Rendering Start component");
+
     return (
         <>
             <Header />
@@ -35,6 +37,13 @@ const Start = () => {console.log("Rendering Start component");
             <TrendingProducts />
            
 
+            <div class="card">
+                    <img src={AdDevices} alt="Product Image" class="card-image" />
+             
+                <p class="card-text">Flat 25% Off Medicine Order</p>
+                <button class="card-button">Shop Now</button>
+            </div>
+
             {/* Image with custom margins, shadow, and overlay text */}
             <div className="trusted-pharmacy-container ml-5 mr-5 ">
                 <img
@@ -43,18 +52,18 @@ const Start = () => {console.log("Rendering Start component");
                     style={{ height: '150px', width: '100%', objectFit: 'cover' }}
                     className="trusted-pharmacy-image "
                 />
-                <span className="trusted-pharmacy-text font-serif font-semibold">
+                <span className="trusted-pharmacy-text font-semibold">
                     INDIA’S MOST TRUSTED ONLINE PHARMACY
                 </span>
             </div>
-            <div className="ml-[100px] mr-40  font-serif">
+            <div className="ml-[100px] mr-40">
                 <div className="flex ">
-                    <div className="p-5 bg-white flex-[7]">
-                        <h2 className="text-blue text-2xl  mb-4">
+                    <div className="bg-white flex-[7]">
+                        <h2 className="text-blue text-1xl  mb-4">
                             Quick order with prescription
                         </h2>
 
-                        <h1 className="text-4xl  mb-5">
+                        <h1 className="text-3xl  mb-5">
                             How to order medicines on Shree Samarth Pharmacy? It’s
                             Simple.
                         </h1>
@@ -75,7 +84,7 @@ const Start = () => {console.log("Rendering Start component");
                     </div>
                     <div className="flex-[3]">
                         <img
-                            src={BgPharma}
+                            src={Reason}
                             alt="Trusted Pharmacy"
                             style={{ height: '80%', width: '100%', objectFit: 'cover' }}
                             className="trusted-pharmacy-image m-10 p-5 rounded-xl "
@@ -83,12 +92,12 @@ const Start = () => {console.log("Rendering Start component");
                     </div>
                 </div>
 
-                <h3 className="text-4xl  font-bold mb-10">Why Shree Samarth Pharmacy</h3>
+                <h3 className="text-3xl font-500 mb-10">Why Shree Samarth Pharmacy</h3>
 
                 <div className="grid grid-col-1-1 md:grid-col-2 lg:grid-cols-2 gap-4 mb-5">
                     <div className="flex m-3">
                         <div className="w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center mr-5 mb-2">
-                            <span className="text-2xl">💰</span>
+                            <span className="text-1xl">💰</span>
                         </div>
                         <div className="flex-row">
                         <h4 className=" text-2xl">Maximize Your Savings</h4>
@@ -100,7 +109,7 @@ const Start = () => {console.log("Rendering Start component");
 
                     <div className="flex m-3">
                         <div className="w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center mr-5 mb-2">
-                            <span className="text-2xl">🛒</span>
+                            <span className="text-1xl">🛒</span>
                         </div>
                         <div className="flex-row">
                         <h4 className=" text-2xl">Click and Pick</h4>
@@ -112,7 +121,7 @@ const Start = () => {console.log("Rendering Start component");
 
                     <div className="flex m-3">
                         <div className="w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center mr-5 mb-2">
-                            <span className="text-2xl">🏠</span>
+                            <span className="text-1xl">🏠</span>
                         </div>
                         <div className="flex-row">
                         <h4 className=" text-2xl">Home Delivery</h4>
@@ -124,7 +133,7 @@ const Start = () => {console.log("Rendering Start component");
 
                     <div className="flex m-3">
                         <div className="w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center mr-5 mb-2">
-                            <span className="text-2xl">📋</span>
+                            <span className="text-1xl">📋</span>
                         </div>
                         <div className="flex-row">
                         <h4 className=" text-2xl">Unlimited Health Records</h4>

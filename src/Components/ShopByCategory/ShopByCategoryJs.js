@@ -1,4 +1,5 @@
 const cartData = [
+
   {
     "id": 1,
     "imageUrl": require("../../Images/VitaminProduct.png"),  // Use require for importing image
@@ -41,4 +42,5 @@ const cartData = [
   }
 ];
 
-export default cartData;
+export default cartData;    
+      

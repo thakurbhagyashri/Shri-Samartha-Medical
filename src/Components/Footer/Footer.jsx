@@ -8,7 +8,7 @@ import './Footer.css'; // Assuming you will create a separate CSS file for the f
 
 const Footer = () => {
   return (
-    <footer className="footer font-serif">
+    <footer className="footer">
       <div className="footer-container">
         {/* Company Section */}
         <div className="footer-section">

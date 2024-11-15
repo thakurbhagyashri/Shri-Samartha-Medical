@@ -54,12 +54,11 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import cartData from './ShopByCategoryJs.js'; // Import cart data
+import cartData from './ShopByCategoryJs.js'; 
 import './ShopByCategory.css';
 
 const ShopByCategory = () => {
-  const [cart] = useState(cartData); // Set cart data to state
-  console.log("Rendering Shop by Category component");
+  const [cart] = useState(cartData); 
   return (
     <div className="cart-container">
       {cart.length === 0 ? (
@@ -73,10 +72,10 @@ const ShopByCategory = () => {
                     <img
                       src={item.imageUrl}
                       alt={item.title}
-                      className="cart-item-image" // Image with styling and shadow
+                      className="cart-item-image"
                     />
                 </div>
-                <p className="medicine-title">{item.title}</p> {/* Title below the image */}
+                <p className="medicine-title">{item.title}</p> 
               </Link>
             </div>
           ))}

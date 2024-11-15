@@ -7,8 +7,6 @@ const PopularCategory = () => {
       {cartData.map((category) => (
         <a key={category.id} href="#" className="category-link">
           <img src={category.imageUrl} alt={category.title} className="category-image" />
-          <p>{category.title}</p>
-         
         </a>
       ))}
     </div>

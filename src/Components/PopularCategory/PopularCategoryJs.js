@@ -10,14 +10,14 @@ const cartData = [
       "title": "Devices"
     },
     {
-      "id": 3,
-      "imageUrl": require("../../Images/BabyCare.png"),  // Use require for importing image
-      "title": "Baby Care"
+      "id": 3,      
+      "imageUrl": require("../../Images/EyeCare.png"),  // Use require for importing image
+      "title": "Eye Care"
     },
     {
       "id": 4,
-      "imageUrl": require("../../Images/EyeCare.png"),  // Use require for importing image
-      "title": "Eye Care"
+      "imageUrl": require("../../Images/BabyCare.png"),  // Use require for importing image
+      "title": "Baby Care"
     },
     {
       "id": 5,
