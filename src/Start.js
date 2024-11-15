@@ -17,7 +17,6 @@ const Start = () => {
 
     return (
         <>
-            <Header />
             <ScrollImages />
             <FeatureBrands />
             <h2 className="title">Shop By Category</h2>
@@ -146,9 +145,6 @@ const Start = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Footer goes below Cart */}
-            <Footer />
         </>
     );
 };

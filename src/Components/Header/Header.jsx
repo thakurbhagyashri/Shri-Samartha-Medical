@@ -17,7 +17,7 @@ const Header = () => {
     return (
         <>
             <header className="header">
-                <img src={logo2} alt="Logo" className="h-16 sm:h-20 " />
+                <img src={logo2} alt="Logo" className="h-16 sm:h-32 " />
                 <button className="hamburger" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
