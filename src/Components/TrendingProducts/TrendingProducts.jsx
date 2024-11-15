@@ -56,6 +56,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import cartData from './TrendingProductsJs'; // Import cart data
 import './TrendingProducts.css';
+import AddToCartButton from '../Button/AddToCart';
 
 const TrendingProducts = () => {
   const [cart] = useState(cartData); // Set cart data to state
@@ -78,7 +79,9 @@ const TrendingProducts = () => {
                 </div>
                 <p className="medicine-title">{item.title}</p> {/* Title below the image */}
               </Link>
+              <AddToCartButton text={"ADD TO CART"}/>
             </div>
+            
           ))}
         </div>
       )}

@@ -24,6 +24,7 @@ const Cart = () => {
     <div className="cart-container max-w-screen-lg mx-auto p-6 flex justify-center items-center min-h-screen">
       <div className="w-full">
         <h2 className="text-2xl font-bold mb-4 text-center">Your Cart</h2>
+        
         {cart.length === 0 ? (
           <p className="text-center">Your cart is empty.</p>
         ) : (
@@ -35,7 +36,7 @@ const Cart = () => {
                     <img
                       src={item.imageUrl || 'https://via.placeholder.com/350x350.png'} 
                       alt={item.medicineName}
-                      className="w-[300px] h-[300px] object-contain " 
+                      className="w-[300px] h-[300px] object-contain"
                     />
                   </div>
                 </Link>
@@ -44,9 +45,8 @@ const Cart = () => {
           </div>
         )}
       </div>
-
     </div>
   );
 };
-
 export default Cart;
+ 

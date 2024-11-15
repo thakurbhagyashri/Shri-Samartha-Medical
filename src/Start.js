@@ -9,7 +9,7 @@ import Header from "./Components/Header/Header";
 import ScrollImages from "./Components/ScrollImages/ScrollImages";
 import ads from "./Images/Ads.png";
 import BgPharma from "./Images/BgPharma.png";
-
+import AddToCartButton from "./Components/Button/AddToCart";
 const Start = () => {console.log("Rendering Start component");
     return (
         <>
@@ -26,12 +26,14 @@ const Start = () => {console.log("Rendering Start component");
             <h2 className="title">Popular Category</h2>
             {/* Add Cart component here */}
             <PopularCategory />
+            
             {/* Full-width ad image */}
             <img src={ads} alt="Advertisement" className="full-width-ad" />
 
             <h2 className="title">Trending Products</h2>
             {/* Add Cart component here */}
             <TrendingProducts />
+           
 
             {/* Image with custom margins, shadow, and overlay text */}
             <div className="trusted-pharmacy-container ml-5 mr-5 ">
