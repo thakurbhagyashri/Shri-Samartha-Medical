@@ -10,8 +10,10 @@ import ScrollImages from "./Components/ScrollImages/ScrollImages";
 import ads from "./Images/Ads.png";
 import BgPharma from "./Images/BgPharma.png";
 
-import AddToCartButton from "./Components/Button/AddToCart";
-const Start = () => {console.log("Rendering Start component");
+import Reason from "./Images/Reason.png";
+import AdDevices from "./Images/AdDevices.png"
+
+const Start = () => {
 
     return (
         <>
