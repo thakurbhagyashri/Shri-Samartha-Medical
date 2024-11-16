@@ -54,8 +54,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import cartData from './ShopByCategoryJs.js'; 
 import './ShopByCategory.css';
+import cartData from './ShopByCategoryJs.js';
 
 const ShopByCategory = () => {
   const [cart] = useState(cartData); 
@@ -64,7 +64,7 @@ const ShopByCategory = () => {
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div className="cart-items">
+        <div className="cart-items ">
           {cart.map((item) => (
             <div key={item.id} className="cart-item">
               <Link to={`/product/${item.id}`}>
