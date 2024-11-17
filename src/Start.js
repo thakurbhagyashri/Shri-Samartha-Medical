@@ -4,8 +4,6 @@ import PopularCategory from "./Components/PopularCategory/PopularCategory";
 import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
 import DealoftheDay from "./Components/DealoftheDay/DealoftheDay";
 import FeatureBrands from "./Components/FeaturedBrand/FeaturedBrand";
-import Footer from "./Components/Footer/Footer";
-import Header from "./Components/Header/Header";
 import ScrollImages from "./Components/ScrollImages/ScrollImages";
 import ads from "./Images/Ads.png";
 import BgPharma from "./Images/BgPharma.png";
@@ -19,12 +17,12 @@ const Start = () => {
         <>
             <ScrollImages />
             <FeatureBrands />
-            <h2 className="title">Shop By Category</h2>
-            {/* Add Cart component here */}
-            <ShopByCategory />
 
             <h2 className="title">Deal Of The Day</h2>
             <DealoftheDay />
+            <h2 className="title">Shop By Category</h2>
+            {/* Add Cart component here */}
+            <ShopByCategory />
 
             <h2 className="title">Popular Category</h2>
             {/* Add Cart component here */}

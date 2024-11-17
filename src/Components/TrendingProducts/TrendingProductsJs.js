@@ -1,59 +1,50 @@
 const cartData = [
   {
     "id": 1,
-    "imageUrl": require("../../Images/VitaminProduct.png"),  
-    "title": "Vitamins",
-    "price": 19.99,
-    "description": "High-quality vitamins to boost your immunity and overall health."
+    "imageUrl": require("../../Images/HimalayaEyeCareSyrup.png"),  // Use require for importing image
+    "title": "Himalaya EyeCare Syrup",
+    "description": "A medication for gastric ulcers.",
+    "rating":3,
+    "price": 200
   },
   {
     "id": 2,
-    "imageUrl": require("../../Images/ShampooProduct.png"), 
-    "title": "Shampoo",
-    "price": 12.99,
-    "description": "Shampoo that strengthens and nourishes your hair, leaving it soft and shiny."
+    "imageUrl": require("../../Images/NutriliteMemoryBuilder.png"),  // Use require for importing image
+    "title": "Nutrilite Memory Builder",
+    "description": "Helps treat heartburn and acid reflux.",
+    "rating":2,
+    "price": 300
   },
   {
     "id": 3,
-    "imageUrl": require("../../Images/AyurvedicProduct.png"),  
-    "title": "Ayurvedic",
-    "price": 24.99,
-    "description": "Natural Ayurvedic products for holistic skincare and wellness."
+    "imageUrl": require("../../Images/OrganikaSalmonCollagen.png"),  // Use require for importing image
+    "title": "Organika Salmon Collagen",
+    "rating":3.5,
+    "price": 100
   },
   {
     "id": 4,
-    "imageUrl": require("../../Images/OilProduct.png"), 
-    "title": "Creams",
-    "price": 18.99,
-    "description": "Nourishing creams for smooth, soft, and hydrated skin."
+    "imageUrl": require("../../Images/HimalayaEyeCareSyrup.png"),  // Use require for importing image
+    "title": "Himalaya EyeCare Syrup",
+    "description": "For treating acid reflux and ulcers.",
+    "rating":4,
+    "price": 150
   },
   {
     "id": 5,
-    "imageUrl": require("../../Images/FitnessProduct.png"), 
-    "title": "Fitness",
-    "price": 29.99,
-    "description": "Fitness supplements and accessories to enhance your workout performance."
+    "imageUrl": require("../../Images/NutriliteMemoryBuilder.png"),  // Use require for importing image
+    "title": "Nutrilite Memory Builder",
+    "rating":2.4,
+    "description": "Used for high levels of acidity in the stomach, helps reduce acidity.",
+    "price": 500
   },
   {
     "id": 6,
-    "imageUrl": require("../../Images/SkinCareProduct.png"), 
-    "title": "Skin Care",
-    "price": 22.99,
-    "description": "Premium skincare products for healthy and glowing skin."
-  },
-  {
-    "id": 7,
-    "imageUrl": require("../../Images/MenGroomingProduct.png"), 
-    "title": "Men Grooming",
-    "price": 15.99,
-    "description": "Men's grooming products for a fresh, polished look."
-  },
-  {
-    "id": 8,
-    "imageUrl": require("../../Images/FeminineHygieneProduct.png"),  
-    "title": "Feminine Hygiene",
-    "price": 10.99,
-    "description": "Feminine hygiene products designed for comfort and care."
+    "imageUrl": require("../../Images/OrganikaSalmonCollagen.png"),  // Use require for importing image
+    "title": "Organika Salmon Collagen",
+    "rating":3,
+    "description": "Used for high levels of acidity in the stomach, helps reduce acidity.",
+    "price": 310
   }
 ];
 
