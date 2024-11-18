@@ -44,6 +44,9 @@
     background-color: #3b82f6; /* Active blue color */
 }
 
+
+
+  
 /* Media queries for responsiveness */
 @media (max-width: 1024px) {
     .scroll-container {
