@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./Assets/Fonts/EB_Garamond/static/EBGaramond-VariableFont_wght.ttf') format('truetype');
+}

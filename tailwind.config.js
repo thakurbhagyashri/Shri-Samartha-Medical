@@ -8,6 +8,10 @@ module.exports = {
       colors: {
         "ButtonGreen":"#8BCD3D",
     },
+    fontFamily: {
+      custom: ['Roboto', 'EB_Garamonod'], // For Google Fonts
+     
+    },
   },
   plugins: [],
 }
