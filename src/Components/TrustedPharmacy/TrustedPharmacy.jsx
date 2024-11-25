@@ -1,52 +1,11 @@
-import React from "react";
-import Category from "./Components/Categories/Categories";
-import DealoftheDay from "./Components/DealoftheDay/DealoftheDay";
-import FeatureBrands from "./Components/FeaturedBrand/FeaturedBrand";
-import PopularCategory from "./Components/PopularCategory/PopularCategory";
-import ScrollImages from "./Components/ScrollImages/ScrollImages";
-import Search from "./Components/Search/Search";
-import ShopByCategory from "./Components/ShopByCategory/ShopByCategory";
-import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
-import TrustedPharmacy from "./Components/TrustedPharmacy/TrustedPharmacy";
-import AdDevices from "./Images/AdDevices.png";
-import ads from "./Images/Ads.png";
+import React from 'react';
+import BgPharma from "../TrustedPharmacy/BgPharma.png";
+import Reason from "../TrustedPharmacy/Reason.png";
 
-const Start = () => {
-
-    return (
-        <>
-            <Search />
-            <Category />
-            <ScrollImages />
-            <FeatureBrands />
-
-            <h2 className="title">Deal Of The Day</h2>
-            <DealoftheDay />
-            <h2 className="title">Shop By Category</h2>
-            {/* Add Cart component here */}
-            <ShopByCategory />
-
-            <h2 className="title">Popular Category</h2>
-            {/* Add Cart component here */}
-            <PopularCategory />
-            
-            {/* Full-width ad image */}
-            <img src={ads} alt="Advertisement" className="full-width-ad" />
-
-            <h2 className="title">Trending Products</h2>
-            {/* Add Cart component here */}
-            <TrendingProducts />
-           
-
-            <div className="card">
-                    <img src={AdDevices} alt="Product Image" className="card-image" />
-             
-                <p className="card-text">Flat 25% Off Medicine Order</p>
-                <button className="card-button">Shop Now</button>
-            </div>
-
-            {/* Image with custom margins, shadow, and overlay text */}
-            {/* <div className="trusted-pharmacy-container ml-5 mr-5 ">
+const TrustedPharmacy = () => {
+  return (
+    <div>
+        <div className="trusted-pharmacy-container ml-5 mr-5  ">
                 <img
                     src={BgPharma}
                     alt="Trusted Pharmacy"
@@ -60,7 +19,7 @@ const Start = () => {
             <div className="ml-[100px] mr-40">
                 <div className="flex ">
                     <div className="bg-white flex-[7]">
-                        <h2 className="text-blue text-1xl  mb-4">
+                        <h2 className="text-[#056e7e] text-xl  mb-4">
                             Quick order with prescription
                         </h2>
 
@@ -144,10 +103,9 @@ const Start = () => {
                         </div>
                     </div>
                 </div>
-            </div> */}
-            <TrustedPharmacy />
-        </>
-    );
-};
+            </div>
+    </div>
+  )
+}
 
-export default Start;
+export default TrustedPharmacy

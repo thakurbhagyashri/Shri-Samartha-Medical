@@ -1,10 +1,9 @@
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { FaHeart, FaStar } from "react-icons/fa";
 import { useParams } from 'react-router-dom';
-import cartData from '../TrendingProducts/TrendingProductsJs'; 
-import { FaHeart } from "react-icons/fa"; 
-import { FaStar } from "react-icons/fa";
-import { MyContext } from '../MyContext';  // Assuming CartContext is already setup
+import { MyContext } from '../MyContext'; // Assuming CartContext is already setup
+import cartData from '../TrendingProducts/TrendingProductsJs';
 
 const Product = () => {
   const { id } = useParams();  
@@ -56,7 +55,7 @@ const Product = () => {
   }
 
   return (
-    <div className="container mx-[100px] my-10 max-w-[1000px]">
+    <div className="container mx-[100px] font-custom my-10 max-w-[1000px]">
       <div className="flex gap-10">
         {/* Product image */}
         <div className="w-4/12 border-2 border-gray-300 rounded-[10px] transition-transform duration-300 transform hover:scale-105">
@@ -84,8 +83,8 @@ const Product = () => {
             />
           </div>
 
-          <h1 className="text-3xl font-semibold">{product.title}</h1>
-          <p className="text-lg text-gray-600">{product.description}</p>
+          <h1 className="text-3xl font-thin ">{product.title}</h1>
+          <p className="text-md text-gray-600 ">{product.description}</p>
 
           {/* Star rating */}
           <div className="flex items-center">
@@ -97,11 +96,11 @@ const Product = () => {
             ))}
           </div>
 
-          <p className="text-xl font-semibold text-blue-600">Price: ₹{product.price}</p>
+          <p className="text-xl font-semibold text-blue-600 ">Price: ₹{product.price}</p>
 
           {/* Quantity selection */}
           <div className="flex items-center">
-            <label className="text-lg font-medium mr-2">Quantity: </label>
+            <label className="text-lg font-medium mr-2 ">Quantity: </label>
             <div className="flex items-center border rounded-md overflow-hidden">
               <button
                 onClick={handleDecrement}
@@ -126,7 +125,7 @@ const Product = () => {
 
           {/* Add to Cart Button */}
           <button
-            className="w-full py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-105 hover:font-bold"
+            className="w-full py-3 bg-[#0354B1] text-white rounded-lg shadow-md hover:bg-[#023c7f] transition-all duration-300 transform hover:scale-105 hover:font-bold"
             onClick={() => handleAddToCart(product)} 
           >
             Add to Cart

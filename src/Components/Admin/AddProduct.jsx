@@ -236,16 +236,16 @@ const AddProductPage = () => {
     // </div>
 
     <div>
-      <section className="flex flex-col items-center pt-6 font-serif">
+      <section className="flex flex-col items-center pt-6 font-custom">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-3xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl text-center bg-gray-200 p-2 bg-[#005689] rounded-md  font-semibold leading-tight tracking-tight text-white md:text-2xl dark:text-white">
+            <h1 className="text-xl text-center  p-2 bg-[#005689] rounded-md  font-thin leading-tight tracking-tight text-white md:text-2xl dark:text-white">
               {" "}
               Add Product
             </h1>
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" method="POST">
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Image
                 </label>
                 <input
@@ -258,7 +258,7 @@ const AddProductPage = () => {
               </div>
               <div className="grid grid-flow-col">
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Quantity
                   </label>
                   <input
@@ -272,7 +272,7 @@ const AddProductPage = () => {
                   />
                 </div>
                 <div className="pl-2">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Price
                   </label>
                   <input
@@ -286,7 +286,7 @@ const AddProductPage = () => {
                   />
                 </div>
                 <div className="pl-2">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Discount
                   </label>
                   <input
@@ -302,7 +302,7 @@ const AddProductPage = () => {
               </div>
               <div className="grid grid-flow-col">
                 <div className="pr-1">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Company Name
                   </label>
                   <input
@@ -316,7 +316,7 @@ const AddProductPage = () => {
                   />
                 </div>
                 <div className="pl-1">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Medicine Name
                   </label>
                   <input
@@ -332,7 +332,7 @@ const AddProductPage = () => {
               </div>
               <div className="grid grid-flow-col">
               <div className="pr-1">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Minimum Age
                 </label>
                 <input
@@ -346,7 +346,7 @@ const AddProductPage = () => {
                 />
               </div>
               <div className="pl-1">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Maximam Age
                 </label>
                 <input
@@ -362,7 +362,7 @@ const AddProductPage = () => {
               </div>
               <div className="grid grid-flow-col">
               <div className="pr-1">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Real Mrp
                 </label>
                 <input
@@ -376,7 +376,7 @@ const AddProductPage = () => {
                 />
               </div>
               <div className="pl-1">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Discount Mrp
                 </label>
                 <input
@@ -391,7 +391,7 @@ const AddProductPage = () => {
               </div>
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Category
                 </label>
                 <input
@@ -405,7 +405,7 @@ const AddProductPage = () => {
                 />
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Description
                 </label>
                 <textarea
@@ -419,7 +419,7 @@ const AddProductPage = () => {
                 ></textarea>
               </div>
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Comments
                 </label>
                 <textarea
@@ -435,7 +435,7 @@ const AddProductPage = () => {
 
               <button
                 type="submit"
-                className="w-full text-white bg-[#007cb9] hover:bg-[#2e6b89] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="w-full text-white bg-[#007cb9] hover:bg-[#2e6b89] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Add Product
               </button>

@@ -1,25 +1,26 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, {useState} from 'react';
+import React from 'react';
 // import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
 import './Nav.css';
-import Signup from '../Admin/Signup';
 
-const Nav = ({ menuOpen }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => {
-      setIsModalOpen(true);
-    };
+const Nav = () => {
+    const navigate = useNavigate();
   
-    const closeModal = () => {
-      setIsModalOpen(false);
-    };
+
+    const handlSignupClick = () => {
+        navigate('/signup'); // Redirect to the login page
+      };
+    
+    const handleLoginClick = () => {
+        navigate('/login'); // Redirect to the login page
+      };
     
     return (
-        <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
+        <nav className={`nav-links `}>
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
             <div className="nav-item-with-submenu">
@@ -37,12 +38,15 @@ const Nav = ({ menuOpen }) => {
             <ShoppingCart />
         
             <div className="flex">
-                <button className="hover:font-bold hover:px-[18px] mr-5 px-5">Login</button>
-                <button className="button" onClick={openModal}>Sign Up</button>
+                <button
+                onClick={handleLoginClick} 
+                className="hover:font-bold hover:px-[18px] mr-5 px-5">Login</button>
+                
+                <button
+                onClick={handlSignupClick} 
+                className="hover:font-bold hover:px-[18px] mr-5 px-5">Sign Up</button>
             </div>
-            <div>
-                {isModalOpen && <Signup closeModal={closeModal} />}
-            </div>
+            
         </nav>
     );
 };

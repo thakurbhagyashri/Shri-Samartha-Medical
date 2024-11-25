@@ -37,6 +37,9 @@
   }
 }
 @font-face {
-  font-family: 'CustomFont';
-  src: url('./Assets/Fonts/EB_Garamond/static/EBGaramond-VariableFont_wght.ttf') format('truetype');
+  font-family: 'Custom';
+  src: url('./Assets/Fonts/EB_Garamond/EBGaramond-VariableFont_wght.ttf') format('truetype');
+     /* src:   url('./Assets/Fonts/Roboto/Roboto-Regular.ttf')format('truetype'); */
+
+        font-weight: 400;
 }

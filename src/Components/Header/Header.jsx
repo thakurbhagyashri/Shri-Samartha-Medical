@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import logo2 from '../../Images/logo.png';
 import Nav from '../Nav/Nav';
-import Search from '../Search/Search';
-import Categories from '../Categories/Categories';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import Search from '../Search/Search';
+// import Categories from '../Categories/Categories';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Header.css';
 
 const Header = () => {
@@ -23,8 +23,8 @@ const Header = () => {
                 </button>
                 <Nav menuOpen={menuOpen} />
             </header>
-            <Search />
-            <Categories />
+            {/* <Search /> */}
+            {/* <Categories /> */}
         </>
     );
 };

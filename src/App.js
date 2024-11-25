@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import CartList from "./Components/Button/CartList";
-import Footer from "./Components/Footer/Footer";
-import Header from "./Components/Header/Header";
-import { MyContext } from "./Components/MyContext";
 import Product from "./Components/Product/Product";
 import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
 import Start from "./Start";
-// import LoginPage from './Components/Admin/LoginPage';
+// import AddProductPage from "./Components/Admin/AddProduct";
+// import AddAdmin from "./Components/Admin/AddAdmin";
+
+import LoginPage from './Components/Admin/LoginPage';
+import Signup from "./Components/Admin/Signup";
+import Footer from "./Components/Footer/Footer";
+import Header from "./Components/Header/Header";
+import { MyContext } from "./Components/MyContext";
+
 const App = () => {
   const [cart, setCart] = useState([]);
 
@@ -35,10 +40,15 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Start />} />
-          <Route path="/products" element={<TrendingProducts />} />
+          <Route path="/products" element={<TrendingProducts />} /> 
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<CartList />} /> Cart route
-          {/* <Route path="/" element={<LoginPage />}/> */}
+
+          <Route path="/login" element={<LoginPage />}/>
+          <Route path="/signup" element={<Signup />}/>
+          {/* <Route path="/" element={<AddProductPage />}/>  */}
+           {/* <Route path="/" element={<AddAdmin />}/> */}
+           
         </Routes>
         <Footer />
       </Router>

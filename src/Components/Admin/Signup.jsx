@@ -1,12 +1,13 @@
- import React, { useState } from 'react';
+import React, { useState } from "react";
+import SignIn from "../Admin/SignIn.png";
 
- const Signup = ({ closeModal }) => {
+const Signup = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    password: '',
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -19,137 +20,164 @@
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
-  
-    // Assuming you have form data stored in a state object `formData`
-    // const formData = {
-    //   firstName: "John", // Replace with actual state data
-    //   lastName: "Doe",   // Replace with actual state data
-    //   email: "john.doe@example.com", // Replace with actual state data
-    //   password: "password123",       // Replace with actual state data
-    // };
-  
+
     try {
-      const response = await fetch('http://localhost:8080/api/register', {
-        method: 'POST', // HTTP method
+      const response = await fetch("http://localhost:8080/api/register", {
+        method: "POST", // HTTP method
         headers: {
-          'Content-Type': 'application/json', // Inform the server about JSON
+          "Content-Type": "application/json", // Inform the server about JSON
         },
         body: JSON.stringify(formData), // Convert the object to JSON string
       });
-  
-      if (!response.ok) {
-        throw new Error('Failed to register'); // Handle non-2xx responses
-      }
-  
-      const data = await response; // Parse the response
-      console.log('Registration successful:', data);
 
-    
+      if (!response.ok) {
+        throw new Error("Failed to register"); // Handle non-2xx responses
+      }
+
+      const data = await response; // Parse the response
+      console.log("Registration successful:", data);
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error("Error during registration:", error);
     }
   };
-  
-  
 
   const handleGoogleLogin = () => {
-    console.log('Google login clicked');
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };
 
   return (
-    <div className="flex items-center justify-center fixed inset-0 bg-gray-100 bg-opacity-50 z-50">
-      <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-lg relative overflow-auto">
-        {/* Close Button */}
-        <button 
-          onClick={closeModal} 
-          className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-        >
-        X
-        </button>
-
-        <h2 className="text-xl font-semibold text-center text-gray-800 mb-4">Sign Up</h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <div>
-            <label className="block text-gray-700 text-sm">First Name</label>
-            <input 
-              type="text" 
-              name="firstName"
-              value={formData.firstName} 
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200 text-sm"
-              required 
+    <div className="flex justify-center items-center max-h-max bg-gray-50">
+      <div className="w-full max-w-4xl  font-custom bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-3xl font-medium text-center mb-6 pb-3 text-gray-800">
+          Sign up
+        </h2>
+        <div className="flex flex-row">
+          <div className="w-[50%] p-2 m-2">
+            <p className="text-md font-light">
+              Sign up or Sign in to access your orders, special offers, health
+              tips and more!
+            </p>
+            <img
+              src={SignIn}
+              alt="SignIn"
+              style={{ height: "40%", width: "100%", objectFit: "cover" }}
+              className=" mt-24 rounded-xl "
             />
           </div>
+          <div className="w-[50%] px-5 mx-5 py-2">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label className="block text-lg font-medium text-gray-700">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
 
-          <div>
-            <label className="block text-gray-700 text-sm">Last Name</label>
-            <input 
-              type="text" 
-              name="lastName" 
-              value={formData.lastName}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200 text-sm"
-              required 
-            />
+              <div className="mb-4">
+                <label className="block text-lg font-medium  text-gray-700">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-lg font-medium  text-gray-700">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-lg font-medium  text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-lg font-medium  text-gray-700">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-lg text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+              >
+                Sign up
+              </button>
+            </form>
+            <div className="flex items-center my-2">
+              <div className="flex-grow border-t border-gray-300"></div>
+              <span className="mx-2 text-gray-400 text-sm">
+                Or continue with
+              </span>
+              <div className="flex-grow border-t border-gray-300"></div>
+            </div>
+
+            <div className="mt-3 text-center">
+              <button
+                type="button"
+                onClick={handleGoogleLogin}
+                className="w-full flex justify-center font-custom items-center text-md py-2 px-4 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                  alt="Google"
+                  className="h-5 w-5 mr-2"
+                />
+                Google
+              </button>
+            </div>
           </div>
-
-          <div>
-            <label className="block text-gray-700 text-sm">Username</label>
-            <input 
-              type="text" 
-              name="username"
-              value={formData.username} 
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200 text-sm"
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-700 text-sm">Email</label>
-            <input 
-              type="email" 
-              name="email" 
-              value={formData.email} 
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200 text-sm"
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-700 text-sm">Password</label>
-            <input 
-              type="password" 
-              name="password" 
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200 text-sm"
-              required 
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            className="w-full py-2  bg-green-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none text-sm"
-          >
-            Sign Up
-          </button>
-        </form>
-
-        <div className="mt-3 text-center">
-          <p className="text-gray-600 text-sm">or</p>
-          <button
-            onClick={handleGoogleLogin}
-            className=" w-full py-2 mt-2 bg-orange-400 text-white rounded-lg hover:bg-or focus:outline-none text-sm"
-          >
-            Continue with Google
-          </button>
         </div>
+        {/* {message && (
+              <div
+                className="mt-4 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg text-center"
+                role="alert"
+              >
+                {message}
+              </div>
+            )} */}
       </div>
     </div>
   );
 };
 
-export default Signup; 
+export default Signup;

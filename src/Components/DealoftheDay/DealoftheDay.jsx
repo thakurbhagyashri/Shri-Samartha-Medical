@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Frame9 from "../../Images/Frame 9.png";
+import React, { useEffect, useState } from 'react';
 import Frame12 from "../../Images/Frame 12.png";
 import Frame13 from "../../Images/Frame 13.png";
 import Frame16 from "../../Images/Frame 16.png";
+import Frame9 from "../../Images/Frame 9.png";
 import './DealoftheDay.css'; // Import the CSS file
 
 const DealoftheDay = () => {

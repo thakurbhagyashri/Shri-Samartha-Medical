@@ -3,7 +3,7 @@ const cartData = [
     "id": 1,
     "imageUrl": require("../../Images/HimalayaEyeCareSyrup.png"),  // Use require for importing image
     "title": "Himalaya EyeCare Syrup",
-    "description": "A medication for gastric ulcers.",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, fugiat suscipit nesciunt earum ipsa sed, ea nihil, tenetur minima voluptate rerum inventore architecto reiciendis sapiente est amet distinctio impedit. Perferendis.",
     "rating":3,
     "price": 200
   },

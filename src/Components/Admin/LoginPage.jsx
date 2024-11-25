@@ -35,13 +35,13 @@ const LoginPage = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-50">
       <div className="w-full max-w-md font-custom bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-3xl font-thin text-center mb-6 text-gray-800">
+        <h2 className="text-3xl font-medium text-center mb-6 text-gray-800">
           Sign in to your account
         </h2>
         <form onSubmit={handleSubmit}>
           {/* Email Input */}
           <div className="mb-4">
-            <label className="block text-lg font-medium font-custom text-gray-700">
+            <label className="block text-xl font-medium  text-gray-700">
               Username
             </label>
             <input
@@ -56,7 +56,7 @@ const LoginPage = () => {
           </div>
           {/* Password Input */}
           <div className="mb-4">
-            <label className="block text-lg  font-medium text-gray-700">
+            <label className="block text-xl  font-medium text-gray-700">
               Password
             </label>
             <input
