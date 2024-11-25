@@ -64,7 +64,7 @@ const ShopByCategory = () => {
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div className="cart-items ">
+        <div className="cart-items font-custom ">
           {cart.map((item) => (
             <div key={item.id} className="cart-item">
               <Link to={`/product/${item.id}`}>

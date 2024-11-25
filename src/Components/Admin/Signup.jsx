@@ -3,8 +3,7 @@ import SignIn from "../Admin/SignIn.png";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName:"",
     username: "",
     email: "",
     password: "",
@@ -52,7 +51,7 @@ const Signup = () => {
           Sign up
         </h2>
         <div className="flex flex-row">
-          <div className="w-[50%] p-2 m-2">
+          <div className="w-[55%] p-2 m-2">
             <p className="text-md font-light">
               Sign up or Sign in to access your orders, special offers, health
               tips and more!
@@ -60,35 +59,24 @@ const Signup = () => {
             <img
               src={SignIn}
               alt="SignIn"
-              style={{ height: "40%", width: "100%", objectFit: "cover" }}
+              style={{ height: "45%", width: "100%", objectFit: "cover" }}
               className=" mt-24 rounded-xl "
             />
+            <p className="font-light my-4 p-3 text-[#023c7f]">By continuing you agree to our Terms of service 
+            and Privacy & Legal Policy </p>
           </div>
-          <div className="w-[50%] px-5 mx-5 py-2">
+          <div className="w-[40%] px-5 mx-5 py-2">
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-lg font-medium text-gray-700">
-                  First Name
+                  Full Name
                 </label>
                 <input
                   type="text"
-                  name="firstName"
-                  value={formData.firstName}
+                  name="fullName"
+                  value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-
-              <div className="mb-4">
-                <label className="block text-lg font-medium  text-gray-700">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
+                  placeholder="Enter your full name"
                   className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
@@ -103,6 +91,7 @@ const Signup = () => {
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
+                  placeholder="Enter your username"
                   className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
@@ -117,6 +106,7 @@ const Signup = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="Enter your email"
                   className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
@@ -131,6 +121,7 @@ const Signup = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
+                  placeholder="Enter your password"
                   className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                   required
                 />

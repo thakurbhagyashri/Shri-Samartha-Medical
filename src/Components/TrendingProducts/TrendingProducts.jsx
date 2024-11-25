@@ -1,11 +1,11 @@
 
-import React, { useState, useContext } from 'react';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import AddToCartButton from '../Button/AddToCart'; // Assuming this button is a separate component
 import { MyContext } from '../MyContext';
 import cartData from './TrendingProductsJs';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import AddToCartButton from '../Button/AddToCart'; // Assuming this button is a separate component
 
 const TrendingProducts = () => {
   const { addToCart } = useContext(MyContext); // Use the addToCart function from context
@@ -26,7 +26,7 @@ const TrendingProducts = () => {
   };
 
   return (
-    <div className="container mx-[100px] my-[50px] max-w-[1000px]">
+    <div className=" font-custom container mx-[100px] my-[50px] max-w-[1000px]">
       {notification && (
         <div className="notification">
           {notification}
@@ -45,7 +45,7 @@ const TrendingProducts = () => {
                 alt={item.title}
                 className="w-full h-[150px] object-contain transition-transform duration-300 group-hover:scale-105"
               />
-              <p className="mt-2 text-center text-lg font-semibold text-gray-800 capitalize group-hover:font-bold transition-all duration-300">
+              <p className="mt-2 text-center text-lg font-[550]  text-gray-800 capitalize group-hover:font-bold transition-all duration-300">
                 {item.title}
               </p>
 

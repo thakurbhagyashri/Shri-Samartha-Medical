@@ -12,7 +12,7 @@ const TrustedPharmacy = () => {
                     style={{ height: '150px', width: '100%', objectFit: 'cover' }}
                     className="trusted-pharmacy-image "
                 />
-                <span className="trusted-pharmacy-text font-semibold">
+                <span className="trusted-pharmacy-text font-custom font-semibold">
                     INDIA’S MOST TRUSTED ONLINE PHARMACY
                 </span>
             </div>
