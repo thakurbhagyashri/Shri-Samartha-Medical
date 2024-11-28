@@ -2,11 +2,10 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 // import { useNavigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
 import './Nav.css';
-
 const Nav = () => {
     const navigate = useNavigate();
   
@@ -19,10 +18,11 @@ const Nav = () => {
         navigate('/login'); // Redirect to the login page
       };
     
+    
     return (
         <nav className={`nav-links `}>
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
+             <Link to="/">Home</Link>
+            <Link to="/about">About Us</Link>
             <div className="nav-item-with-submenu">
                 <a href="#services">Services <FontAwesomeIcon icon={faAngleDown} /></a>
                 <div className="submenu">
@@ -33,7 +33,7 @@ const Nav = () => {
                     <a href="#healthcorner">Health Corner</a>
                 </div>
             </div>
-            <a href="#contact">Contact Us</a>
+            <Link to="/contact">Contact Us</Link>
             <Upload />
             <ShoppingCart />
         

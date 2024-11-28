@@ -7,8 +7,10 @@ import Start from "./Start";
 // import AddProductPage from "./Components/Admin/AddProduct";
 // import AddAdmin from "./Components/Admin/AddAdmin";
 
+import About from "./Components/About/About";
 import LoginPage from './Components/Admin/LoginPage';
 import Signup from "./Components/Admin/Signup";
+import ContactUs from "./Components/ContactUs/ContactUs";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import { MyContext } from "./Components/MyContext";
@@ -38,6 +40,7 @@ const App = () => {
     <MyContext.Provider value={contextValue}>
       <Router>
         <Header />
+      
         <Routes>
           <Route path="/" element={<Start />} />
           <Route path="/products" element={<TrendingProducts />} /> 
@@ -46,6 +49,8 @@ const App = () => {
 
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/signup" element={<Signup />}/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/Contact" element={<ContactUs />}/>
           {/* <Route path="/" element={<AddProductPage />}/>  */}
            {/* <Route path="/" element={<AddAdmin />}/> */}
            
