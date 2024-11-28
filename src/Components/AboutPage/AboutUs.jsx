@@ -1,9 +1,8 @@
 import React from 'react';
 import Reason from "../TrustedPharmacy/Reason.png";
-import BgPharma from "../TrustedPharmacy/BgPharma.png";
 const AboutUs = () => {
   return (
-    <div className="bg-gray-50 py-16 px-6 sm:px-8 lg:px-16">
+    <div className="bg-gray-50 py-16 px-6 sm:px-8 lg:px-16 font-custom">
   {/* <div className="trusted-pharmacy-container ml-5 mr-5  ">
                 <img
                     src={BgPharma}
@@ -17,11 +16,13 @@ const AboutUs = () => {
             </div> */}
     
       <section className="flex flex-col md:flex-row items-center justify-between mb-16">
-        <div className="max-w-md mb-8 md:mb-0 text-center md:text-left">
-          <h1 className="text-4xl font-extrabold text-bgBlue mb-4">Welcome to Sai Samartha Pharmacy</h1>
+        <div className="max-w-lg mb-8 md:mb-0 text-center px-4  py-5 md:text-left">
+          <h1 className="text-5xl font-extrabold text-bgBlue mb-10">Welcome to Sai Samarth Pharmaceuticals'</h1>
           <p className="text-lg text-gray-700">
-            We provide high-quality healthcare solutions delivered right to your doorstep. With a focus on reliability, trust, and care, we're here to make your health journey easier and more accessible.
+            We provide high-quality healthcare solutions delivered right to your doorstep. With a focus on reliability, trust, and care, we're here to make your health journey easier and more accessible. 
           </p>
+          <p  className="text-lg text-gray-700">
+            At Sai Samartha Pharmacy, we believe in improving lives through accessible and affordable healthcare. Our comprehensive range includes prescription medications, over-the-counter products, wellness essentials, and specialized health solutions.</p>
         </div>
         <div className="w-auto md:w-1/2 rounded-lg overflow-hidden shadow-lg">
       
@@ -36,7 +37,7 @@ const AboutUs = () => {
       </section>
 
       {/* Mission and Vision Section */}
-      <section className="bg-white py-12 mb-16 shadow-lg rounded-lg">
+      <section className="bg-white py-12 px-3 mb-16 shadow-lg rounded-lg">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Our Mission</h2>
           <p className="text-lg text-gray-700 mb-4">
@@ -82,7 +83,7 @@ const AboutUs = () => {
       <section className="py-12 mb-16">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Our Offerings</h2>
-          <div className="flex flex-wrap justify-center gap-12">
+          <div className="flex  justify-center gap-12">
             <div className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg w-80">
               <div className="text-4xl text-blue-600 mb-4">💊</div>
               <h3 className="font-semibold text-xl text-gray-800 mb-2">Prescription Medications</h3>

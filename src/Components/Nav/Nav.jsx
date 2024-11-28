@@ -1,13 +1,24 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
 import './Nav.css';
 
+
 const Nav = () => {
+ const navigate = useNavigate();
+
+    const handleLogin = () =>{
+      navigate("/login")
+    }
+    const handleSignup = () =>{
+        navigate("/signup")
+      }
+
+    
     return (
         <nav className="nav-links">
             <Link to="">Home</Link>
@@ -32,8 +43,8 @@ const Nav = () => {
             <ShoppingCart />
 
             <div className="flex">
-                <button className="hover:font-bold hover:px-[18px] mr-5 px-5">Login</button>
-                <button className="hover:font-bold hover:px-[18px] mr-5 px-5">Sign Up</button>
+                <button className="hover:font-bold hover:px-[18px] mr-5 px-5" onClick={handleLogin}>Login</button>
+                <button className="hover:font-bold hover:px-[18px] mr-5 px-5" onClick={handleSignup}>Sign Up</button>
             </div>
         </nav>
     );
