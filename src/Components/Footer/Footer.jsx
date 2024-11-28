@@ -1,7 +1,7 @@
 import React from 'react';
 import GooglePay from '../../Images/GooglePay.png';
-// import Paytm from '../../Images/paytm.png';
-// import Phonpe from '../../Images/phonepe.png';
+import Paytm from '../../Images/Paytm.png';
+import Phonpe from '../../Images/PhonePe.png';
 import Simpl from '../../Images/Simpl.png';
 import Visa from '../../Images/Visa.png';
 import './Footer.css'; // Assuming you will create a separate CSS file for the footer
@@ -82,8 +82,8 @@ const Footer = () => {
             <h2>Our Payment Partners</h2>
             <div className="payment-logos">
             <img src={GooglePay} alt="Google Pay" />
-            {/* <img src={Phonpe} alt="PhonePe"/>
-            <img src={Paytm} alt="Paytm" /> */}
+            <img src={Phonpe} alt="PhonePe"/>
+            <img src={Paytm} alt="Paytm" /> 
             <img src={Simpl} alt="Simpl" />
             <img src={Visa} alt="Visa" />
             {/* Add more logos as required */}
