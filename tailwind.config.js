@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         "ButtonGreen":"#8BCD3D",
+        "bgBlue":"#2e9eb8"
     },
     fontFamily: {
       // custom: ['Roboto', 'EB_Garamonod'],
@@ -27,3 +28,4 @@ module.exports = {
   plugins: [],
 }
 }
+

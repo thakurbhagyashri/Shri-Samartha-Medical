@@ -1,28 +1,20 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
 import './Nav.css';
-const Nav = () => {
-    const navigate = useNavigate();
-  
 
-    const handlSignupClick = () => {
-        navigate('/signup'); // Redirect to the login page
-      };
-    
-    const handleLoginClick = () => {
-        navigate('/login'); // Redirect to the login page
-      };
-    
-    
+const Nav = () => {
     return (
-        <nav className={`nav-links `}>
-             <Link to="/">Home</Link>
-            <Link to="/about">About Us</Link>
+        <nav className="nav-links">
+            <Link to="">Home</Link>
+            
+            {/* Correctly use Link for the About Us page */}
+            <Link to="/about">About Us</Link> {/* This should point to /about route */}
+
             <div className="nav-item-with-submenu">
                 <a href="#services">Services <FontAwesomeIcon icon={faAngleDown} /></a>
                 <div className="submenu">
@@ -33,22 +25,19 @@ const Nav = () => {
                     <a href="#healthcorner">Health Corner</a>
                 </div>
             </div>
-            <Link to="/contact">Contact Us</Link>
+            
+            <Link to="#contact">Contact Us</Link>
+
             <Upload />
             <ShoppingCart />
-        
+
             <div className="flex">
-                <button
-                onClick={handleLoginClick} 
-                className="hover:font-bold hover:px-[18px] mr-5 px-5">Login</button>
-                
-                <button
-                onClick={handlSignupClick} 
-                className="hover:font-bold hover:px-[18px] mr-5 px-5">Sign Up</button>
+                <button className="hover:font-bold hover:px-[18px] mr-5 px-5">Login</button>
+                <button className="hover:font-bold hover:px-[18px] mr-5 px-5">Sign Up</button>
             </div>
-            
         </nav>
     );
 };
 
 export default Nav;
+
