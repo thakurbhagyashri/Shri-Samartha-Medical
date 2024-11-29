@@ -2,16 +2,17 @@
 
 import React, { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import CartList from "./Components/Button/CartList";
-import Product from "./Components/Product/Product";
-import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
-import Start from "./Start";
+import AboutUs from "./Components/AboutPage/AboutUs";
 import LoginPage from './Components/Admin/LoginPage';
 import Signup from "./Components/Admin/Signup";
+import CartList from "./Components/Button/CartList";
+import ContactUs from "./Components/ContactUs/ContactUs";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import { MyContext } from "./Components/MyContext";
-import AboutUs from "./Components/AboutPage/AboutUs";
+import Product from "./Components/Product/Product";
+import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
+import Start from "./Start";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/cart" element={<CartList />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <Footer />
       </Router>

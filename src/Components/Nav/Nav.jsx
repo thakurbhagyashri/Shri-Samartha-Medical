@@ -37,7 +37,7 @@ const Nav = () => {
                 </div>
             </div>
             
-            <Link to="#contact">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
 
             <Upload />
             <ShoppingCart />
