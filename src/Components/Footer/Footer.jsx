@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import GooglePay from '../../Images/GooglePay.png';
 import Paytm from '../../Images/Paytm.png';
 import Phonpe from '../../Images/PhonePe.png';
@@ -14,11 +15,11 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className='font-bold'>COMPANY</h3>
           <ul>
-            <li><a href="#">About Pharmaceutical</a></li>
-            <li><a href="#">Customer Speak</a></li>
-            <li><a href="#">In the News</a></li>
-            <li><a href="#">Career</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><Link to="/about">About Pharmaceutical</Link></li>
+            <li><Link to="/contact">Customer Speak</Link></li>
+            <li><Link to="/news">In the News</Link></li>
+            <li><Link to="/careers">Career</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
@@ -26,12 +27,12 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className='font-bold'>OUR POLOCIES</h3>
           <ul>
-            <li><a href="#">Terms and Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Fees and Payments Policy</a></li>
-            <li><a href="#">Shipping and Delivery Policy</a></li>
-            <li><a href="#">Return, Refund and Cancellation Policy</a></li>
-            <li><a href="#">Editorial Policy</a></li>
+            <li><Link to="/terms">Terms and Conditions</Link></li>
+            <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+            <li><Link to="/fees-policy">Fees and Payments Policy</Link></li>
+            <li><Link to="/shipping-policy">Shipping and Delivery Policy</Link></li>
+            <li><Link to="/returns-policy">Return, Refund and Cancellation Policy</Link></li>
+            <li><Link to="/editorial-policy">Editorial Policy</Link></li>
           </ul>
         </div>
 
