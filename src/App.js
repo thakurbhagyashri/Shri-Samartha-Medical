@@ -9,6 +9,7 @@ import CartList from "./Components/Button/CartList";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
+import PrivacyPolicy from "./Components/Privacy/PrivacyPolicy";
 import { MyContext } from "./Components/MyContext";
 import Product from "./Components/Product/Product";
 import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
@@ -48,7 +49,8 @@ const App = () => {
           <Route path="/cart" element={<CartList />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/contact" element={<ContactUs />} />          
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
       </Router>

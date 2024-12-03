@@ -28,7 +28,7 @@ const Footer = () => {
           <h3 className='font-bold'>OUR POLOCIES</h3>
           <ul>
             <li><Link to="/terms">Terms and Conditions</Link></li>
-            <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+            <li><Link to="/privacy">Privacy Policy</Link></li>
             <li><Link to="/fees-policy">Fees and Payments Policy</Link></li>
             <li><Link to="/shipping-policy">Shipping and Delivery Policy</Link></li>
             <li><Link to="/returns-policy">Return, Refund and Cancellation Policy</Link></li>
