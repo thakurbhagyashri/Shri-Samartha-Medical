@@ -1,3 +1,5 @@
+import { jwtDecode } from "jwt-decode";
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,22 +11,31 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Inform the server about JSON
-        },
-        username,
-        password,
+      const response = await fetch("http://localhost:8080/public/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
       });
 
-      if (response.status === 200) {
-        alert("Login successful!");
-        navigate("/"); // Redirect to homepage
+      if (!response.ok) {
+        throw new Error("Login failed");
       }
+
+      let token = await response.text();
+      token = token.trim();
+      console.log("Token received:", token);
+
+     
+      const decoded = jwtDecode(token);
+      console.log(decoded);
+      
+      localStorage.setItem("token", token);
+      navigate("/");
+
+      alert("Login successful!");
     } catch (error) {
-      console.error("Login failed:", error);
-      alert("Invalid credentials, please try again.");
+      console.error("Error:", error.message || error);
+      alert("Login failed! Please try again.");
     }
   };
 

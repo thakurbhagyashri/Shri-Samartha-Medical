@@ -10,8 +10,8 @@ const AddProductPage = () => {
     medicineName: "",
     minAge: "",
     maxAge: "",
-    realMRP: "",
-    discountMRP: "",
+    realMrp: "",
+    discountMrp: "",
     description: "",
     comments: "",
     category: "",
@@ -34,12 +34,17 @@ const AddProductPage = () => {
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key]);
     });
+    const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/product-catalogue/",
+        "http://localhost:8080/product/add",
         {
           method: "POST",
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
           body: data,
         }
       );
@@ -47,7 +52,7 @@ const AddProductPage = () => {
       if (response.ok) {
         setMessage("Product added successfully!");
         setFormData({
-          image: null,
+          image: "null",
           quantity: "",
           price: "",
           discount: "",
@@ -55,8 +60,8 @@ const AddProductPage = () => {
           medicineName: "",
           minAge: "",
           maxAge: "",
-          realMRP: "",
-          discountMRP: "",
+          realMrp: "",
+          discountMrp: "",
           category: "",
           description: "",
           comments: ""
@@ -71,169 +76,6 @@ const AddProductPage = () => {
   };
 
   return (
-    // <div className="p-6 bg-gray-50 min-h-screen flex flex-col items-center">
-    //   <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg p-8 font-serif">
-    //     <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
-    //       Add Product
-    //     </h1>
-    //     <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
-    //       {/* File Upload */}
-    //       <div>
-    //         <label className="block text-sm font-medium text-gray-700">Upload Image</label>
-    //         <input
-    //           type="file"
-    //           name="image"
-    //           onChange={handleChange}
-    //           className="mt-1 block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //       </div>
-
-    //       {/* Input Fields */}
-    //       <div className="grid grid-cols-2 gap-4">
-    //       <label className="block text-gray-700 text-sm">Quantity</label>
-    //         <input
-    //           type="number"
-    //           name="quantity"
-    //           placeholder="Quantity"
-    //           value={formData.quantity}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //         <input
-    //           type="number"
-    //           name="price"
-    //           placeholder="Price"
-    //           value={formData.price}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //       </div>
-
-    //       <div className="grid grid-cols-2 gap-4">
-    //         <input
-    //           type="number"
-    //           name="discount"
-    //           placeholder="Discount"
-    //           value={formData.discount}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //         <input
-    //           type="text"
-    //           name="companyName"
-    //           placeholder="Company Name"
-    //           value={formData.companyName}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //       </div>
-
-    //       <div className="grid grid-cols-2 gap-4">
-    //         <input
-    //           type="text"
-    //           name="medicineName"
-    //           placeholder="Medicine Name"
-    //           value={formData.medicineName}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //         <input
-    //           type="number"
-    //           name="minAge"
-    //           placeholder="Min Age"
-    //           value={formData.minAge}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //       </div>
-
-    //       <div className="grid grid-cols-2 gap-4">
-    //         <input
-    //           type="number"
-    //           name="maxAge"
-    //           placeholder="Max Age"
-    //           value={formData.maxAge}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //         <input
-    //           type="number"
-    //           name="realMRP"
-    //           placeholder="Real MRP"
-    //           value={formData.realMRP}
-    //           onChange={handleChange}
-    //           className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //           required
-    //         />
-    //       </div>
-
-    //       <input
-    //         type="number"
-    //         name="discountMRP"
-    //         placeholder="Discount MRP"
-    //         value={formData.discountMRP}
-    //         onChange={handleChange}
-    //         className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //         required
-    //       />
-
-    //       <textarea
-    //         name="description"
-    //         placeholder="Description"
-    //         value={formData.description}
-    //         onChange={handleChange}
-    //         rows="3"
-    //         className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //         required
-    //       ></textarea>
-
-    //       <textarea
-    //         name="comments"
-    //         placeholder="Comments"
-    //         value={formData.comments}
-    //         onChange={handleChange}
-    //         rows="2"
-    //         className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //         required
-    //       ></textarea>
-
-    //       <input
-    //         type="text"
-    //         name="category"
-    //         placeholder="Category"
-    //         value={formData.category}
-    //         onChange={handleChange}
-    //         className="block w-full border rounded-lg py-2 px-3 text-gray-700 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-    //         required
-    //       />
-
-    //       {/* Submit Button */}
-    //       <button
-    //         type="submit"
-    //         className="w-full py-2 px-4 bg-green-400 text-white  rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-    //       >
-    //         Add Product
-    //       </button>
-    //     </form>
-
-    //     {message && (
-    //       <div
-    //         className="mt-4 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg text-center"
-    //         role="alert"
-    //       >
-    //         {message}
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
 
     <div>
       <section className="flex flex-col items-center pt-6 font-custom">

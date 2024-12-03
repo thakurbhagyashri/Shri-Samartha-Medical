@@ -3,7 +3,8 @@ import SignIn from "../Admin/SignIn.png";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fullName:"",
+    firstlName:"",
+    lastName:"",
     username: "",
     email: "",
     password: "",
@@ -21,7 +22,7 @@ const Signup = () => {
     e.preventDefault(); // Prevent default form submission
 
     try {
-      const response = await fetch("http://localhost:8080/api/register", {
+      const response = await fetch("http://localhost:8080/public/signup", {
         method: "POST", // HTTP method
         headers: {
           "Content-Type": "application/json", // Inform the server about JSON
@@ -69,14 +70,28 @@ const Signup = () => {
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-lg font-medium text-gray-700">
-                  Full Name
+                first Name
                 </label>
                 <input
                   type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  name="firstlName"
+                  value={formData.firstlName}
                   onChange={handleChange}
                   placeholder="Enter your full name"
+                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-lg font-medium text-gray-700">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="Enter your last name"
                   className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
