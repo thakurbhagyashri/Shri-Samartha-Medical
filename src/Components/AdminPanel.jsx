@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+
 
 const AdminPanel = () => {
   // State to toggle sidebar visibility (for mobile responsiveness)
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [ordersOpen, setOrdersOpen] = useState(false);
 
   // Function to toggle sidebar visibility on mobile
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const toggleProducts = () => setProductsOpen(!productsOpen);
+  const toggleOrders = () => setOrdersOpen(!ordersOpen);
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -16,7 +23,7 @@ const AdminPanel = () => {
         onClick={toggleSidebar}
       ></div>
 
-      <div
+      {/* <div
         className={`lg:w-64 w-64 h-full bg-gray-800 text-white fixed top-0 left-0 p-4 ${sidebarOpen ? "block" : "hidden lg:block"}`}
       >
         <div className="text-2xl font-bold mb-8">Medical Admin</div>
@@ -28,7 +35,6 @@ const AdminPanel = () => {
             </Link>
           </li>
           <li>
-          
           <input className=""/>
             <Link to="/products" className="block p-3 hover:bg-gray-700">
               Products
@@ -45,7 +51,94 @@ const AdminPanel = () => {
             </Link>
           </li>
         </ul>
-      </div>
+      </div> */}
+  <div
+      className={`lg:w-64 w-64 h-full bg-gray-800 text-white fixed top-0 left-0 p-4 ${sidebarOpen ? "block" : "hidden lg:block"}`}
+    >
+      <div className="text-2xl font-bold mb-8">Medical Admin</div>
+      <ul>
+        <li>
+          <Link to="/dashboard" className="block p-3 hover:bg-gray-700">
+            Dashboard
+          </Link>
+        </li>
+
+        {/* Products Section with Dropdown and Font Awesome Icons */}
+        <li>
+          <div
+            className="flex items-center justify-between block p-3 hover:bg-gray-700 cursor-pointer"
+            onClick={toggleProducts}
+          >
+            <span>Products</span>
+            <FontAwesomeIcon icon={productsOpen ? faAngleUp : faAngleDown} className="text-white" />
+          </div>
+          {productsOpen && (
+            <ul className="ml-4">
+              <li>
+                <Link to="/products/add" className="block p-3 hover:bg-gray-700">
+                  Add Product
+                </Link>
+              </li>
+              <li>
+                <Link to="/products/edit" className="block p-3 hover:bg-gray-700">
+                  Edit Product
+                </Link>
+              </li>
+              <li>
+                <Link to="/products/delete" className="block p-3 hover:bg-gray-700">
+                  Delete Product
+                </Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+        {/* Orders Section with Dropdown and Font Awesome Icons */}
+        <li>
+          <div
+            className="flex items-center justify-between block p-3 hover:bg-gray-700 cursor-pointer"
+            onClick={toggleOrders}
+          >
+            <span>Orders</span>
+            <FontAwesomeIcon icon={ordersOpen ? faAngleUp : faAngleDown} className="text-white" />
+          </div>
+          {ordersOpen && (
+            <ul className="ml-4">
+              <li>
+                <Link to="/orders/all" className="block p-3 hover:bg-gray-700">
+                  All Orders
+                </Link>
+              </li>
+              <li>
+                <div className="flex items-center justify-between block p-3 hover:bg-gray-700 cursor-pointer">
+                  <span>Update Order Status</span>
+                  <FontAwesomeIcon icon={ordersOpen ? faAngleUp : faAngleDown} className="text-white" />
+                </div>
+                <ul className="ml-4">
+                  <li>
+                    <Link to="/orders/status/completed" className="block p-3 hover:bg-gray-700">
+                      Completed
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/orders/status/rejected" className="block p-3 hover:bg-gray-700">
+                      Rejected
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          )}
+        </li>
+
+        {/* Users Section */}
+        <li>
+          <Link to="/users" className="block p-3 hover:bg-gray-700">
+            Users
+          </Link>
+        </li>
+      </ul>
+    </div>
 
       {/* Main content */}
       <div className="flex-1 flex flex-col pl-64">
