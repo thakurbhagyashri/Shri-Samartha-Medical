@@ -3,94 +3,69 @@ import React from "react";
 const PrivacyPolicy = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-10 min-h-screen">
-      <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-8">
+      <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-lg p-10">
         <h1 className="text-4xl font-extrabold text-center text-indigo-600 mb-8">
           Privacy Policy
         </h1>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Introduction</h2>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">At Sinfolix</h2>
           <p className="text-gray-700 leading-7">
-            Welcome to our website! This Privacy Policy outlines how we collect,
-            use, and protect your personal information. Please read it carefully
-            to understand our practices regarding your data.
+            At Sinfolix, we understand the importance of your privacy and are committed to protecting it. This privacy policy explains how we collect, use, and disclose your personal information when you use our services.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Information We Collect</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>
-              <strong>Personal Data:</strong> Information such as your name, email
-              address, and phone number that you provide to us directly.
-            </li>
-            <li>
-              <strong>Usage Data:</strong> Details about how you interact with
-              our website, including IP address, browser type, and browsing history.
-            </li>
-            <li>
-              <strong>Cookies:</strong> Small files placed on your device to enhance
-              your experience.
-            </li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            How We Use Your Information
-          </h2>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Information Collection and Use</h2>
           <p className="text-gray-700 leading-7">
-            We use the collected data to:
+            We may collect personal information such as your name, email address, phone number, and other relevant information when you use our services. This information is used to provide you with the services you have requested and to improve our services. We may also use this information to communicate with you about our services and to send you relevant information about our company.
           </p>
-          <ul className="list-decimal list-inside space-y-2 pl-4 text-gray-700">
-            <li>Provide and improve our services.</li>
-            <li>Respond to your inquiries and support requests.</li>
-            <li>Send you marketing materials (with your consent).</li>
-          </ul>
         </section>
 
-        <section className="mb-8">
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Information Sharing and Disclosure</h2>
+          <p className="text-gray-700 leading-7">
+            We do not sell or rent your personal information to third parties. However, we may share your information with our trusted partners who assist us in providing our services to you. We may also disclose your information when required by law or to protect our legal rights.
+          </p>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Data Security</h2>
           <p className="text-gray-700 leading-7">
-            We implement strong security measures to safeguard your information.
-            However, no method of electronic transmission or storage is 100%
-            secure, so we cannot guarantee absolute security.
+            We take appropriate measures to ensure the security of your personal information. We have implemented reasonable technical, administrative, and physical measures to protect your information from unauthorized access, use, or disclosure.
           </p>
         </section>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Your Rights</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>Access and update your personal information.</li>
-            <li>Request deletion of your data.</li>
-            <li>Withdraw consent for data processing.</li>
-          </ul>
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Cookies</h2>
+          <p className="text-gray-700 leading-7">
+            We may use cookies to improve your experience on our website. Cookies are small files that are stored on your computer’s hard drive that allow us to recognize you when you return to our website.
+          </p>
         </section>
 
-        <section className="mb-8">
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Changes to This Privacy Policy</h2>
+          <p className="text-gray-700 leading-7">
+            We reserve the right to modify this privacy policy at any time. Any changes will be effective immediately upon posting on our website.
+          </p>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Contact Us</h2>
           <p className="text-gray-700 leading-7">
-            For any questions or concerns, please reach out to us:
+            If you have any questions or concerns about this privacy policy, please contact us at:
           </p>
-          <div className="mt-4">
+          <div className="mt-6 space-y-2">
             <p className="flex items-center text-gray-700">
               <span className="mr-2 text-indigo-600">&#9993;</span>
-              <strong>Email:</strong> support@yourwebsite.com
-            </p>
-            <p className="flex items-center text-gray-700">
-              <span className="mr-2 text-indigo-600">&#128222;</span>
-              <strong>Phone:</strong> +1-800-123-456
-            </p>
-            <p className="flex items-center text-gray-700">
-              <span className="mr-2 text-indigo-600">&#127968;</span>
-              <strong>Address:</strong> 123 Main Street, Your City, Your Country
+              <strong>Email:</strong> privacy@sinfolix.com
             </p>
           </div>
         </section>
 
-        <footer className="border-t border-gray-200 pt-4">
+        <footer className="border-t border-gray-200 pt-6">
           <p className="text-center text-sm text-gray-500">
-            Last Updated: <span className="font-medium">December 3, 2024</span>
+            Last Updated: <span className="font-medium">December 9, 2024</span>
           </p>
         </footer>
       </div>

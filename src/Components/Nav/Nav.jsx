@@ -17,7 +17,9 @@ const Nav = () => {
     const handleSignup = () =>{
         navigate("/signup")
       }
-
+      const handleAdmin = () =>{
+        navigate("/admin")
+      }
     
     return (
         <nav className="nav-links">
@@ -25,7 +27,6 @@ const Nav = () => {
             
             {/* Correctly use Link for the About Us page */}
             <Link to="/about">About Us</Link> {/* This should point to /about route */}
-
             <div className="nav-item-with-submenu">
                 <a href="#services">Services <FontAwesomeIcon icon={faAngleDown} /></a>
                 <div className="submenu">
@@ -46,6 +47,8 @@ const Nav = () => {
                 <button className="hover:font-bold hover:px-[18px] mr-5 px-5" onClick={handleLogin}>Login</button>
                 <button className="hover:font-bold hover:px-[18px] mr-5 px-5" onClick={handleSignup}>Sign Up</button>
             </div>
+            <button className="hover:font-bold hover:px-[18px] mr-5 p-2  rounded-md" onClick={handleAdmin}>Admin</button>
+            
         </nav>
     );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GooglePay from '../../Images/GooglePay.png';
-import Paytm from '../../Images/paytm.png';
-import Phonpe from '../../Images/phonepe.png';
+import Paytm from '../../Images/Paytm.png';
+import Phonpe from '../../Images/PhonePe.png';
 import Simpl from '../../Images/Simpl.png';
 import Visa from '../../Images/Visa.png';
 import './Footer.css'; // Assuming you will create a separate CSS file for the footer
@@ -31,7 +31,7 @@ const Footer = () => {
             <li><Link to="/privacy">Privacy Policy</Link></li>
             <li><Link to="/fees-policy">Fees and Payments Policy</Link></li>
             <li><Link to="/shipping-policy">Shipping and Delivery Policy</Link></li>
-            <li><Link to="/returns-policy">Return, Refund and Cancellation Policy</Link></li>
+            <li><Link to="/return">Return, Refund and Cancellation Policy</Link></li>
             <li><Link to="/editorial-policy">Editorial Policy</Link></li>
           </ul>
         </div>

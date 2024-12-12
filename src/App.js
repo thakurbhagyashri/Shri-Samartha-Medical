@@ -1,15 +1,16 @@
-
-
 import React, { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AboutUs from "./Components/AboutPage/AboutUs";
 import LoginPage from './Components/Admin/LoginPage';
 import Signup from "./Components/Admin/Signup";
+import AdminPanel from "./Components/AdminPanel";
 import CartList from "./Components/Button/CartList";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import PrivacyPolicy from "./Components/Privacy/PrivacyPolicy";
+import ReturnPolicy from "./Components/Privacy/ReturnPolicy";
+import TermsAndConditions from "./Components/Privacy/TermsAndConditions";
 import { MyContext } from "./Components/MyContext";
 import Product from "./Components/Product/Product";
 import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
@@ -41,18 +42,22 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
+          <Route path="/admin" element={<AdminPanel />} />
           <Route path="/" element={<Start />} />
           {/* Correct the About Us route */}
-          <Route path="/about" element={<AboutUs />} /> {/* Fixed the path here */}
-          <Route path="/products" element={<TrendingProducts />} /> 
+          <Route path="/about" element={<AboutUs />} /> 
+          {/* Fixed the path here */}
+          <Route path="/products" element={<TrendingProducts />} />  
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<CartList />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<ContactUs />} />          
-          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />     
+          <Route path="/return" element={<ReturnPolicy />} />     
+          <Route path="/terms" element={<TermsAndConditions />} />
         </Routes>
-        <Footer />
+       <Footer />
       </Router>
     </MyContext.Provider>
   );
