@@ -17,14 +17,14 @@ const AboutUs = () => {
     
       <section className="flex flex-col md:flex-row items-center justify-between mb-16">
         <div className="max-w-lg mb-8 md:mb-0 text-center px-4  py-5 md:text-left">
-          <h1 className="text-5xl font-extrabold text-bgBlue mb-10">Welcome to Sai Samarth Pharmaceuticals'</h1>
-          <p className="text-lg text-gray-700">
+          <h1 className="text-5xl font-extrabold text-bgBlue mb-10 ">Welcome to <pre className=" font-custom">Shri Samarth</pre> Pharmaceuticals</h1>
+          <p className="text-lg text-gray-700 text-justify">
             We provide high-quality healthcare solutions delivered right to your doorstep. With a focus on reliability, trust, and care, we're here to make your health journey easier and more accessible. 
           </p>
-          <p  className="text-lg text-gray-700">
+          <p  className="text-lg text-gray-700 text-justify">
             At Sai Samartha Pharmacy, we believe in improving lives through accessible and affordable healthcare. Our comprehensive range includes prescription medications, over-the-counter products, wellness essentials, and specialized health solutions.</p>
         </div>
-        <div className="w-auto md:w-1/2 rounded-lg overflow-hidden shadow-lg">
+        <div className="w-auto md:w-1/2 rounded-2xl overflow-hidden shadow-lg">
       
                         <img
                             src={Reason}
