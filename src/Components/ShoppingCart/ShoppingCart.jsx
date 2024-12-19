@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { MyContext } from '../MyContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../MyContext';
 import './ShoppingCart.css';
 
 const ShoppingCart = () => {

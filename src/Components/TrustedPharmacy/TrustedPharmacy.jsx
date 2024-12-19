@@ -16,7 +16,7 @@ const TrustedPharmacy = () => {
                     INDIA’S MOST TRUSTED ONLINE PHARMACY
                 </span>
             </div>
-            <div className="ml-[100px] mr-40">
+            <div className="ml-[100px] mr-40 font-custom">
                 <div className="flex ">
                     <div className="bg-white flex-[7]">
                         <h2 className="text-[#056e7e] text-xl  mb-4">

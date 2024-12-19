@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
@@ -23,7 +23,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="nav-links">
+    <nav className="nav-links text-lg ">
       {/* Render Home, About Us, Services, Contact, Admin for Admin */}
       {role === "admin" ? (
         <>

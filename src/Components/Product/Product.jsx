@@ -83,7 +83,7 @@ const Product = () => {
             />
           </div>
 
-          <h1 className="text-3xl font-thin ">{product.title}</h1>
+          <h1 className="text-3xl ">{product.title}</h1>
           <p className="text-md text-gray-600 ">{product.description}</p>
 
           {/* Star rating */}

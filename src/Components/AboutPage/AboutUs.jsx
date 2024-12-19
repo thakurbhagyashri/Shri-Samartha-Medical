@@ -20,14 +20,14 @@ const AboutUs = () => {
         {/* Text over Image */}
         <div className="text-center px-6 py-12 sm:py-20">
           <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-shadow-md">
-            Welcome to Sai Samarth Pharmaceuticals
+            Welcome to Shri Samarth Pharmaceuticals
           </h1>
           <p className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto text-shadow-md">
             We provide trusted healthcare solutions with a focus on quality, care, and reliability. Your health, our priority.
           </p>
           <div className="max-w-2xl mx-auto">
             <p className="text-lg text-gray-100 mb-4 leading-relaxed">
-              At Sai Samarth Pharmaceuticals, we aim to make healthcare accessible and affordable for all. With a wide range of{" "}
+              At Shri Samarth Pharmaceuticals, we aim to make healthcare accessible and affordable for all. With a wide range of{" "}
               <strong>trusted</strong> medications and <strong>wellness products</strong>, we are committed to ensuring your well-being
               with the highest quality service.
             </p>
@@ -90,25 +90,25 @@ const AboutUs = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Our Offerings</h2>
           <div className="flex  justify-center gap-12">
-            <div className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg w-80">
+            <div className="flex flex-col items-center bg-[#f3f4f6] p-8 rounded-lg shadow-lg w-80">
               <div className="text-4xl text-blue-600 mb-4">💊</div>
               <h3 className="font-semibold text-xl text-gray-800 mb-2">Prescription Medications</h3>
               <p className="text-gray-700">We offer a wide range of prescription medications that are easy to order and refill.</p>
             </div>
 
-            <div className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg w-80">
+            <div className="flex flex-col items-center bg-[#f3f4f6] p-8 rounded-lg shadow-lg w-80">
               <div className="text-4xl text-blue-600 mb-4">💅</div>
               <h3 className="font-semibold text-xl text-gray-800 mb-2">Personal Care</h3>
               <p className="text-gray-700">Explore our wide variety of skincare, beauty, and hygiene products from trusted brands.</p>
             </div>
 
-            <div className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg w-80">
+            <div className="flex flex-col items-center bg-[#f3f4f6] p-8 rounded-lg shadow-lg w-80">
               <div className="text-4xl text-blue-600 mb-4">🌱</div>
               <h3 className="font-semibold text-xl text-gray-800 mb-2">Health Supplements</h3>
               <p className="text-gray-700">From vitamins to herbal remedies, we provide the supplements that support your well-being.</p>
             </div>
 
-            <div className="flex flex-col items-center bg-white p-8 rounded-lg shadow-lg w-80">
+            <div className="flex flex-col items-center bg-[#f3f4f6] p-8 rounded-lg shadow-lg w-80">
               <div className="text-4xl text-blue-600 mb-4">📋</div>
               <h3 className="font-semibold text-xl text-gray-800 mb-2">Lab Tests</h3>
               <p className="text-gray-700">Easily book lab tests online and get your results delivered directly to your inbox.</p>
@@ -123,13 +123,13 @@ const AboutUs = () => {
           <h2 className="text-3xl font-semibold  text-bgBlue mb-6">What Our Customers Say</h2>
           <div className="flex flex-wrap justify-center gap-12">
             <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-              <p className="text-lg text-gray-700 mb-4">"Sai Samartha Pharmacy has made my health journey so much easier. The delivery is fast, and I always find what I need. Highly recommended!"</p>
-              <p className="font-semibold text-gray-800">Jane D.</p>
+              <p className="text-lg text-gray-700 mb-4">"Shri Samartha Pharmaceuticals has made my health journey so much easier. The delivery is fast, and I always find what I need. Highly recommended!"</p>
+              <p className="font-semibold text-[#257abd]">Jane D.</p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-              <p className="text-lg text-gray-700 mb-4">"I trust Sai Samartha Pharmacy for all my medications. The prices are reasonable, and the customer support is always helpful!"</p>
-              <p className="font-semibold text-gray-800">John M.</p>
+              <p className="text-lg text-gray-700 mb-4">"I trust Shri Samartha Pharmaceuticals for all my medications. The prices are reasonable, and the customer support is always helpful!"</p>
+              <p className="font-semibold text-[#257abd]">John M.</p>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ const AboutUs = () => {
       <section className="text-center py-12">
         <h2 className="text-3xl font-semibold  text-bgBlue mb-4">Your Health is Our Priority</h2>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
-          At Sai Samartha Pharmacy, we believe that health is wealth. Let us help you take care of your health needs with trust, convenience, and expert guidance.
+          At Shri Samartha Pharmaceuticals, we believe that health is wealth. Let us help you take care of your health needs with trust, convenience, and expert guidance.
         </p>
         <button className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700">Get Started</button>
       </section>

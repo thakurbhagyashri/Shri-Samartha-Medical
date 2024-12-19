@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GooglePay from '../../Images/GooglePay.png';
-import Paytm from '../../Images/Paytm.png';
-import Phonpe from '../../Images/PhonePe.png';
+import Paytm from '../../Images/paytm.png';
+import Phonpe from '../../Images/phonepe.png';
 import Simpl from '../../Images/Simpl.png';
 import Visa from '../../Images/Visa.png';
+import Call from "../Footer/Call.svg";
+import facebook from "../Footer/facebook.svg";
+import Instagram from "../Footer/Instagram.svg";
+import Linkedin from "../Footer/Linkedin.svg";
+import twitter from "../Footer/Twitter.svg";
+import WhatsApp from "../Footer/WhatsApp.svg";
+import YouTube from "../Footer/Youtube.svg";
 import './Footer.css'; // Assuming you will create a separate CSS file for the footer
 
 const Footer = () => {
@@ -68,12 +75,70 @@ const Footer = () => {
           <h3>SOCIAL</h3>
           <ul>
             <li><a href="#">Patients Alike</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">YouTube</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Refer & Earn</a></li>
+            <li className="flex flex-row">
+            <img
+                            src={facebook}
+                            alt="Facebook"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2"
+                        />
+              <a href="#">Facebook</a></li>
+
+            <li className="flex flex-row">
+            <img
+                            src={twitter}
+                            alt="Twitter"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2"
+                        />
+              <a href="#">Twitter</a></li>
+
+
+            <li className="flex flex-row">
+            <img
+                            src={Linkedin}
+                            alt="LinkedIn"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2"
+                        />
+              <a href="#">LinkedIn</a></li>
+
+
+            <li className="flex flex-row">
+            <img
+                            src={YouTube}
+                            alt="YouTube"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2"
+                        />
+              <a href="#">YouTube</a></li>
+
+
+            <li className="flex flex-row">
+            <img
+                            src={Instagram}
+                            alt="Instagram"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2"
+                        />
+              <a href="#">Instagram</a></li><li className="flex flex-row">
+
+            <img
+                            src={WhatsApp}
+                            alt="WhatsApp"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2"
+                        />
+              <a href="#">WhatsApp</a></li><li className="flex flex-row">
+
+            <img
+                            src={Call}
+                            alt="Call"
+                            style={{ height:"10%", width: "10%" }}
+                            className="mr-2 bg-slate-300 rounded-md"
+                        />
+              <a href="#">Call Now</a></li>
+          
           </ul>
         </div>
       </div>
@@ -93,7 +158,7 @@ const Footer = () => {
 
         {/* Copyright Section */}
         <div className="copyright">
-            <p>&copy; {new Date().getFullYear()} Shri Samarth. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Shri Samarth Pharmaceuticals. All rights reserved.</p>
         </div>
     </footer>
   );
