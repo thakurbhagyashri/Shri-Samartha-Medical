@@ -22,13 +22,13 @@ const Start = () => {
 
             <h2 className="title font-custom">Deal Of The Day</h2>
             <DealoftheDay />
-            <h2 className="title font-custom">Shop By Category</h2>
+            {/* <h2 className="title font-custom">Shop By Category</h2> */}
             {/* Add Cart component here */}
-            <ShopByCategory />
+            {/* <ShopByCategory /> */}
 
-            <h2 className="title font-custom">Popular Category</h2>
+            {/* <h2 className="title font-custom">Popular Category</h2> */}
             {/* Add Cart component here */}
-            <PopularCategory />
+            {/* <PopularCategory /> */}
             
             {/* Full-width ad image */}
             <img src={ads} alt="Advertisement" className="full-width-ad" />

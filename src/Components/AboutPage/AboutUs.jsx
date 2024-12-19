@@ -2,49 +2,55 @@ import React from 'react';
 import Reason from "../TrustedPharmacy/Reason.png";
 const AboutUs = () => {
   return (
-    <div className="bg-gray-50 py-16 px-6 sm:px-8 lg:px-16 font-custom">
-  {/* <div className="trusted-pharmacy-container ml-5 mr-5  ">
-                <img
-                    src={BgPharma}
-                    alt="Trusted Pharmacy"
-                    style={{ height: '150px', width: '100%', objectFit: 'cover' }}
-                    className="trusted-pharmacy-image "
-                />
-                <span className="trusted-pharmacy-text font-custom font-semibold">
-                    INDIA’S MOST TRUSTED ONLINE PHARMACY
-                </span>
-            </div> */}
-    
-      <section className="flex flex-col md:flex-row items-center justify-between mb-16">
-        <div className="max-w-lg mb-8 md:mb-0 text-center px-4  py-5 md:text-left">
-          <h1 className="text-5xl font-extrabold text-bgBlue mb-10">Welcome to Sai Samarth Pharmaceuticals'</h1>
-          <p className="text-lg text-gray-700">
-            We provide high-quality healthcare solutions delivered right to your doorstep. With a focus on reliability, trust, and care, we're here to make your health journey easier and more accessible. 
+    <div className="font-custom">
+    {/* Hero Section with Background Image and Text Over Image */}
+    <section
+      className="relative py-24 sm:py-32 px-6 sm:px-12 text-center text-white"
+      style={{
+        backgroundImage: `url(${Reason})`, // Your background image here
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Blur effect for background */}
+      <div className="absolute inset-0 bg-black opacity-50 backdrop-blur-lg"></div>
+  
+      {/* Content on top of the blurred background */}
+      <div className="relative z-10">
+        {/* Text over Image */}
+        <div className="text-center px-6 py-12 sm:py-20">
+          <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-shadow-md">
+            Welcome to Sai Samarth Pharmaceuticals
+          </h1>
+          <p className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto text-shadow-md">
+            We provide trusted healthcare solutions with a focus on quality, care, and reliability. Your health, our priority.
           </p>
-          <p  className="text-lg text-gray-700">
-            At Sai Samartha Pharmacy, we believe in improving lives through accessible and affordable healthcare. Our comprehensive range includes prescription medications, over-the-counter products, wellness essentials, and specialized health solutions.</p>
+          <div className="max-w-2xl mx-auto">
+            <p className="text-lg text-gray-100 mb-4 leading-relaxed">
+              At Sai Samarth Pharmaceuticals, we aim to make healthcare accessible and affordable for all. With a wide range of{" "}
+              <strong>trusted</strong> medications and <strong>wellness products</strong>, we are committed to ensuring your well-being
+              with the highest quality service.
+            </p>
+            <p className="text-lg text-gray-100 mb-4 leading-relaxed">
+              We believe that healthcare should not just be a service, but a <strong>partnership</strong> with the people we serve. We
+              are your <strong>reliable</strong> partner in health, offering quality and convenience at every step.
+            </p>
+          </div>
+          <div className="mt-8">
+            <a
+              href="#about"
+              className="bg-teal-600 text-white text-lg font-medium px-8 py-4 rounded-full shadow-lg hover:bg-teal-700 hover:shadow-xl transform transition-all duration-300"
+            >
+              Learn More
+            </a>
+          </div>
         </div>
-        <div className="w-auto md:w-1/2 rounded-lg overflow-hidden shadow-lg">
-      
-                        <img
-                            src={Reason}
-                            alt="Trusted Pharmacy"
-                            style={{ height: '60%', width: '100%', objectFit: 'cover' }}
-                            className="trusted-pharmacy-image m-10 p-4 rounded-xl "
-                        />
-                    </div>
-        {/* </div> */}
-      </section>
+      </div>
+    </section>
 
-      {/* Mission and Vision Section */}
-      <section className="bg-white py-12 px-3 mb-16 shadow-lg rounded-lg">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Our Mission</h2>
-          <p className="text-lg text-gray-700 mb-4">
-            Our mission is to provide you with authentic medications, health supplements, and wellness products, all while delivering exceptional service and care. We aim to empower you on your health journey by providing easy access to the healthcare products you need.
-          </p>
-        </div>
-      </section>
+  
+
+      
 
       {/* Why Choose Us Section - Interactive with Icons */}
       <section className="bg-gray-100 py-12 mb-16">

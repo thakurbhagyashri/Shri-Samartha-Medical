@@ -1,25 +1,216 @@
 .header {
-    max-width: 1728px;
-    width: 100%;
-    background-color: #D6E9FF;
+    background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%); /* Blue to Green Gradient */
+    padding: 10px 0;
+    transition: background 0.3s ease;
+  }
+  
+  /* Logo Container */
+  .logo-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content:space-around;
-    color: rgb(0, 0, 0);
-    font-family: Arial, sans-serif;
-    margin: 0;
-}
-
-.hamburger {
-    display: none;
-    font-size: 24px;
-    background: none;
+  }
+  
+  /* Logo Styling */
+  .logo {
+    width: 120px; /* Adjust logo size */
+    height: auto;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  /* Logo Hover Effect */
+  .logo:hover {
+    transform: scale(1.05); /* Slightly enlarge the logo */
+    opacity: 0.9;
+  }
+  
+  /* Font Styling */
+  header {
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  /* Hamburger Icon */
+  .hamburger {
+    background: transparent;
     border: none;
+    color: white;
+    font-size: 2rem;
     cursor: pointer;
-}
-
-@media (max-width: 768px) {   
+    transition: color 0.3s ease;
+  }
+  
+  /* Hamburger Hover Effect */
+  .hamburger:hover {
+    color: #32CD32; /* Green color on hover */
+  }
+  
+  /* Navigation Links */
+  .nav-item {
+    font-size: 1.125rem;
+    color: white;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect on nav items */
+  .nav-item:hover {
+    color: #32CD32; /* Green color on hover */
+  }
+  
+  /* Mobile Menu */
+  @media (max-width: 1024px) {
     .hamburger {
-        display: block; 
+      font-size: 2.5rem;
     }
-}
+    
+    .nav-menu {
+      background: rgba(255, 255, 255, 0.95); /* Slight transparent background */
+      color: black;
+    }
+  
+    .mobile-nav-menu {
+      background: rgba(0, 0, 0, 0.75); /* Dark background for mobile */
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 80%;
+      transition: 0.3s ease;
+    }
+  }
+  
+  /* Active Navigation (Mobile) */
+  .nav-menu a.active,
+  .nav-item.active {
+    color: #32CD32; /* Active items in green */
+  }
+  
+  /* Mobile Menu Transition */
+  @media (max-width: 1024px) {
+    .mobile-nav-menu {
+      background: rgba(0, 0, 0, 0.85); /* Darker mobile menu background */
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 75%;
+      padding-top: 60px; /* Push content down */
+      transition: transform 0.3s ease;
+      transform: translateX(-100%); /* Initially off-screen */
+    }
+  
+    .mobile-nav-menu.open {
+      transform: translateX(0); /* Slide in when menu is open */
+    }
+  }
+  /* Header Background and Layout */
+.header {
+    background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%); /* Blue to Green Gradient */
+    padding: 10px 0;
+    transition: background 0.3s ease;
+  }
+  
+  /* Logo Container */
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Logo Styling */
+  .logo {
+    width: 120px; /* Adjust logo size */
+    height: auto;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  /* Logo Hover Effect */
+  .logo:hover {
+    transform: scale(1.05); /* Slightly enlarge the logo */
+    opacity: 0.9;
+  }
+  
+  /* Font Styling */
+  header {
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  /* Hamburger Icon */
+  .hamburger {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hamburger Hover Effect */
+  .hamburger:hover {
+    color: #32CD32; /* Green color on hover */
+  }
+  
+  /* Navigation Links */
+  .nav-item {
+    font-size: 1.125rem;
+    color: white;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect on nav items */
+  .nav-item:hover {
+    color: #32CD32; /* Green color on hover */
+  }
+  
+  /* Mobile Menu */
+  @media (max-width: 1024px) {
+    .hamburger {
+      font-size: 2.5rem;
+    }
+    
+    .nav-menu {
+      background: rgba(255, 255, 255, 0.95); /* Slight transparent background */
+      color: black;
+    }
+  
+    .mobile-nav-menu {
+      background: rgba(0, 0, 0, 0.75); /* Dark background for mobile */
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 80%;
+      transition: 0.3s ease;
+    }
+  }
+  
+  /* Active Navigation (Mobile) */
+  .nav-menu a.active,
+  .nav-item.active {
+    color: #32CD32; /* Active items in green */
+  }
+  
+  /* Mobile Menu Transition */
+  @media (max-width: 1024px) {
+    .mobile-nav-menu {
+      background: rgba(0, 0, 0, 0.85); /* Darker mobile menu background */
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 75%;
+      padding-top: 60px; /* Push content down */
+      transition: transform 0.3s ease;
+      transform: translateX(-100%); /* Initially off-screen */
+    }
+  
+    .mobile-nav-menu.open {
+      transform: translateX(0); /* Slide in when menu is open */
+    }
+  }
+  
