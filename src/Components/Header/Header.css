@@ -1,6 +1,6 @@
 .header {
-    background: linear-gradient(90deg, #30749c 0%, #3c8b59 100%); /* Blue to Green Gradient */
-    padding: 5px 0;
+    background: linear-gradient(90deg, #3c8b59 0%, #30749c 100%); /* Blue to Green Gradient */
+    padding: 2px 0;
     transition: background 0.3s ease;
     color: white;
   }
@@ -109,7 +109,6 @@
   /* Header Background and Layout */
 .header {
     background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%); /* Blue to Green Gradient */
-    padding: 10px 0;
     transition: background 0.3s ease;
   }
   

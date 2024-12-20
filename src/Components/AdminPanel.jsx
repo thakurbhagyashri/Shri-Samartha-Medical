@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Search from "./Search/Search";
+import React, { useEffect, useState } from "react";
 
 const AdminPanel = () => {
   const [products, setProducts] = useState([
@@ -56,11 +55,11 @@ const AdminPanel = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 font-custom">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white">
-        <h1 className="text-2xl font-bold p-6">Sai Samarth Medical</h1>
-        <ul>
+      <aside className="w-80 bg-gray-800 text-white">
+        <h1 className="text-3xl font-bold p-6">Shri Samartha Pharmaceuticals</h1>
+        <ul className="ml-5">
           <li className="p-3 hover:bg-gray-700 cursor-pointer text-green-400">Dashboard</li>
           <li className="p-3 hover:bg-gray-700 cursor-pointer text-green-400">Products</li>
           <li className="p-3 hover:bg-gray-700 cursor-pointer">Orders</li>
@@ -72,18 +71,18 @@ const AdminPanel = () => {
       {/* Main Content */}
       <div className="flex-1 p-4 relative">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
-          {/* <input
+        <div className="flex mb-6">
+          <input
             type="text"
             placeholder="Search Products"
-            className="border border-gray-300 p-2 rounded-lg w-1/2 focus:outline-none focus:ring focus:ring-green-300"
-          /> */}
+            className="border border-gray-400 pl-5 rounded-xl w-[45%] h-12 focus:outline-none focus:ring focus:ring-green-300"
+          />
           
-          <Search/>
-          <div className="flex-1 p-3 relative">    
+         
+          <div className="flex">    
              <button
             onClick={handleAddProduct}
-            className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-all"
+            className="bg-green-500 text-white px-6 ml-96 py-2 justify-items-end rounded-lg hover:bg-green-600 transition-all"
           >
             ADD PRODUCT
           </button>  
