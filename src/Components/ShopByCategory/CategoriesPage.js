@@ -24,7 +24,7 @@ const CategoryPage = () => {
   return (
     <div className="flex">
       {/* Left-side Category Navigation */}
-      <aside className="w-1/6 bg-gray-100 p-4 font-merriWeather">
+      <aside className="w-1/6 bg-[#e1e1e1] p-4 font-merriWeather ">
         <h3 className="text-2xl font-semibold mb-4">Categories</h3>
         <ul>
           {categories.map((category) => (
@@ -77,7 +77,7 @@ const CategoryPage = () => {
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold font-merriWeather">{category.name}</h3>
+                  <h3 className="text-xl font-semibold font-merriWeather text-blue-500">{category.name}</h3>
                   <p className="text-sm text-gray-600 font-roboto font-medium">{category.description}</p>
                 </Link>
               </div>

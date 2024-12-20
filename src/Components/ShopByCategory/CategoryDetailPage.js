@@ -76,7 +76,7 @@ const CategoryDetailPage = () => {
     return (
         <div className="flex">
             {/* Left-side Category Navigation */}
-            <aside className="w-1/6 bg-gray-100 p-4 font-merriWeather">
+            <aside className="w-1/6 bg-[#e1e1e1] p-4 font-merriWeather">
                 <h3 className="text-2xl font-semibold mb-4">Categories</h3>
                 <ul>
                     {categoriesData.map((cat) => (

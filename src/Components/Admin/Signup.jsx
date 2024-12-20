@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import SignIn from "../Admin/SignIn.png";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    firstlName:"",
-    lastName:"",
+    fullName:"",
     username: "",
     email: "",
     password: "",
@@ -47,14 +47,19 @@ const Signup = () => {
 
   return (
     <div className="flex justify-center items-center max-h-max bg-gray-50">
-      <div className="w-full max-w-4xl  font-custom bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-3xl font-medium text-center mb-6 pb-3 text-gray-800">
+      <div className="w-full max-w-4xl  bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-3xl font-medium text-center mb- font-roboto 6 pb-3 text-gray-800">
           Sign up
         </h2>
         <div className="flex flex-row">
           <div className="w-[55%] p-2 m-2">
-            <p className="text-md font-light">
-              Sign up or Sign in to access your orders, special offers, health
+            <p className="text-md font-light font-roboto">
+              Sign up or <Link
+                                              to="/login"
+                                              className="text-blue-500"
+                                          >
+                                              Sign in
+                                          </Link> to access your orders, special offers, health
               tips and more!
             </p>
             <img
@@ -63,39 +68,26 @@ const Signup = () => {
               style={{ height: "45%", width: "100%", objectFit: "cover" }}
               className=" mt-24 rounded-xl "
             />
-            <p className="font-light my-4 p-3 text-[#023c7f]">By continuing you agree to our Terms of service 
+            <p className="font-light my-4 p-3 font-roboto text-[#023c7f]">By continuing you agree to our Terms of service 
             and Privacy & Legal Policy </p>
           </div>
-          <div className="w-[40%] px-5 mx-5 py-2">
+          <div className="w-[40%] px-5 mx-5 py-2 font-roboto">
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-lg font-medium text-gray-700">
-                first Name
+                Full Name
                 </label>
                 <input
                   type="text"
-                  name="firstlName"
-                  value={formData.firstlName}
+                  name="fulllName"
+                  value={formData.fulllName}
                   onChange={handleChange}
                   placeholder="Enter your full name"
                   className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
               </div>
-              <div className="mb-4">
-                <label className="block text-lg font-medium text-gray-700">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  placeholder="Enter your last name"
-                  className="w-full text-md mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
+            
 
               <div className="mb-4">
                 <label className="block text-lg font-medium  text-gray-700">
@@ -161,8 +153,8 @@ const Signup = () => {
               <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="w-full flex justify-center font-custom items-center text-md py-2 px-4 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50"
-              >
+                className="w-full flex justify-center items-center text-lg py-2 px-4 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
                   alt="Google"

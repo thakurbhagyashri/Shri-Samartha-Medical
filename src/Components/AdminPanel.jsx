@@ -97,12 +97,12 @@ const AdminPanel = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4"
+              className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4 mx-16"
             >
-              <div className="flex space-x-6 items-center">
+              <div className="flex space-x-10 items-center">
                 <div className="w-20 h-20 bg-gray-300 rounded"></div>
                 <div>
-                  <h3 className="font-bold text-lg">{product.name}</h3>
+                  <h3 className="font-bold text-xl">{product.name}</h3>
                   <p className="text-sm text-gray-600">{product.brand}</p>
                   <p className="text-sm text-gray-600">Categories {product.category}</p>
                   <p className="text-gray-800 font-semibold mt-2">Price {product.price}</p>

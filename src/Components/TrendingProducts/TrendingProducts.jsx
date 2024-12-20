@@ -26,18 +26,18 @@ const TrendingProducts = () => {
   };
 
   return (
-    <div className=" font-custom container mx-[100px] my-[50px] max-w-[1000px]">
+    <div className=" font-custom container mx-[100px] my-[50px] ">
       {notification && (
         <div className="notification">
           {notification}
         </div>
       )}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Assuming `cartData` is the list of trending products */}
         {cartData.map((item) => (
           <div
             key={item.id}
-            className="group bg-white overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-3xl hover:rounded-3xl hover:bg-blue-50 cursor-pointer border-2 border-transparent group-hover:border-blue-500"
+            className="group bg-white overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-3xl hover:rounded-3xl hover:bg-blue-50  p-4 cursor-pointer border-2 border-transparent group-hover:border-blue-500"
           >
             <Link to={`/product/${item.id}`} className="block max-w-xs">
               <img

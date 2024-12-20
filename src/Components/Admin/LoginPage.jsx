@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -59,10 +59,16 @@ const LoginPage = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-50">
-      <div className="w-full max-w-md font-custom bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-3xl font-medium text-center mb-6 text-gray-800">
+      <div className="w-full max-w-md font-roboto bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-3xl font-medium text-center mb-3 text-gray-800">
           Sign in to your account
         </h2>
+        <p className="text-center text-md">Don't have account? 
+          <Link 
+          to ="/signup"
+           className="text-blue-500 ml-1"
+          >Sign up</Link>
+          </p>
         <form onSubmit={handleSubmit}>
           {/* Username Input */}
           <div className="mb-4">
@@ -87,7 +93,7 @@ const LoginPage = () => {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full font-custom text-lg mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="w-full  text-lg mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
