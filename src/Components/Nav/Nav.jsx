@@ -23,7 +23,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="nav-links text-lg ">
+    <nav className="nav-links font-custom font-medium text-lg ">
       {/* Render Home, About Us, Services, Contact, Admin for Admin */}
       {role === "admin" ? (
         <>

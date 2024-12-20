@@ -63,11 +63,11 @@
   margin: 0;
 }
 
-.view-all-link {
+/* .view-all-link {
   font-size: 16px;
   color: #007bff;
   text-decoration: none;
-}
+} */
 
 .view-all-link:hover {
   text-decoration: underline;
