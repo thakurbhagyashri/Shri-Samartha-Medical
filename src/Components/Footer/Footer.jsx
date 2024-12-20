@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GooglePay from '../../Images/GooglePay.png';
-import Paytm from '../../Images/paytm.png';
-import Phonpe from '../../Images/phonepe.png';
+import Paytm from '../../Images/Paytm.png';
+import Phonpe from '../../Images/PhonePe.png';
 import Simpl from '../../Images/Simpl.png';
 import Visa from '../../Images/Visa.png';
 import Call from "../Footer/Call.svg";
