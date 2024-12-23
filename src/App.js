@@ -29,19 +29,31 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [role, setRole] = useState(null);
 
-  const addToCart = (product, quantity) => {
+  // const addToCart = (product, quantity) => {
+  //   setCart((prevCart) => {
+  //     const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
+  //     if (existingProductIndex >= 0) {
+  //       const updatedCart = [...prevCart];
+  //       updatedCart[existingProductIndex].quantity += quantity;
+  //       return updatedCart;
+  //     }
+  //     return [...prevCart, { ...product, quantity }];
+  //   });
+  // };
+  const addToCart = (productToAdd) => {
     setCart((prevCart) => {
-      const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
+      const existingProductIndex = prevCart.findIndex((item) => item.id === productToAdd.id);
       if (existingProductIndex >= 0) {
         const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += quantity;
+        updatedCart[existingProductIndex].quantity += productToAdd.quantity;
         return updatedCart;
       }
-      return [...prevCart, { ...product, quantity }];
+      return [...prevCart, productToAdd]; // productToAdd already includes quantity
     });
   };
-
+  
   const contextValue = { basename: 'my-base', cart, addToCart };
+
 
   // Check for User Role using JWT
   useEffect(() => {
@@ -66,7 +78,7 @@ const App = () => {
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/products" element={<TrendingProducts />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
             <Route path="/cart" element={<CartList />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<Signup />} />
