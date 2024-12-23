@@ -106,9 +106,21 @@ const CartList = () => {
 
   // Calculate Total Price
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-
+  if (cart.length === 0) {
+        console.log("Cart is empty"); // Log if the cart is empty
+        return (
+          <div className="cart-page p-6">
+            <h2 className="text-2xl font-semibold mb-4">Your Cart</h2>
+            <p>Your cart is currently empty.</p>
+            <Link to="/all-categories" className="btn btn-primary mt-4 text-blue-500 underline">
+              Continue Shopping
+            </Link>
+          </div>
+        );
+      }
+    
   return (
-    <div className="cart-list w-full max-w-7xl mx-auto px-4 py-6">
+    <div className="cart-list w-full max-w-7xl mx-9 py-6">
       <h2 className="text-3xl font-bold mb-6 text-center">Your Cart</h2>
 
       {cart.length === 0 ? (
@@ -135,7 +147,7 @@ const CartList = () => {
                 <img
                   src={item.imageUrl}
                   alt={item.name}
-                  className="w-16 h-16 object-cover rounded-md"
+                  className="w-24 h-16 object-cover rounded-md"
                 />
               </Link>
 
@@ -155,7 +167,7 @@ const CartList = () => {
                   value={item.quantity}
                   min="1"
                   onChange={(e) => updateQuantity(item.id, parseInt(e.target.value, 10) || 1)}
-                  className="border p-2 rounded"
+                  className="border p-2 rounded w-16"
                 />
               </div>
 
@@ -167,11 +179,15 @@ const CartList = () => {
           ))}
 
           {/* Display Total Price */}
-          <div className="flex justify-end mt-6">
+          <div className="flex justify-end mt-6 mr-40">
             <p className="text-2xl font-bold">
               Total Price: <span className="text-green-600">₹{totalPrice}</span>
             </p>
           </div>
+          
+          <Link to="/checkout" className="btn btn-primary mt-4  text-blue-500 underline">
+           Proceed to Checkout
+         </Link>
         </div>
       )}
     </div>
