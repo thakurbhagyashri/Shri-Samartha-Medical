@@ -1,9 +1,10 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import { MyContext } from './Components/MyContext';
+import React, { Suspense, useEffect, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
+import { MyContext } from './Components/MyContext';
+import ScrollToTop from './Components/ScrollToTop';
 
 // Lazy-loaded Components
 const AboutUs = React.lazy(() => import('./Components/AboutPage/AboutUs'));
@@ -29,19 +30,31 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [role, setRole] = useState(null);
 
-  const addToCart = (product, quantity) => {
+  // const addToCart = (product, quantity) => {
+  //   setCart((prevCart) => {
+  //     const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
+  //     if (existingProductIndex >= 0) {
+  //       const updatedCart = [...prevCart];
+  //       updatedCart[existingProductIndex].quantity += quantity;
+  //       return updatedCart;
+  //     }
+  //     return [...prevCart, { ...product, quantity }];
+  //   });
+  // };
+  const addToCart = (productToAdd) => {
     setCart((prevCart) => {
-      const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
+      const existingProductIndex = prevCart.findIndex((item) => item.id === productToAdd.id);
       if (existingProductIndex >= 0) {
         const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += quantity;
+        updatedCart[existingProductIndex].quantity += productToAdd.quantity;
         return updatedCart;
       }
-      return [...prevCart, { ...product, quantity }];
+      return [...prevCart, productToAdd]; // productToAdd already includes quantity
     });
   };
-
+  
   const contextValue = { basename: 'my-base', cart, addToCart };
+
 
   // Check for User Role using JWT
   useEffect(() => {
@@ -59,6 +72,7 @@ const App = () => {
   return (
     <MyContext.Provider value={contextValue}>
       <Router>
+        <ScrollToTop />
         <Header role={role} />
         <Suspense fallback={<Loading />}>
           <Routes>
@@ -66,7 +80,7 @@ const App = () => {
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/products" element={<TrendingProducts />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
             <Route path="/cart" element={<CartList />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<Signup />} />

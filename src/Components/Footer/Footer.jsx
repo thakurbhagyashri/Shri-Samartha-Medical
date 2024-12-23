@@ -16,7 +16,7 @@ import './Footer.css'; // Assuming you will create a separate CSS file for the f
 
 const Footer = () => {
   return (
-    <footer className="footer font-custom bg-[#eef4ff]">
+    <footer className="footer font-fira bg-[#eef4ff]">
       <div className="footer-container">
         {/* Company Section */}
         <div className="footer-section">
@@ -36,10 +36,10 @@ const Footer = () => {
           <ul>
             <li><Link to="/terms">Terms and Conditions</Link></li>
             <li><Link to="/privacy">Privacy Policy</Link></li>
-            <li><Link to="/fees-policy">Fees and Payments Policy</Link></li>
-            <li><Link to="/shipping-policy">Shipping and Delivery Policy</Link></li>
-            <li><Link to="/return">Return, Refund and Cancellation Policy</Link></li>
-            <li><Link to="/editorial-policy">Editorial Policy</Link></li>
+            <li><Link to="/fees-policy">Fees and Payments Policies</Link></li>
+            <li><Link to="/shipping-policy">Shipping and Delivery Policies</Link></li>
+            <li><Link to="/return">Return, Refund and Cancellation Policies</Link></li>
+            <li><Link to="/editorial-policy">Editorial Policies</Link></li>
           </ul>
         </div>
 

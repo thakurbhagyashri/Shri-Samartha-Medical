@@ -35,7 +35,7 @@ const Start = () => {
 
             <h2 className="title font-custom">Trending Products</h2>
             {/* Add Cart component here */}
-            <TrendingProducts />
+            {/* <TrendingProducts /> */}
            
 
             <div className="card font-custom">

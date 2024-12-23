@@ -32,13 +32,55 @@
 // };
 
 // export default ShopByCategory;
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import './ShopByCategory.css';
+// import cartData from './ShopByCategoryJs.js';
+
+// const ShopByCategory = () => {
+//   const [cart] = useState(cartData);
+
+//   return (
+//     <div className="cart-container">
+//       <div className="header-container">
+//         <h2 className="shop-by-category-title font-custom">Shop by Category</h2>
+//         <Link to="/all-categories" className="view-all-link">
+//           View All
+//         </Link>
+//       </div>
+      
+//       {cart.length === 0 ? (
+//         <p>Your cart is empty.</p>
+//       ) : (
+//         <div className="cart-items font-custom">
+//           {cart.map((item) => (
+//             <div key={item.id} className="cart-item">
+//               <Link to={`/product/${item.id}`}>
+//                 <div className="image-container">
+//                   <img
+//                     src={item.imageUrl}
+//                     alt={item.title}
+//                     className="cart-item-image"
+//                   />
+//                 </div>
+//                 <p className="medicine-title">{item.title}</p>
+//               </Link>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default ShopByCategory;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ShopByCategory.css';
-import cartData from './ShopByCategoryJs.js';
+import { categoriesData } from './categoriesData'; // Use the same mock categories data
 
 const ShopByCategory = () => {
-  const [cart] = useState(cartData);
+  const [categories] = useState(categoriesData); // Load categories from the data source
 
   return (
     <div className="cart-container">
@@ -48,22 +90,23 @@ const ShopByCategory = () => {
           View All
         </Link>
       </div>
-      
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+
+      {categories.length === 0 ? (
+        <p>No categories available.</p>
       ) : (
         <div className="cart-items font-custom">
-          {cart.map((item) => (
-            <div key={item.id} className="cart-item">
-              <Link to={`/product/${item.id}`}>
+          {categories.map((category) => (
+            <div key={category.id} className="cart-item">
+              {/* Link to the CategoryDetailPage using category name */}
+              <Link to={`/category/${category.name}`}>
                 <div className="image-container">
                   <img
-                    src={item.imageUrl}
-                    alt={item.title}
+                    src={category.imageUrl}
+                    alt={category.name}
                     className="cart-item-image"
                   />
                 </div>
-                <p className="medicine-title">{item.title}</p>
+                <p className="medicine-title">{category.name}</p>
               </Link>
             </div>
           ))}

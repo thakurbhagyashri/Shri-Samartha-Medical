@@ -5,73 +5,80 @@ import { MyContext } from '../MyContext';
 import { categoriesData } from './categoriesData'; // Mock categories data
 
 const CategoryDetailPage = () => {
-    const { categoryName } = useParams(); // Get category name from URL
-    const [category, setCategory] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [priceFilter, setPriceFilter] = useState('all');
-    const [loading, setLoading] = useState(true);
-    const { addToCart } = useContext(MyContext); // Use the addToCart function from context
-    const [notification, setNotification] = useState(''); // Notification state
+  const { categoryName } = useParams();
+  const [category, setCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [priceFilter, setPriceFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(MyContext);
+  const [notification, setNotification] = useState('');
 
-    useEffect(() => {
-        const foundCategory = categoriesData.find(
-            (cat) => cat.name.toLowerCase() === categoryName.toLowerCase()
-        );
+  useEffect(() => {
+    // Debug logs
+    console.log('categoryName:', categoryName);
+    console.log('Available categories:', categoriesData.map((cat) => cat.name));
+  
+    // Find the category based on the categoryName
+    const foundCategory = categoriesData.find(
+      (cat) => cat.name.toLowerCase() === categoryName.toLowerCase()
+    );
+  
+    console.log('Found category:', foundCategory);
+  
+    setCategory(foundCategory || null);
+    setLoading(false);
+  }, [categoryName]);
+  
+  
 
-        if (foundCategory) {
-            setCategory(foundCategory);
-        }
+  const filterProducts = () => {
+    const products = category?.products || [];
+    let filteredProducts = products;
 
-        setLoading(false);
-    }, [categoryName]);
-
-    // Function to show notification
-    const showNotification = (message) => {
-        setNotification(message);
-        setTimeout(() => {
-            setNotification(null); // Hide notification after 3 seconds
-        }, 3000);
-    };
-
-    // Handle adding item to cart
-    const handleAddToCart = (product) => {
-        addToCart(product); // Add item to the global cart using the context
-        showNotification('Product added to cart successfully');
-    };
-
-    // Filter products based on search term and price filter
-    const filterProducts = () => {
-        let filteredProducts = category?.products || [];
-
-        // Filter by search term
-        if (searchTerm) {
-            filteredProducts = filteredProducts.filter((product) =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        }
-
-        // Filter by price
-        if (priceFilter === 'low') {
-            filteredProducts = filteredProducts.filter((product) => parseFloat(product.price.replace('$', '')) < 20);
-        } else if (priceFilter === 'medium') {
-            filteredProducts = filteredProducts.filter((product) => {
-                const price = parseFloat(product.price.replace('$', ''));
-                return price >= 20 && price < 50;
-            });
-        } else if (priceFilter === 'high') {
-            filteredProducts = filteredProducts.filter((product) => parseFloat(product.price.replace('$', '')) >= 50);
-        }
-
-        return filteredProducts;
-    };
-
-    if (loading) {
-        return <div>Loading...</div>;
+    if (searchTerm) {
+      filteredProducts = filteredProducts.filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
 
-    if (!category) {
-        return <div>Category not found.</div>;
+    if (priceFilter !== 'all') {
+      filteredProducts = filteredProducts.filter((product) => {
+        const price = parseFloat(product.price.replace('$', ''));
+        if (priceFilter === 'low') return price < 20;
+        if (priceFilter === 'medium') return price >= 20 && price < 50;
+        return price >= 50;
+      });
     }
+
+    return filteredProducts;
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!category) {
+    return (
+      <div>
+        <p>Category not found.</p>
+        <Link to="/all-categories" className="text-blue-500">Go to all categories</Link>
+      </div>
+    );
+  }
+
+  const filteredProducts = filterProducts();
+
+  const showNotification = (message) => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000);
+  };
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    showNotification('Product added to cart successfully');
+  };
 
     return (
         <div className="flex">
