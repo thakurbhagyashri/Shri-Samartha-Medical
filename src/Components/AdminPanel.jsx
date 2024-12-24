@@ -92,14 +92,14 @@ const AdminPanel = () => {
   return (
     <div className="flex h-screen bg-gray-100 font-custom">
       {/* Sidebar */}
-      <aside className="w-80 bg-gray-800 text-white">
-        <h1 className="text-3xl font-bold p-6">Shri Samartha Pharmaceuticals</h1>
+      <aside className="w-1/6 bg-[#e1e1e1] p-4 font-merriWeather">
+        <h1 className="text-2xl font-semibold mb-4">Shri Samartha Pharmaceuticals</h1>
         <ul className="ml-5">
-          <li className="p-3 hover:bg-gray-700 cursor-pointer text-green-400">Dashboard</li>
-          <li className="p-3 hover:bg-gray-700 cursor-pointer text-green-400">Products</li>
-          <li className="p-3 hover:bg-gray-700 cursor-pointer">Orders</li>
-          <li className="p-3 hover:bg-gray-700 cursor-pointer">Users</li>
-          <li className="p-3 mt-4 hover:bg-gray-700 cursor-pointer">Logout</li>
+          <li className="text-xl text-gray-800 hover:text-blue-500">Dashboard</li>
+          <li className="text-xl text-gray-800 hover:text-blue-500">Products</li>
+          <li className="text-xl text-gray-800 hover:text-blue-500">Orders</li>
+          <li className="text-xl text-gray-800 hover:text-blue-500">Users</li>
+          <li className="text-xl text-gray-800 hover:text-blue-500">Logout</li>
         </ul>
       </aside>
 

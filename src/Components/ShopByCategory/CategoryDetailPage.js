@@ -15,7 +15,7 @@ const CategoryDetailPage = () => {
 
   useEffect(() => {
     // Debug logs
-    console.log('categoryName:', categoryName);
+    console.log('categoryObject:', categoriesData);
     console.log('Available categories:', categoriesData.map((cat) => cat.name));
   
     // Find the category based on the categoryName
@@ -41,9 +41,19 @@ const CategoryDetailPage = () => {
       );
     }
 
+    // if (priceFilter !== 'all') {
+    //   filteredProducts = filteredProducts.filter((product) => {
+    //     const price = parseFloat(products.price.replace('$', ''));
+    //     if (priceFilter === 'low') return price < 20;
+    //     if (priceFilter === 'medium') return price >= 20 && price < 50;
+    //     return price >= 50;
+    //   });
+    // }
     if (priceFilter !== 'all') {
       filteredProducts = filteredProducts.filter((product) => {
-        const price = parseFloat(product.price.replace('$', ''));
+        if (!product || product.price === undefined) return false; // Skip if price is undefined
+        const priceString = String(product.price); // Ensure it's a string
+        const price = parseFloat(priceString.replace('$', ''));
         if (priceFilter === 'low') return price < 20;
         if (priceFilter === 'medium') return price >= 20 && price < 50;
         return price >= 50;
