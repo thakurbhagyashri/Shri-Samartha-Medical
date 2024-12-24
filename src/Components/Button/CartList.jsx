@@ -106,6 +106,18 @@ const CartList = () => {
 
   // Calculate Total Price
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  if (cart.length === 0) {
+    console.log("Cart is empty"); // Log if the cart is empty
+    return (
+      <div className="cart-page p-6">
+        <h2 className="text-2xl font-semibold mb-4">Your Cart</h2>
+        <p className="m-4">Your cart is currently empty.</p>
+        <Link to="/all-categories" className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 m-4">
+          Continue Shopping
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="cart-list w-full max-w-7xl mx-auto px-4 py-6">
@@ -166,12 +178,45 @@ const CartList = () => {
             </div>
           ))}
 
-          {/* Display Total Price */}
-          <div className="flex justify-end mt-6">
+          {/* Display Total Price and Checkout Button */}
+          {/* <div className="flex justify-end items-center mt-6 space-x-6">
             <p className="text-2xl font-bold">
               Total Price: <span className="text-green-600">₹{totalPrice}</span>
             </p>
+
+            <Link
+              to="/checkout"
+              className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              Proceed to Checkout
+            </Link>
+          </div> */}
+          <div className="mt-6">
+            {/* Row: Continue Shopping on the left and Proceed to Checkout on the right */}
+            <div className="flex justify-between items-center">
+              {/* Left: Continue Shopping */}
+              <Link
+                to="/all-categories"
+                className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              >
+                Continue Shopping
+              </Link>
+
+              {/* Right: Total Price and Proceed to Checkout */}
+              <div className="flex flex-col items-end">
+                <p className="text-2xl font-bold mb-2">
+                  Total Price: <span className="text-green-600">₹{totalPrice}</span>
+                </p>
+                <Link
+                  to="/checkout"
+                  className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                >
+                  Proceed to Checkout
+                </Link>
+              </div>
+            </div>
           </div>
+
         </div>
       )}
     </div>

@@ -17,7 +17,6 @@ const ReturnPolicy = React.lazy(() => import('./Components/Privacy/ReturnPolicy'
 const TermsAndConditions = React.lazy(() => import('./Components/Privacy/TermsAndConditions'));
 const Product = React.lazy(() => import('./Components/Product/Product'));
 const TrendingProducts = React.lazy(() => import('./Components/TrendingProducts/TrendingProducts'));
-const ProductDetailPage = React.lazy(() => import('./Components/ShopByCategory/ProductDetailPage'));
 const CategoriesPage = React.lazy(() => import('./Components/ShopByCategory/CategoriesPage'));
 const CategoryDetailPage = React.lazy(() => import('./Components/ShopByCategory/CategoryDetailPage'));
 const Start = React.lazy(() => import('./Start'));
@@ -88,7 +87,6 @@ const App = () => {
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/all-categories" element={<CategoriesPage/>} />
            <Route path="/category/:categoryName" element={<CategoryDetailPage/>} />
-          <Route path="/product/:productId" element={<ProductDetailPage />} />
           </Routes>
         </Suspense>
         <Footer />
