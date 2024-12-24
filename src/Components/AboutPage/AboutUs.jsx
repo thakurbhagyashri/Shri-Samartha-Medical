@@ -1,8 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Reason from "../TrustedPharmacy/Reason.png";
 const AboutUs = () => {
+  const navigate = useNavigate();
+  const handletoHomePage = ()=>{
+    navigate("/")
+  }
   return (
-    <div className="font-custom">
+    
+    <div className="font-merriWeather">
     {/* Hero Section with Background Image and Text Over Image */}
     <section
       className="relative py-24 sm:py-32 px-6 sm:px-12 text-center text-white"
@@ -123,7 +129,7 @@ const AboutUs = () => {
           <h2 className="text-3xl font-semibold  text-bgBlue mb-6">What Our Customers Say</h2>
           <div className="flex flex-wrap justify-center gap-12">
             <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-              <p className="text-lg text-gray-700 mb-4">"Shri Samartha Pharmaceuticals has made my health journey so much easier. The delivery is fast, and I always find what I need. Highly recommended!"</p>
+              <p className="text-lg text-gray-700 mb-4 font-fira italic">"Shri Samartha Pharmaceuticals has made my health journey so much easier. The delivery is fast, and I always find what I need. Highly recommended!"</p>
               <p className="font-semibold text-[#257abd]">Jane D.</p>
             </div>
 
@@ -141,7 +147,7 @@ const AboutUs = () => {
         <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
           At Shri Samartha Pharmaceuticals, we believe that health is wealth. Let us help you take care of your health needs with trust, convenience, and expert guidance.
         </p>
-        <button className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700">Get Started</button>
+        <button onClick={handletoHomePage} className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700">Get Started</button>
       </section>
 
     </div>

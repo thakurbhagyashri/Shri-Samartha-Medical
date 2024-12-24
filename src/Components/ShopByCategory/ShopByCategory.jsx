@@ -84,9 +84,9 @@ const ShopByCategory = () => {
 
   return (
     <div className="cart-container">
-      <div className="header-container">
-        <h2 className="shop-by-category-title font-custom">Shop by Category</h2>
-        <Link to="/all-categories" className="view-all-link">
+      <div className="header-container font-custom">
+        <h2 className="shop-by-category-title">Shop by Category</h2>
+        <Link to="/all-categories" className="view-all-link text-lg p-2 bg-ButtonGreen text text-white rounded-lg no-underline hover:scale-110 hover:bg-[#61912a] transform transition-all duration-300">
           View All
         </Link>
       </div>

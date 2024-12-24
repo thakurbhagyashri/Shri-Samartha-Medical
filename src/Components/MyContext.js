@@ -6,20 +6,26 @@ export const MyContext = createContext();
 
 // Create the provider
 export const MyProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([
+    { id: 1, name: "Item 1", price: 100, quantity: 1, imageUrl: "https://via.placeholder.com/150" },
+    { id: 2, name: "Item 2", price: 200, quantity: 2, imageUrl: "https://via.placeholder.com/150" },
+  ]);
 
   // Function to update quantity
   const updateQuantity = (id, newQuantity) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
+        item.id === id
+          ? { ...item, quantity: Math.max(1, newQuantity) } // Ensure quantity is at least 1
+          : item
       )
     );
   };
 
   // Function to remove item from the cart
   const removeFromCart = (id) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
+    console.log("removeFromCart called with id:", id); // Debugging log
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
   return (

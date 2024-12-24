@@ -1,9 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaHeart, FaStar } from "react-icons/fa";
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { MyContext } from '../MyContext';
 import { categoriesData } from '../ShopByCategory/categoriesData';
-import { Link } from 'react-router-dom';
 
 const shuffleArray = (array) => {
   const shuffledArray = [...array];
@@ -145,8 +144,8 @@ const Product = () => {
 
       {/* Product Suggestions Carousel */}
       <div className="my-10 mx-[100px]">
-        <h2 className="text-2xl font-semibold mb-5">You May Also Like</h2>
-        <div className="relative">
+        <h2 className="text-2xl font-semibold font-custom mb-5">You May Also Like</h2>
+        <div className="relative font-roboto">
           <button
             onClick={handlePrev}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white rounded-full py-2 px-4 shadow-md z-20"

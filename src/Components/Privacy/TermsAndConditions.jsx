@@ -2,7 +2,7 @@ import React from "react";
 
 const TermsAndConditions = () => {
   return (
-    <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-10 min-h-screen">
+    <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-10 min-h-screen font-roboto">
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-lg p-10">
         <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-8">
           Terms & Conditions

@@ -12,8 +12,15 @@ module.exports = {
     fontFamily: {
     
       custom: [ "Roboto Slab", "serif"],
-      roboto:["EB Garamond", "serif"]
+      roboto:["EB Garamond", "serif"],
+      merriWeather:["Merriweather", "serif"],
+      playfair:[ "Playfair Display", "serif"],
+      fira:["Fira Sans", "serif"],
+      noto:["Noto Serif", "serif"]
     },
+    fontWeight:{
+      regular:400
+    }
     
   },
   plugins: [],

@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaPhone, FaEnvelope, FaWhatsapp, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaFacebook, FaLinkedin, FaPhone, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-8">
+    <div className="min-h-screen bg-gray-100 flex flex-col font-roboto items-center p-8">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
         <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">Contact Us</h1>
 

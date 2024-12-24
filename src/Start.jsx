@@ -1,12 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Category from "./Components/Categories/Categories";
-import DealoftheDay from "./Components/DealoftheDay/DealoftheDay";
 import FeatureBrands from "./Components/FeaturedBrand/FeaturedBrand";
-import PopularCategory from "./Components/PopularCategory/PopularCategory";
 import ScrollImages from "./Components/ScrollImages/ScrollImages";
 import Search from "./Components/Search/Search";
 import ShopByCategory from "./Components/ShopByCategory/ShopByCategory";
-import TrendingProducts from "./Components/TrendingProducts/TrendingProducts";
 import TrustedPharmacy from "./Components/TrustedPharmacy/TrustedPharmacy";
 import AdDevices from "./Images/AdDevices.png";
 import ads from "./Images/Ads.png";
@@ -42,7 +40,7 @@ const Start = () => {
                     <img src={AdDevices} alt="Product Image" className="card-image" />
              
                 <p className="card-text">Flat 25% Off Medicine Order</p>
-                <button className="card-button">Shop Now</button>
+               <Link to="all-categories"><button className="card-button">Shop Now</button></Link> 
             </div>
 
             {/* Image with custom margins, shadow, and overlay text */}

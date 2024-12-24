@@ -1,9 +1,10 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import { MyContext } from './Components/MyContext';
+import React, { Suspense, useEffect, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
+import { MyContext } from './Components/MyContext';
+import ScrollToTop from './Components/ScrollToTop';
 
 // Lazy-loaded Components
 const AboutUs = React.lazy(() => import('./Components/AboutPage/AboutUs'));
@@ -70,6 +71,7 @@ const App = () => {
   return (
     <MyContext.Provider value={contextValue}>
       <Router>
+        <ScrollToTop />
         <Header role={role} />
         <Suspense fallback={<Loading />}>
           <Routes>
