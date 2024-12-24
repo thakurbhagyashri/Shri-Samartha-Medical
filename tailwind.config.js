@@ -15,7 +15,8 @@ module.exports = {
       roboto:["EB Garamond", "serif"],
       merriWeather:["Merriweather", "serif"],
       playfair:[ "Playfair Display", "serif"],
-      fira:["Fira Sans", "serif"]
+      fira:["Fira Sans", "serif"],
+      noto:["Noto Serif", "serif"]
     },
     fontWeight:{
       regular:400

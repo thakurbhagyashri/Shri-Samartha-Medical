@@ -8,7 +8,7 @@ const AboutUs = () => {
   }
   return (
     
-    <div className="font-fira">
+    <div className="font-merriWeather">
     {/* Hero Section with Background Image and Text Over Image */}
     <section
       className="relative py-24 sm:py-32 px-6 sm:px-12 text-center text-white"

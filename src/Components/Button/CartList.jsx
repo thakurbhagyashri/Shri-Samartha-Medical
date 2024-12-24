@@ -121,11 +121,7 @@ const CartList = () => {
       }
     
   return (
-<<<<<<< HEAD
     <div className="cart-list w-full max-w-7xl mx-auto px-10 py-6 font-roboto">
-=======
-    <div className="cart-list w-full max-w-7xl mx-9 py-6">
->>>>>>> 1c072fa7ff90f9c1facae821578ec1f2ebfc1e11
       <h2 className="text-3xl font-bold mb-6 text-center">Your Cart</h2>
 
       {cart.length === 0 ? (
