@@ -167,6 +167,11 @@ const CategoryDetailPage = () => {
                                         text="Add to Cart"
                                         onClick={() => handleAddToCart(product)} // Add the item to the cart
                                     />
+                                    {notification && (
+          <div className="fixed top-1/4 right-5 bg-green-500 text-white text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out">
+            {notification}
+          </div>
+        )}
                                 </div>
                             </div>
                         ))

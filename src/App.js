@@ -29,17 +29,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
   const [role, setRole] = useState(null);
 
-  // const addToCart = (product, quantity) => {
-  //   setCart((prevCart) => {
-  //     const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
-  //     if (existingProductIndex >= 0) {
-  //       const updatedCart = [...prevCart];
-  //       updatedCart[existingProductIndex].quantity += quantity;
-  //       return updatedCart;
-  //     }
-  //     return [...prevCart, { ...product, quantity }];
-  //   });
-  // };
+  // Function to add an item to the cart
   const addToCart = (productToAdd) => {
     setCart((prevCart) => {
       const existingProductIndex = prevCart.findIndex((item) => item.id === productToAdd.id);
@@ -51,9 +41,19 @@ const App = () => {
       return [...prevCart, productToAdd]; // productToAdd already includes quantity
     });
   };
-  
-  const contextValue = { basename: 'my-base', cart, addToCart };
 
+  // Function to remove an item from the cart
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  // Context value including cart state and actions
+  const contextValue = {
+    basename: 'my-base',
+    cart,
+    addToCart,
+    removeFromCart, // Add removeFromCart to the context
+  };
 
   // Check for User Role using JWT
   useEffect(() => {
@@ -87,8 +87,8 @@ const App = () => {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/return" element={<ReturnPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
-            <Route path="/all-categories" element={<CategoriesPage/>} />
-           <Route path="/category/:categoryName" element={<CategoryDetailPage/>} />
+            <Route path="/all-categories" element={<CategoriesPage />} />
+            <Route path="/category/:categoryName" element={<CategoryDetailPage />} />
           </Routes>
         </Suspense>
         <Footer />

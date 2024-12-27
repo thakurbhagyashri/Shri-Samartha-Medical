@@ -6,10 +6,7 @@ export const MyContext = createContext();
 
 // Create the provider
 export const MyProvider = ({ children }) => {
-  const [cart, setCart] = useState([
-    { id: 1, name: "Item 1", price: 100, quantity: 1, imageUrl: "https://via.placeholder.com/150" },
-    { id: 2, name: "Item 2", price: 200, quantity: 2, imageUrl: "https://via.placeholder.com/150" },
-  ]);
+  const [cart, setCart] = useState([]);
 
   // Function to update quantity
   const updateQuantity = (id, newQuantity) => {
