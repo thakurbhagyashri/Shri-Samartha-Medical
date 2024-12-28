@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { MyContext } from '../MyContext';  // Import MyContext
-import { Link } from "react-router-dom";
 import { FaTrashAlt } from 'react-icons/fa'; // Import the trash icon from React Icons
+import { Link } from "react-router-dom";
+import { MyContext } from '../MyContext'; // Import MyContext
 
 const CartList = () => {
   // const { cart = [], removeFromCart } = useContext(MyContext);  // Destructure removeFromCart from MyContext
@@ -36,7 +36,7 @@ const CartList = () => {
   if (updatedCart.length === 0) {
     console.log("Cart is empty"); // Log if the cart is empty
     return (
-      <div className="cart-page p-6">
+      <div className="cart-page p-6 font-merriWeather text-center">
         <h2 className="text-2xl font-semibold mb-4">Your Cart</h2>
         <p className="m-4">Your cart is currently empty.</p>
         <Link to="/all-categories" className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 m-4">
@@ -47,7 +47,7 @@ const CartList = () => {
   }
 
   return (
-    <div className="cart-list w-full max-w-7xl mx-auto px-4 py-6">
+    <div className="cart-list w-full max-w-7xl mx-auto px-4 py-6 font-merriWeather">
       <h2 className="text-3xl font-bold mb-6 text-center">Your Cart</h2>
 
       {updatedCart.length === 0 ? (
@@ -58,8 +58,8 @@ const CartList = () => {
           <div className="flex items-center font-bold border-b py-3 text-left">
             <div className="w-1/6">Image</div>
             <div className="w-2/6">Name</div>
-            <div className="w-1/6">Quantity</div>
             <div className="w-1/6">Price</div>
+            <div className="w-1/6">Quantity</div>
             <div className="w-1/6">Total</div>
             <div className="w-1/6">Action</div> {/* New Column for Delete Button */}
           </div>
@@ -81,7 +81,7 @@ const CartList = () => {
 
               {/* Product Name */}
               <Link to={`/product/${item.id}`} className="w-2/6">
-                <h3 className="text-lg font-semibold">{item.name}</h3>
+                <h3 className="text-lg font-semibold">{item.medicineName}</h3>
               </Link>
 
               {/* Price */}

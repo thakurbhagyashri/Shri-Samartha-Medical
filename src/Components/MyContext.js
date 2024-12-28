@@ -1,5 +1,5 @@
 // src/MyContext.js
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 // Create the context
 export const MyContext = createContext();
@@ -18,6 +18,18 @@ export const MyProvider = ({ children }) => {
       )
     );
   };
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + product.quantity }
+            : item
+        );
+      }
+    });
+  };
 
   // Function to remove item from the cart
   const removeFromCart = (id) => {
@@ -26,13 +38,13 @@ export const MyProvider = ({ children }) => {
   };
 
   return (
-    <MyContext.Provider value={{ cart, updateQuantity, removeFromCart }}>
+    <MyContext.Provider
+      value={{ cart, updateQuantity, removeFromCart, addToCart }}
+    >
       {children}
     </MyContext.Provider>
   );
 };
-
-
 
 // import React, { createContext, useState, useEffect } from 'react';
 
@@ -94,4 +106,3 @@ export const MyProvider = ({ children }) => {
 //         </MyContext.Provider>
 //     );
 // };
-

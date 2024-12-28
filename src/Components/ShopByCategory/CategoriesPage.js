@@ -24,7 +24,7 @@ const CategoryPage = () => {
   return (
     <div className="flex">
       {/* Left-side Category Navigation */}
-      <aside className="w-1/6 bg-[#e1e1e1] p-4 font-merriWeather ">
+      <aside className="w-1/6 bg-[#e1e1e1] p-4 font-fira ">
         <h3 className="text-2xl font-semibold mb-4">Categories</h3>
         <ul>
           {categories.map((category) => (

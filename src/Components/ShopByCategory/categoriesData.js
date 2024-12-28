@@ -198,7 +198,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 65, name: 'Skin Care Product 2',
@@ -207,7 +207,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 66, name: 'Skin Care Product 3',
@@ -216,7 +216,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       // Add more products as needed
     ]
@@ -235,7 +235,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 75, name: 'Men Grooming Product 2',
@@ -244,7 +244,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 76, name: 'Men Grooming Product 3',
@@ -253,7 +253,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       // Add more products as needed
     ]
@@ -272,7 +272,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 85, name: 'Feminine Hygiene Product 2',
@@ -281,7 +281,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 86, name: 'Feminine Hygiene Product 3',
@@ -290,7 +290,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 87, name: 'Feminine Hygiene Product 4',
@@ -299,7 +299,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 88, name: 'Feminine Hygiene Product 5',
@@ -308,7 +308,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       {
         id: 89, name: 'Feminine Hygiene Product 6',
@@ -317,7 +317,7 @@ export const categoriesData = [
         description: 'Best personal care items for self-care',
         rating: 3,
         price: 200,
-        quantity: 8
+        quantity: 1
       },
       // Add more products as needed
     ]
