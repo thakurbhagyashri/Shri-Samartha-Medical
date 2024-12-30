@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GooglePay from '../../Images/GooglePay.png';
-import Paytm from '../../Images/paytm.png';
-import Phonpe from '../../Images/phonepe.png';
-import Simpl from '../../Images/Simpl.png';
-import Visa from '../../Images/Visa.png';
+
+
+
 import Call from "../Footer/Call.svg";
 import facebook from "../Footer/facebook.svg";
 import Instagram from "../Footer/Instagram.svg";
@@ -16,63 +14,63 @@ import './Footer.css'; // Assuming you will create a separate CSS file for the f
 
 const Footer = () => {
   return (
-    <footer className="footer font-fira bg-[#eef4ff]">
-      <div className="footer-container">
+    <footer className="footer font-fira bg-[#eef4ff] ">
+      <div className="footer-container ">
         {/* Company Section */}
-        <div className="footer-section">
-          <h3 className='font-bold'>COMPANY</h3>
-          <ul>
-            <li><Link to="/about">About Pharmaceutical</Link></li>
-            <li><Link to="/contact">Customer Speak</Link></li>
-            <li><Link to="/news">In the News</Link></li>
-            <li><Link to="/careers">Career</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+        <div className="footer-section ">
+          <h3 className='font-bold  hover:underline hover:text-2xl text-blue-500 '>COMPANY</h3>
+          <ul >
+            <li className='hover:font-bold'><Link to="/about">About Pharmaceutical</Link></li>
+            <li className='hover:font-bold'><Link to="/contact">Customer Speak</Link></li>
+            <li className='hover:font-bold'><Link to="/news">In the News</Link></li>
+            <li className='hover:font-bold'><Link to="/careers">Career</Link></li>
+            <li className='hover:font-bold'><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
         {/* Policies Section */}
         <div className="footer-section">
-          <h3 className='font-bold'>OUR POLOCIES</h3>
+          <h3 className='font-bold  hover:underline hover:text-2xl text-blue-500'>OUR POLOCIES</h3>
           <ul>
-            <li><Link to="/terms">Terms and Conditions</Link></li>
-            <li><Link to="/privacy">Privacy Policy</Link></li>
-            <li><Link to="/fees-policy">Fees and Payments Policies</Link></li>
-            <li><Link to="/shipping-policy">Shipping and Delivery Policies</Link></li>
-            <li><Link to="/return">Return, Refund and Cancellation Policies</Link></li>
-            <li><Link to="/editorial-policy">Editorial Policies</Link></li>
+            <li className='hover:font-bold'><Link to="/terms">Terms and Conditions</Link></li>
+            <li className='hover:font-bold'><Link to="/privacy">Privacy Policy</Link></li>
+            <li className='hover:font-bold'><Link to="/fees-policy">Fees and Payments Policies</Link></li>
+            <li className='hover:font-bold'><Link to="/shipping-policy">Shipping and Delivery Policies</Link></li>
+            <li className='hover:font-bold'><Link to="/return">Return, Refund and Cancellation Policies</Link></li>
+            <li className='hover:font-bold'><Link to="/editorial-policy">Editorial Policies</Link></li>
           </ul>
         </div>
 
         {/* Shopping Section */}
         <div className="footer-section">
-          <h3>SHOPPING</h3>
+          <h3 className=' hover:underline hover:text-2xl text-blue-500 '>SHOPPING</h3>
           <ul>
-            <li><a href="#">Browse by A-Z</a></li>
-            <li><a href="#">Browse by Manufacturers</a></li>
-            <li><a href="#">Health Articles</a></li>
-            <li><a href="#">Offers / Coupons</a></li>
-            <li><a href="#">FAQs</a></li>
+            <li className='hover:font-bold'><a href="#">Browse by A-Z</a></li>
+            <li className='hover:font-bold'><a href="#">Browse by Manufacturers</a></li>
+            <li className='hover:font-bold'><a href="#">Health Articles</a></li>
+            <li className='hover:font-bold'><a href="#">Offers / Coupons</a></li>
+            <li className='hover:font-bold'><a href="#">FAQs</a></li>
           </ul>
         </div>
 
         {/* Popular Categories Section */}
         <div className="footer-section">
-          <h3>POPULAR CATEGORIES</h3>
+          <h3 className=' hover:underline hover:text-2xl text-blue-500'>POPULAR CATEGORIES</h3>
           <ul>
-            <li><a href="#">Fitness</a></li>
-            <li><a href="#">Devices</a></li>
-            <li><a href="#">Personal Care</a></li>
-            <li><a href="#">Ayurveda</a></li>
-            <li><a href="#">Homeopathy</a></li>
-            <li><a href="#">Treatments</a></li>
-            <li><a href="#">Sexual Wellness</a></li>
-            <li><a href="#">Surgicals</a></li>
+            <li className='hover:font-bold'><a href="#">Fitness</a></li>
+            <li className='hover:font-bold'><a href="#">Devices</a></li>
+            <li className='hover:font-bold'><a href="#">Personal Care</a></li>
+            <li className='hover:font-bold'><a href="#">Ayurveda</a></li>
+            <li className='hover:font-bold'><a href="#">Homeopathy</a></li>
+            <li className='hover:font-bold'><a href="#">Treatments</a></li>
+            <li className='hover:font-bold'><a href="#">Sexual Wellness</a></li>
+            <li className='hover:font-bold'><a href="#">Surgicals</a></li>
           </ul>
         </div>
 
         {/* Social Media Section */}
         <div className="footer-section">
-          <h3>SOCIAL</h3>
+          <h3 className='hover:underline hover:text-2xl text-blue-500 '>SOCIAL</h3>
           <ul>
             <li><a href="#">Patients Alike</a></li>
             <li className="flex flex-row">
@@ -82,7 +80,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2"
                         />
-              <a href="#">Facebook</a></li>
+              <a href="https://facebook.com" className='hover:font-bold'>Facebook</a></li>
 
             <li className="flex flex-row">
             <img
@@ -91,7 +89,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2"
                         />
-              <a href="#">Twitter</a></li>
+              <a href="https://twitter.com" className='hover:font-bold'>Twitter</a></li>
 
 
             <li className="flex flex-row">
@@ -101,7 +99,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2"
                         />
-              <a href="#">LinkedIn</a></li>
+              <a href="https://linkedin.com" className='hover:font-bold'>LinkedIn</a></li>
 
 
             <li className="flex flex-row">
@@ -111,7 +109,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2"
                         />
-              <a href="#">YouTube</a></li>
+              <a href="https://youtube.com" className='hover:font-bold'>YouTube</a></li>
 
 
             <li className="flex flex-row">
@@ -121,7 +119,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2"
                         />
-              <a href="#">Instagram</a></li><li className="flex flex-row">
+              <a href="https://instagram.com" className='hover:font-bold'>Instagram</a></li><li className="flex flex-row">
 
             <img
                             src={WhatsApp}
@@ -129,7 +127,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2"
                         />
-              <a href="#">WhatsApp</a></li><li className="flex flex-row">
+              <a href="https://wa.me/919876543210 " className='hover:font-bold'>WhatsApp</a></li><li className="flex flex-row ">
 
             <img
                             src={Call}
@@ -137,7 +135,7 @@ const Footer = () => {
                             style={{ height:"10%", width: "10%" }}
                             className="mr-2 bg-slate-300 rounded-md"
                         />
-              <a href="#">Call Now</a></li>
+              <a href="#" className='hover:font-bold'>Call Now</a></li>
           
           </ul>
         </div>
@@ -161,7 +159,7 @@ const Footer = () => {
         </a>
         <a href="https://www.getsimpl.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
             <i className="fas fa-credit-card" style={{ fontSize: '48px', color: '#00C4CC' }}></i>
-            <span className="tooltip">Simpl</span>
+            <span className="tooltip ">Simpl</span>
         </a>
         <a href="https://www.visa.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
             <i className="fab fa-cc-visa" style={{ fontSize: '48px', color: '#1A1F71' }}></i>
