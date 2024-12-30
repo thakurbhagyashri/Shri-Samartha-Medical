@@ -142,19 +142,35 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+{/* Our Payment Partners Section */}
+<div className="payment-partners">
+<h2 className="payment-partners-title">Our Payment Partners</h2>
 
-            {/* Our Payment Partners Section */}
-        <div className="payment-partners">
-            <h2>Our Payment Partners</h2>
-            <div className="payment-logos">
-            <img src={GooglePay} alt="Google Pay" />
-            <img src={Phonpe} alt="PhonePe"/>
-            <img src={Paytm} alt="Paytm" /> 
-            <img src={Simpl} alt="Simpl" />
-            <img src={Visa} alt="Visa" />
-            {/* Add more logos as required */}
-            </div>
-        </div>
+    <div className="payment-logos">
+        <a href="https://pay.google.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
+            <i className="fab fa-google-pay" style={{ fontSize: '48px', color: '#4285F4' }}></i>
+            <span className="tooltip">Google Pay</span>
+        </a>
+        <a href="https://www.phonepe.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
+            <i className="fab fa-cc-mastercard" style={{ fontSize: '48px', color: '#2196F3' }}></i>
+            <span className="tooltip">PhonePe</span>
+        </a>
+        <a href="https://paytm.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
+            <i className="fab fa-cc-visa" style={{ fontSize: '48px', color: '#00B2A9' }}></i>
+            <span className="tooltip">Paytm</span>
+        </a>
+        <a href="https://www.getsimpl.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
+            <i className="fas fa-credit-card" style={{ fontSize: '48px', color: '#00C4CC' }}></i>
+            <span className="tooltip">Simpl</span>
+        </a>
+        <a href="https://www.visa.com/" target="_blank" rel="noopener noreferrer" className="payment-icon">
+            <i className="fab fa-cc-visa" style={{ fontSize: '48px', color: '#1A1F71' }}></i>
+            <span className="tooltip">Visa</span>
+        </a>
+    </div>
+</div>
+
+
 
         {/* Copyright Section */}
         <div className="copyright">
