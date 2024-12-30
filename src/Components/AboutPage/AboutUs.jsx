@@ -25,9 +25,14 @@ const AboutUs = () => {
       <div className="relative z-10">
         {/* Text over Image */}
         <div className="text-center px-6 py-12 sm:py-20">
-          <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-shadow-md">
+          {/* <h1 className="text-5xl sm:text-6xl font-extrabold mb-6 text-shadow-md">
             Welcome to Shri Samarth Pharmaceuticals
-          </h1>
+          </h1> */}
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-shadow-md text-center text-white mb-12 relative  tracking-wider cursor-pointer border-b-2 border-transparent group">
+          Welcome to Shri Samarth Pharmaceuticals
+    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#007bff] scale-x-0 group-hover:scale-x-100 transition-all duration-300 origin-bottom-right"></span>
+</h1>
+
           <p className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto text-shadow-md">
             We provide trusted healthcare solutions with a focus on quality, care, and reliability. Your health, our priority.
           </p>
