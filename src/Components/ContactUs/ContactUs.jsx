@@ -73,7 +73,7 @@ const Contact = () => {
       </div>
 
       {/* Footer */}
-      <Footer />
+     
     </div>
   );
 };
