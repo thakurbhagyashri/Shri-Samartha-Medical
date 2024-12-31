@@ -9,7 +9,7 @@ const SideHeader = () => {
           <li className="p-3 hover:bg-gray-700 cursor-pointer text-green-400">Dashboard</li>
           <li className="p-3 hover:bg-gray-700 cursor-pointer text-green-400">Products</li>
           <li className="p-3 hover:bg-gray-700 cursor-pointer">Orders</li>
-          <li className="p-3 hover:bg-gray-700 cursor-pointer">Users</li>
+          <li className="p-3 hover:bg-gray-700 cursor-pointer">employee</li>
           <li className="p-3 hover:bg-gray-700 cursor-pointer mt-20">Logout</li>
         </ul>
       </aside>

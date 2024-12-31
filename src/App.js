@@ -1,6 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import React, { Suspense, useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import AddProductPage from './Components/Admin/AddProduct';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import { MyContext } from './Components/MyContext';
@@ -88,6 +89,7 @@ const App = () => {
             <Route path="/return" element={<ReturnPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/all-categories" element={<CategoriesPage />} />
+            <Route path="/add" element={<AddProductPage />} />
             <Route path="/category/:categoryName" element={<CategoryDetailPage />} />
           </Routes>
         </Suspense>

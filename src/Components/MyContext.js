@@ -18,20 +18,47 @@ export const MyProvider = ({ children }) => {
       )
     );
   };
+  // const addToCart = (product) => {
+  //   setCart((prevCart) => {
+  //     const existingProduct = prevCart.find((item) => item.id === product.id);
+  //     if (existingProduct) {
+  //       return prevCart.map((item) =>
+  //         item.id === product.id
+  //           ? { ...item, quantity: item.quantity + product.quantity }
+  //           : item
+  //       );
+  //     }
+  //   });
+  // };
+
+  // Function to remove item from the cart
+  
   const addToCart = (product) => {
+    // Set the quantity to a fixed value, for example, 1
+    const quantity = 1;  // You can replace this with any dynamic value if needed
+  
+    // Create a new product object with the desired quantity
+    const productWithUpdatedQuantity = { ...product, quantity };
+  
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
+  
       if (existingProduct) {
+        // If product already exists, increase the quantity by the new value (1)
         return prevCart.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + product.quantity }
+            ? { ...item, quantity: item.quantity + quantity }
             : item
         );
+      } else {
+        // If product doesn't exist in the cart, add it with the new quantity
+        return [...prevCart, productWithUpdatedQuantity];
       }
     });
   };
+  
+  
 
-  // Function to remove item from the cart
   const removeFromCart = (id) => {
     console.log("removeFromCart called with id:", id); // Debugging log
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));

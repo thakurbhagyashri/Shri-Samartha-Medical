@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <>
       <header className="header bg-gradient-to-r from-[#3c8b59] to-[#30749c]">
-        <div className="flex justify-between items-center px-6 py-2 max-w-screen-xl mx-auto">
+        <div className="flex justify-between items-center px-6 max-w-screen-xl mx-auto">
           {/* Logo */}
           <div className="logo-container">
             <img

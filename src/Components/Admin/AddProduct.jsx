@@ -14,7 +14,7 @@ const AddProductPage = () => {
     discountMrp: "",
     description: "",
     comments: "",
-    category: "",
+    categories: "",
   });
 
   const [message, setMessage] = useState("");
@@ -27,32 +27,92 @@ const AddProductPage = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const data = new FormData();
+  //   Object.keys(formData).forEach((key) => {
+  //     data.append(key, formData[key]);
+  //   });
+  //   const token = localStorage.getItem('token');
+
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:8080/admin/add-product",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           'Authorization': `Bearer ${token}`,
+  //           'Content-Type': 'application/json',
+  //       },
+  //         body: data,
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       setMessage("Product added successfully!");
+  //       setFormData({
+  //         image: "null",
+  //         quantity: "",
+  //         price: "",
+  //         discount: "",
+  //         companyName: "",
+  //         medicineName: "",
+  //         minAge: "",
+  //         maxAge: "",
+  //         realMrp: "",
+  //         discountMrp: "",
+  //         category: "",
+  //         description: "",
+  //         comments: ""
+          
+  //       });
+  //     } else {
+  //       setMessage("Failed to add product. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     setMessage("Error occurred: " + error.message);
+  //   }
+  // };
+   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const data = new FormData();
-    Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
-    const token = localStorage.getItem('token');
-
+  
+    // Append all fields to FormData
+    data.append("imageName", formData.imageName || ""); // Replace with actual image name if required
+    data.append("imageType", formData.imageType || ""); // Replace with actual image type if required
+    data.append("imageData", formData.image); // This should be the file object
+    data.append("quantity", formData.quantity);
+    data.append("price", formData.price);
+    data.append("discount", formData.discount);
+    data.append("companyName", formData.companyName);
+    data.append("medicineName", formData.medicineName);
+    data.append("minAge", formData.minAge);
+    data.append("maxAge", formData.maxAge);
+    data.append("realMrp", formData.realMrp);
+    data.append("discountMrp", formData.discountMrp);
+    data.append("prodDescription", formData.description);
+    data.append("comments", formData.comments);
+  
+    const token = localStorage.getItem("token");
+  
     try {
-      const response = await fetch(
-        "http://localhost:8080/product/add",
-        {
-          method: "POST",
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
+      const response = await fetch("http://localhost:8080/admin/add-product", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, // Include only Authorization header
         },
-          body: data,
-        }
-      );
-
+        body: data, // Send FormData as the request body
+      });
+  
       if (response.ok) {
         setMessage("Product added successfully!");
         setFormData({
-          image: "null",
+          imageName: "",
+          imageType: "",
+          image: null,
           quantity: "",
           price: "",
           discount: "",
@@ -62,19 +122,20 @@ const AddProductPage = () => {
           maxAge: "",
           realMrp: "",
           discountMrp: "",
-          category: "",
+          categories:"",
           description: "",
-          comments: ""
-          
+          comments: "",
         });
       } else {
-        setMessage("Failed to add product. Please try again.");
+        const errorData = await response.json();
+        setMessage(`Failed to add product. Error: ${errorData.message || "Unknown error"}`);
       }
     } catch (error) {
       setMessage("Error occurred: " + error.message);
     }
   };
-
+  
+  
   return (
 
     <div>
@@ -234,12 +295,12 @@ const AddProductPage = () => {
               </div>
               <div>
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Category
+                Categories
                 </label>
                 <input
                   type="text"
-                  name="category"
-                  value={formData.category}
+                  name="categories"
+                  value={formData.categories}
                   onChange={handleChange}
                   className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder=""

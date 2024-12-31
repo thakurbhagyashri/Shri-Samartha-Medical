@@ -47,9 +47,10 @@
   }
   
   .submenu a:hover {
-    background-color: #8EC93E;
+    background-color: #32798c;
     color: white;
     font-weight: bold;
+    font-family:"Robobto slab", serif;
   }
   
   /* Show submenu on hover */

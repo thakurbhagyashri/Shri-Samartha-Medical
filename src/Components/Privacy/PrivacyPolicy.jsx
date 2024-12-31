@@ -1,13 +1,12 @@
 import React from "react";
-import Footer from "../Footer/Footer";
-import { FaShieldAlt, FaLock, FaUserSecret, FaCookieBite, FaEnvelope } from "react-icons/fa";
+import { FaCookieBite, FaEnvelope, FaLock, FaShieldAlt, FaUserSecret } from "react-icons/fa";
 import './privacyPolicy.css';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="bg-gray-50 font-roboto min-h-screen p-12">
+    <div className="bg-gray-50 font-merriWeather min-h-screen p-12">
       {/* Header Section */}
-      <header className="text-center mb-16">
+      <header className="text-center mb-16 font-merriWeather">
         <h1 className=" parivacy-policy ">Privacy Policy</h1>
         <p className="text-lg text-gray-600">
           Understand how we protect your privacy and handle your personal data.
