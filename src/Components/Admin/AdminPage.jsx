@@ -27,7 +27,7 @@ const AdminPage = () => {
           <li className="p-3 text-green-400">Dashboard</li>
           <li className="p-3 text-green-400">Products</li>
           <li className="p-3">Orders</li>
-          <li className="p-3">Users</li>
+          <li className="p-3">employee</li>
           <li className="p-3">Logout</li>
         </ul>
       </div>

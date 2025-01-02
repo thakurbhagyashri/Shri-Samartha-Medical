@@ -185,7 +185,7 @@ const LoginPage = () => {
 
   // Hardcoded credentials for admin
   const adminUsername = "admin";
-  const adminPassword = "admin123";
+  const adminPassword = "admin";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

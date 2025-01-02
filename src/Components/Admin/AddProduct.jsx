@@ -14,7 +14,7 @@ const AddProductPage = () => {
     discountMrp: "",
     description: "",
     comments: "",
-    category: "",
+    categories: "",
   });
 
   const [message, setMessage] = useState("");
@@ -27,54 +27,121 @@ const AddProductPage = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const data = new FormData();
+  //   Object.keys(formData).forEach((key) => {
+  //     data.append(key, formData[key]);
+  //   });
+  //   const token = localStorage.getItem('token');
+
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:8080/admin/add-product",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           'Authorization': `Bearer ${token}`,
+  //           'Content-Type': 'application/json',
+  //       },
+  //         body: data,
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       setMessage("Product added successfully!");
+  //       setFormData({
+  //         image: "null",
+  //         quantity: "",
+  //         price: "",
+  //         discount: "",
+  //         companyName: "",
+  //         medicineName: "",
+  //         minAge: "",
+  //         maxAge: "",
+  //         realMrp: "",
+  //         discountMrp: "",
+  //         category: "",
+  //         description: "",
+  //         comments: ""
+          
+  //       });
+  //     } else {
+  //       setMessage("Failed to add product. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     setMessage("Error occurred: " + error.message);
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Prepare productCatalogueDTO as JSON
+    const productCatalogueDTO = {
+        imageName: formData.imageName || "",
+        imageType: formData.imageType || "",
+        quantity: formData.quantity,
+        price: formData.price,
+        discount: formData.discount,
+        companyName: formData.companyName,
+        medicineName: formData.medicineName,
+        minAge: formData.minAge,
+        maxAge: formData.maxAge,
+        realMrp: formData.realMrp,
+        discountMrp: formData.discountMrp,
+        prodDescription: formData.description,
+        comments: formData.comments,
+        categories: formData.categories.split(","), // Convert categories to an array
+    };
+
     const data = new FormData();
-    Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
-    });
-    const token = localStorage.getItem('token');
+    data.append("productCatlogueDTO", new Blob([JSON.stringify(productCatalogueDTO)], { type: "application/json" }));
+    data.append("image", formData.image); // Assuming formData.image is a File object
+
+    const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/product/add",
-        {
-          method: "POST",
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-          body: data,
-        }
-      );
-
-      if (response.ok) {
-        setMessage("Product added successfully!");
-        setFormData({
-          image: "null",
-          quantity: "",
-          price: "",
-          discount: "",
-          companyName: "",
-          medicineName: "",
-          minAge: "",
-          maxAge: "",
-          realMrp: "",
-          discountMrp: "",
-          category: "",
-          description: "",
-          comments: ""
-          
+        const response = await fetch("http://localhost:8080/admin/add-product", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`, // Don't set Content-Type manually
+            },
+            body: data,
         });
-      } else {
-        setMessage("Failed to add product. Please try again.");
-      }
-    } catch (error) {
-      setMessage("Error occurred: " + error.message);
-    }
-  };
 
+        if (response.ok) {
+            setMessage("Product added successfully!");
+            setFormData({
+                imageName: "",
+                imageType: "",
+                image: null,
+                quantity: "",
+                price: "",
+                discount: "",
+                companyName: "",
+                medicineName: "",
+                minAge: "",
+                maxAge: "",
+                realMrp: "",
+                discountMrp: "",
+                categories: "",
+                description: "",
+                comments: "",
+            });
+        } else {
+            const errorData = await response.json();
+            setMessage(`Failed to add product. Error: ${errorData.message || "Unknown error"}`);
+        }
+    } catch (error) {
+        setMessage("Error occurred: " + error.message);
+    }
+};
+
+
+  
   return (
 
     <div>
@@ -234,12 +301,12 @@ const AddProductPage = () => {
               </div>
               <div>
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Category
+                Categories
                 </label>
                 <input
                   type="text"
-                  name="category"
-                  value={formData.category}
+                  name="categories"
+                  value={formData.categories}
                   onChange={handleChange}
                   className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder=""

@@ -228,7 +228,7 @@
 // export default CategoryDetailPage;
 
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import AddToCartButton from "../Button/AddToCart";
 import { MyContext } from "../MyContext"; // Replace with the correct path to your context
 
@@ -240,6 +240,7 @@ const CategoryDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(MyContext);
   const [notification, setNotification] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadCategoryData = async () => {
@@ -251,7 +252,7 @@ const CategoryDetailPage = () => {
         if (!token) {
           throw new Error("Authentication token not found.");
         }
-        console.log(token);
+
         // Make the API call with the Authorization header
         const response = await fetch(
           `http://localhost:8080/product/category?categories=${categoryName}`,
@@ -269,17 +270,22 @@ const CategoryDetailPage = () => {
         }
 
         const data = await response.json();
-        console.log(data);
 
         // Convert image bytes to Base64
         const categoryWithImages = {
           name: categoryName,
-          products: data.map((product) => ({
-            ...product,
-            imageUrl: product.imageData
-              ? `data:${product.imageType};base64,${product.imageData}`
-              : null, // Handle cases where image data is null
-          })),
+          products: data.map((product) => {
+            let imageUrl = null;
+            if (product.imageData) {
+              const binaryString = atob(product.imageData); // Decode Base64 (if needed)
+              const base64String = btoa(binaryString); // Encode to Base64 (if needed)
+              imageUrl = `data:${product.imageType};base64,${base64String}`;
+            }
+            return {
+              ...product,
+              imageUrl,
+            };
+          }),
         };
 
         setCategory(categoryWithImages);
@@ -318,7 +324,7 @@ const CategoryDetailPage = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="font-fira text-center text-4xl p-8 m-5">Loading...</div>;
   }
 
   if (!category) {
@@ -345,6 +351,10 @@ const CategoryDetailPage = () => {
     addToCart(product);
     showNotification("Product added to cart successfully");
   };
+
+  const handleProductDetails = (productId) => {
+    navigate(`/product/${productId}`);
+  }
 
   return (
     <div className="flex">
@@ -375,9 +385,9 @@ const CategoryDetailPage = () => {
             onChange={(e) => setPriceFilter(e.target.value)}
           >
             <option value="all">All Price Ranges</option>
-            <option value="low">Under $20</option>
-            <option value="medium">$20 - $50</option>
-            <option value="high">Over $50</option>
+            <option value="low">Under ₹500</option>
+            <option value="medium">₹500 - ₹1000</option>
+            <option value="high">Over ₹1000</option>
           </select>
         </div>
 
@@ -402,15 +412,23 @@ const CategoryDetailPage = () => {
                   )}
                 </div>
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold">
+                  <h3 className="text-lg font-semibold cursor-pointer"
+                   onClick={() => handleProductDetails(product.id)}
+                  >
                     {product.medicineName || "Unnamed Product"}
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    {product.prodDescription || "No description available"}
+                  <p className="text-sm text-orange-500 hover:text-orange-700"> Company:
+                  {product.companyName|| "No price available"}
                   </p>
-                  <p className="text-sm font-medium">
-                    Price: ${product.price || "N/A"}
+                  <p className="text-sm text-orange-500 hover:text-orange-700"> Price:
+                  ₹{product.price|| "No price available"}
                   </p>
+                 
+                  {/* <p
+                    dangerouslySetInnerHTML={{
+                      __html: product.prodDescription.replace(/\n/g, "<br />"),
+                    }}
+                  ></p> */}
                   {/* <p className="text-sm font-medium">Quantity: {product.quantity || 'N/A'}</p> */}
                   <AddToCartButton
                     text="Add to Cart"
