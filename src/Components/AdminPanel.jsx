@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
-  const [products, setProducts] = useState([
-    { id: 1, name: "Product Name", brand: "Brand Name", category: "Shampoo, Medicine", price: "1000/-" },
-    { id: 2, name: "Product Name", brand: "Brand Name", category: "Shampoo, Medicine", price: "1000/-" },
-  ]);
+  const [products, setProducts] = useState([]);
   
   const navigate= useNavigate();
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control modal visibility
+  const [productToDelete, setProductToDelete] = useState(null); // State to hold the product id to delete
 
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState("");
@@ -42,23 +42,142 @@ const AdminPanel = () => {
     };
   }, [showModal]);
 
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const token = localStorage.getItem("token"); // Retrieve token from local storage
+      if (!token) {
+        alert("No token found. Please log in.");
+        return;
+      }
+
+      const url = "http://localhost:8080/product/";
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+          },
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          setProducts(result);
+          console.log(result);
+           // Assuming response contains the products list
+        } else {
+          const error = await response.json();
+          alert(`Error fetching products: ${error.message || "Unknown error"}`);
+        }
+      } catch (error) {
+        alert(`Error: ${error.message || "Failed to connect to the server."}`);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   // Handle Add Product
   const handleAddProduct = () => {
    navigate("/add")
   };
 
   // Handle Edit Product
-  const handleEditProduct = (product) => {
-    setCurrentProduct(product);
-    setModalType("edit");
-    setShowModal(true);
+ 
+
+
+  const handleUpdateProduct = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("No token found. Please log in.");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append("productCatlogueDTO", JSON.stringify({
+      medicineName: currentProduct.medicineName,
+      companyName: currentProduct.companyName,
+      categories: currentProduct.categories.split(","), // Ensure categories are split correctly
+      price: currentProduct.price,
+      quantity: currentProduct.quantity,
+      discount: currentProduct.discount,
+      minAge: currentProduct.minAge,
+      maxAge: currentProduct.maxAge,
+      realMrp: currentProduct.realMrp,
+      discountMrp: currentProduct.discountMrp,
+      prodDescription: currentProduct.prodDescription,
+      comments: currentProduct.comments,
+    }));
+  
+    if (currentProduct.image) {
+      formData.append("imageFile", currentProduct.image);
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:8080/admin/update-product/${currentProduct.id}`, {
+        method: "PUT", // Correct PUT method for updating an existing product
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        alert("Product updated successfully!");
+        // Update the product in the products list
+        setProducts(products.map((product) =>
+          product.id === currentProduct.id ? result : product
+        ));
+        setShowModal(false); // Close the modal
+      } else {
+        const error = await response.json();
+        alert(`Error updating product: ${error.message || "Unknown error"}`);
+      }
+    } catch (error) {
+      alert(`Error: ${error.message || "Failed to connect to the server."}`);
+    }
   };
+  
+  
+
 
   // Handle Delete Product
-  const handleDeleteProduct = (id) => {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
+  const handleDeleteProduct = async (id) => {
+    const token = localStorage.getItem("token"); // Retrieve token from local storage
+    if (!token) {
+      alert("No token found. Please log in.");
+      return;
+    }
+  
+    const confirmDelete = window.confirm("Are you sure you want to delete this product?");
+    if (!confirmDelete) {
+      return; // Do nothing if the user cancels the delete action
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:8080/admin/delete-product/${id}`, {
+        method: "DELETE", // Using DELETE method for deleting a product
+        headers: {
+          Authorization: `Bearer ${token}`, // Send token in Authorization header
+        },
+      });
+  
+      if (response.ok) {
+        alert("Product deleted successfully!");
+        // Update the products list by filtering out the deleted product
+        setProducts(products.filter((product) => product.id !== id));
+      } else {
+        const error = await response.json();
+        alert(`Error deleting product: ${error.message || "Unknown error"}`);
+      }
+    } catch (error) {
+      alert(`Error: ${error.message || "Failed to connect to the server."}`);
+    }
   };
+  
 
   // Handle Save Product (Add/Edit)
   // const handleSaveProduct = () => {
@@ -81,7 +200,7 @@ const AdminPanel = () => {
       return;
     }
   
-    const url = "http://localhost:8080/admin/add-product";
+    const url = "http://localhost:8080/product/";
   
     const productData = {
       name: currentProduct.name,
@@ -103,12 +222,12 @@ const AdminPanel = () => {
   
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
-        body: JSON.stringify(productData),
+       
       });
   
       if (response.ok) {
@@ -136,7 +255,7 @@ const AdminPanel = () => {
           <li className="text-xl text-gray-800 hover:text-blue-500 p-3">Dashboard</li>
           <li className="text-xl text-gray-800 hover:text-blue-500 p-3">Products</li>
           <li className="text-xl text-gray-800 hover:text-blue-500 p-3">Orders</li>
-          <li className="text-xl text-gray-800 hover:text-blue-500 p-3">employee</li>
+          <li className="text-xl text-gray-800 hover:text-blue-500 p-3">Employee</li>
         </ul>
           <div className="text-xl text-gray-800 hover:text-blue-500 p-8 my-4">Logout</div>
       </aside>
@@ -166,17 +285,30 @@ const AdminPanel = () => {
               className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4 mx-16"
             >
               <div className="flex space-x-10 items-center">
-                <div className="w-20 h-20 bg-gray-300 rounded"></div>
+                <div className=" bg-gray-300 rounded">
+                {product.imageData ? (
+            <img
+              src={`data:${product.imageType};base64,${product.imageData}`}
+              alt={product.imageName}
+              className="w-40 h-40 rounded-md object-cover"
+            />
+          ) : (
+            <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
+              Image Placeholder
+            </div>
+          )}
+                </div>
                 <div>
-                  <h3 className="font-bold text-xl">{product.name}</h3>
+                  <h3 className="font-bold text-lg">{product.medicineName}</h3>
+                  <h3 className="font-medium text-sm">{product.companyName}</h3>
                   <p className="text-sm text-gray-600">{product.brand}</p>
-                  <p className="text-sm text-gray-600">Categories {product.category}</p>
-                  <p className="text-gray-800 font-semibold mt-2">Price {product.price}</p>
+                  <p className="text-sm text-gray-600"> {product.categories && product.categories.join(", ")}</p>
+                  <p className=" text-sm text-gray-800 mt-2">Price ₹{product.price}/-</p>
                 </div>
               </div>
               <div className="flex space-x-4">
                 <button
-                  onClick={() => handleEditProduct(product)}
+                  onClick={() => handleUpdateProduct(product)}
                   className="bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500 transition-all"
                 >
                   Edit
