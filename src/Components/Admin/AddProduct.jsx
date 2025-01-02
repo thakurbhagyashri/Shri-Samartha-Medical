@@ -74,67 +74,73 @@ const AddProductPage = () => {
   //     setMessage("Error occurred: " + error.message);
   //   }
   // };
-   
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
+    // Prepare productCatalogueDTO as JSON
+    const productCatalogueDTO = {
+        imageName: formData.imageName || "",
+        imageType: formData.imageType || "",
+        quantity: formData.quantity,
+        price: formData.price,
+        discount: formData.discount,
+        companyName: formData.companyName,
+        medicineName: formData.medicineName,
+        minAge: formData.minAge,
+        maxAge: formData.maxAge,
+        realMrp: formData.realMrp,
+        discountMrp: formData.discountMrp,
+        prodDescription: formData.description,
+        comments: formData.comments,
+        categories: formData.categories.split(","), // Convert categories to an array
+    };
+
     const data = new FormData();
-  
-    // Append all fields to FormData
-    data.append("imageName", formData.imageName || ""); // Replace with actual image name if required
-    data.append("imageType", formData.imageType || ""); // Replace with actual image type if required
-    data.append("imageData", formData.image); // This should be the file object
-    data.append("quantity", formData.quantity);
-    data.append("price", formData.price);
-    data.append("discount", formData.discount);
-    data.append("companyName", formData.companyName);
-    data.append("medicineName", formData.medicineName);
-    data.append("minAge", formData.minAge);
-    data.append("maxAge", formData.maxAge);
-    data.append("realMrp", formData.realMrp);
-    data.append("discountMrp", formData.discountMrp);
-    data.append("prodDescription", formData.description);
-    data.append("comments", formData.comments);
-  
+    data.append("productCatlogueDTO", new Blob([JSON.stringify(productCatalogueDTO)], { type: "application/json" }));
+    data.append("image", formData.image); // Assuming formData.image is a File object
+
     const token = localStorage.getItem("token");
-  
+
     try {
-      const response = await fetch("http://localhost:8080/admin/add-product", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`, // Include only Authorization header
-        },
-        body: data, // Send FormData as the request body
-      });
-  
-      if (response.ok) {
-        setMessage("Product added successfully!");
-        setFormData({
-          imageName: "",
-          imageType: "",
-          image: null,
-          quantity: "",
-          price: "",
-          discount: "",
-          companyName: "",
-          medicineName: "",
-          minAge: "",
-          maxAge: "",
-          realMrp: "",
-          discountMrp: "",
-          categories:"",
-          description: "",
-          comments: "",
+        const response = await fetch("http://localhost:8080/admin/add-product", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`, // Don't set Content-Type manually
+            },
+            body: data,
         });
-      } else {
-        const errorData = await response.json();
-        setMessage(`Failed to add product. Error: ${errorData.message || "Unknown error"}`);
-      }
+
+        if (response.ok) {
+            setMessage("Product added successfully!");
+            setFormData({
+                imageName: "",
+                imageType: "",
+                image: null,
+                quantity: "",
+                price: "",
+                discount: "",
+                companyName: "",
+                medicineName: "",
+                minAge: "",
+                maxAge: "",
+                realMrp: "",
+                discountMrp: "",
+                categories: "",
+                description: "",
+                comments: "",
+            });
+        } else {
+            const errorData = await response.json();
+            setMessage(`Failed to add product. Error: ${errorData.message || "Unknown error"}`);
+        }
     } catch (error) {
-      setMessage("Error occurred: " + error.message);
+        setMessage("Error occurred: " + error.message);
     }
-  };
-  
+};
+
+
   
   return (
 

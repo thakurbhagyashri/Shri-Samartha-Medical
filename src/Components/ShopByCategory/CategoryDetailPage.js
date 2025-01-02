@@ -324,7 +324,7 @@ const CategoryDetailPage = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="font-fira text-center text-4xl p-8 m-5">Loading...</div>;
   }
 
   if (!category) {
