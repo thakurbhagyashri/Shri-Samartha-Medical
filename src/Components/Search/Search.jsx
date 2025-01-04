@@ -35,7 +35,7 @@
 //     console.log(data);
 
 //   }
-  
+
 
 //     return (
 //         <div className={`search-bar-container ${menuOpen ? "shift-down" : ""}`}>
@@ -146,16 +146,38 @@ const Search = ({ menuOpen }) => {
                     {suggestions.map((suggestion, index) => (
                         <li
                             key={suggestion.id}
-                            className={`px-4 py-2 cursor-pointer ${
-                                highlightedIndex === index ? 'bg-gray-200' : 'hover:bg-gray-100'
-                            }`}
+                            className={`px-4 py-2 cursor-pointer ${highlightedIndex === index ? 'bg-gray-200' : 'hover:bg-gray-100'
+                                }`}
                             onClick={() => handleSuggestionClick(suggestion.id)}
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}
+
+
                         >
-                            <div className="font-semibold text-gray-800 font-fira">{suggestion.medicineName}</div>
-                            <div className="text-sm text-gray-500 font-custom">{suggestion.companyName}</div>
-                            <div className="text-sm text-gray-500 font-custom ">₹{suggestion.price}</div>
+                            <div className='flex'>
+                                <div className="mx-1 w-/6">
+                                    {suggestion.imageData ? (
+                                        <img
+                                            src={`data:${suggestion.imageType};base64,${suggestion.imageData}`}
+                                            alt={suggestion.imageName}
+                                            className="w-16 h-16 rounded-md object-cover"
+                                        />
+                                    ) : (
+                                        <div className="placeholder w-16 h-16 bg-gray-300 rounded-md flex items-center text-sm justify-center text-gray-500">
+                                            No Image
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="ml-5">
+
+                                    <div className="font-semibold text-gray-800 font-fira">{suggestion.medicineName}</div>
+                                    <div className="text-sm text-gray-500 font-custom">{suggestion.companyName}</div>
+                                    <div className="text-sm text-gray-500 font-custom ">₹{suggestion.price}</div>
+                                </div>
+                                <div className="ml-5">
+                                    <div className="text-sm text-gray-500 font-custom justify-center ">{suggestion.comments}</div>
+                                </div>
+                            </div>
                         </li>
                     ))}
                 </ul>

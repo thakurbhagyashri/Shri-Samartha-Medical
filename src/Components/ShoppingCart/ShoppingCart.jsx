@@ -31,16 +31,16 @@ const ShoppingCart = () => {
               key={index}
               className="flex items-center py-2 border-b border-gray-200"
             >
-              <img
-                src={item.imageUrl}
-                alt={item.name}
+               <img
+              src={`data:${item.imageType};base64,${item.imageData}`}
+              alt={item.imageName}
                 className="w-10 h-10 object-cover mr-3 border border-gray-300 rounded-md"
               />
               <div className="flex flex-col justify-center">
                 <p className="text-sm font-semibold text-gray-800 truncate">
-                  {item.name}
+                  {item.medicineName}
                 </p>
-                <p className="text-xs text-gray-500">₹{item.price}</p>
+                <p className="text-xs text-gray-500">₹{item.discountMrp}</p>
               </div>
             </div>
           ))}

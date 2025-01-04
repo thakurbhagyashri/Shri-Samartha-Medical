@@ -7,14 +7,14 @@ const CartList = () => {
   // const { cart = [], removeFromCart } = useContext(MyContext);  // Destructure removeFromCart from MyContext
   const { cart, removeFromCart } = useContext(MyContext);
   console.log({ cart, removeFromCart });
-  
+
   // Local state to handle quantity updates
   const [updatedCart, setUpdatedCart] = useState(cart);
 
   // Update quantity in local state
   const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity < 1) return; // Prevent quantity from being less than 1
-    const updatedItems = updatedCart.map(item => 
+    const updatedItems = updatedCart.map(item =>
       item.id === id ? { ...item, quantity: newQuantity } : item
     );
     setUpdatedCart(updatedItems);
@@ -31,7 +31,7 @@ const CartList = () => {
   };
 
   // Calculate Total Price (using the updated cart)
-  const totalPrice = updatedCart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalPrice = updatedCart.reduce((total, item) => total + item.discountMrp * item.quantity, 0);
 
   if (updatedCart.length === 0) {
     console.log("Cart is empty"); // Log if the cart is empty
@@ -73,8 +73,8 @@ const CartList = () => {
               {/* Product Image */}
               <Link to={`/product/${item.id}`} className="w-1/6">
                 <img
-                  src={item.imageUrl}
-                  alt={item.name}
+                  src={`data:${item.imageType};base64,${item.imageData}`}
+                  alt={item.imageName}
                   className="w-16 h-16 object-cover rounded-md"
                 />
               </Link>
@@ -86,7 +86,7 @@ const CartList = () => {
 
               {/* Price */}
               <div className="w-1/6">
-                <p>₹{item.price}</p>
+                <p>₹{item.discountMrp}</p>
               </div>
 
               {/* Quantity */}
@@ -102,7 +102,7 @@ const CartList = () => {
 
               {/* Total */}
               <div className="w-1/6">
-                <p className="font-bold">₹{item.price * item.quantity}</p>
+                <p className="font-bold">₹{item.discountMrp * item.quantity}</p>
               </div>
 
               {/* Delete Button */}
