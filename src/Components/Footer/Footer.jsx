@@ -223,7 +223,7 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </div>  
       </div>
       {/* Our Payment Partners Section */}
       <div className="payment-partners">

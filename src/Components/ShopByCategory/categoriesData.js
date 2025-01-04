@@ -1,8 +1,8 @@
 export const categoriesData = [
   {
     id: 1,
-    name: 'Vitamins',
-    imageUrl: require("../../Images/VitaminProduct.png"),
+    name: 'Medicine',
+    imageUrl: require("../../Images/Medicine.png"),
     description: 'Top healthcare products for your well-being',
     productCount: 120,
     products: [
