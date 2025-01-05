@@ -144,8 +144,7 @@ const AddProductPage = () => {
       } else {
         const errorData = await response.json();
         setMessage(
-          `Failed to add product. Error: ${
-            errorData.message || "Unknown error"
+          `Failed to add product. Error: ${errorData.message || "Unknown error"
           }`
         );
       }
@@ -340,8 +339,7 @@ const AddProductPage = () => {
                     toolbar: [
                       ["bold", "italic", "underline"], // Formatting options
                       [{ color: [] }, { background: [] }], // Text and background color
-                      ["list", "bullet"], // Unordered list button
-                      ["list", "ordered"], // Ordered list button
+                      [{ list: "ordered" }, { list: "bullet" }], // Ordered and unordered list buttons
                       ["clean"], // Clear formatting
                     ],
                   }}
