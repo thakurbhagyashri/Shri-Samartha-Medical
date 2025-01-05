@@ -264,19 +264,20 @@ const Product = () => {
     <div className="product-details-container max-w-5xl mx-auto p-8 bg-white shadow-md rounded-lg flex flex-col gap-6">
       {/* Left Section: Image */}
       <div className="flex">
-        <div className="w-1/2 flex items-center justify-center bg-gray-100 rounded-lg">
+        <div className="w-1/2 flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
           {product.imageData ? (
             <img
               src={`data:${product.imageType};base64,${product.imageData}`}
               alt={product.imageName}
-              className="w-40 h-40 rounded-md object-cover"
+              className="w-full h-full object-cover"
             />
           ) : (
-            <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
+            <div className="placeholder w-full h-full bg-gray-300 flex items-center justify-center text-gray-500">
               Image Placeholder
             </div>
           )}
         </div>
+
         <div className="p-7 font-fira">
           <h1 className="product-title text-3xl font-bold text-gray-800 mb-5 ">
             {product.medicineName}
@@ -325,7 +326,10 @@ const Product = () => {
           <h2 className="font-semibold text-lg mb-2">Description:</h2>
           <p
             dangerouslySetInnerHTML={{
-              __html: product.prodDescription.replace(/\n/g, "<br />"),
+              __html: product.prodDescription
+                .replace(/\n/g, "<br />")
+                .replace(/<li>/g, "<ul><li>") // Ensure list items are wrapped in <ul>
+                .replace(/<\/li>/g, "</li></ul>"), // Close the <ul> properly
             }}
           ></p>
         </p>
