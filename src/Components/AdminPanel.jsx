@@ -290,6 +290,20 @@ const AdminPanel = () => {
     }
   };
 
+  const convertHTMLToPlainText = (htmlString) => {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = htmlString;
+    return tempElement.textContent || tempElement.innerText || "";
+  };
+
+  const convertPlainTextToHTML = (plainText) => {
+    return plainText
+      .split("\n")
+      .map((line) => `<p>${line}</p>`) // Wrap lines in <p> tags
+      .join("");
+  };
+  
+
   return (
     <div className="flex h-screen bg-gray-100 font-custom">
       {/* Sidebar */}
@@ -333,15 +347,16 @@ const AdminPanel = () => {
               {suggestions.map((suggestion, index) => (
                 <li
                   key={suggestion.id}
-                  className={`px-4 py-2 cursor-pointer ${highlightedIndex === index
+                  className={`px-4 py-2 cursor-pointer ${
+                    highlightedIndex === index
                       ? "bg-gray-200"
                       : "hover:bg-gray-100"
-                    }`}
+                  }`}
                   onClick={() => handleSuggestionClick(suggestion.id)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className='flex'>
+                  <div className="flex">
                     <div className="mx-1 w-/6">
                       {suggestion.imageData ? (
                         <img
@@ -356,10 +371,15 @@ const AdminPanel = () => {
                       )}
                     </div>
                     <div className="ml-5">
-
-                      <div className="font-semibold text-gray-800 font-fira">{suggestion.medicineName}</div>
-                      <div className="text-sm text-gray-500 font-custom">{suggestion.companyName}</div>
-                      <div className="text-sm text-gray-500 font-custom ">₹{suggestion.price}</div>
+                      <div className="font-semibold text-gray-800 font-fira">
+                        {suggestion.medicineName}
+                      </div>
+                      <div className="text-sm text-gray-500 font-custom">
+                        {suggestion.companyName}
+                      </div>
+                      <div className="text-sm text-gray-500 font-custom ">
+                        ₹{suggestion.price}
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -398,7 +418,9 @@ const AdminPanel = () => {
                 </div>
                 <div className="mt-3">
                   <h3 className="font-bold text-lg">{product.medicineName}</h3>
-                  <h3 className="font-medium text-sm pt-1">{product.companyName}</h3>
+                  <h3 className="font-medium text-sm pt-1">
+                    {product.companyName}
+                  </h3>
                   <p className="text-sm text-gray-600 pt-1">{product.brand}</p>
                   <p className="text-sm text-gray-600 ">
                     {" "}
@@ -590,16 +612,20 @@ const AdminPanel = () => {
                 <div className="col-span-2">
                   <textarea
                     placeholder="Description"
-                    value={currentProduct.prodDescription}
+                    rows="10"
+                    value={convertHTMLToPlainText(
+                      currentProduct.prodDescription
+                    )} // Show plain text in textarea
                     onChange={(e) =>
                       setCurrentProduct({
                         ...currentProduct,
-                        prodDescription: e.target.value,
+                        prodDescription: convertPlainTextToHTML(e.target.value), // Convert back to HTML when saving
                       })
                     }
                     className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                   ></textarea>
                 </div>
+
                 <div className="col-span-2">
                   <textarea
                     placeholder="Comments"

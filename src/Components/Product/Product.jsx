@@ -279,30 +279,29 @@ const Product = () => {
         </div>
 
         <div className="p-7 font-fira">
-          <h1 className="product-title text-3xl font-bold text-gray-800 mb-5 ">
+          <h1 className="product-title text-3xl font-bold text-gray-800 mb-5 font-noto ">
             {product.medicineName}
           </h1>
           <p className="product-company text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Company:</span>{" "}
+            <span className="font-semibold">Company :</span>{" "}
             {product.companyName}
           </p>
 
           <p className="product-min-age text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Minimum Age:</span> {product.minAge} years
+            <span className="font-semibold">Minimum Age :</span> {product.minAge} years
           </p>
           <p className="product-max-age text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Maximum Age:</span> {product.maxAge} years
+            <span className="font-semibold">Maximum Age :</span> {product.maxAge} years
           </p>
           <p className="product-real-mrp text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Real MRP:</span> ₹{product.realMrp}
+            <span className="font-semibold"> Price : </span> ₹ {product.realMrp}/-
           </p>
           <p className="product-discount-mrp text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Discounted MRP:</span> ₹
-            {product.discountMrp}
-            <span className="text-green-600">({product.discount}% off)</span>
+            <span className="font-semibold">Discounted MRP :</span> ₹ {product.discountMrp}/- 
+             <span className="text-green-600 ml-1">({product.discount}% off)</span>
           </p>
           <p className="product-categories text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Categories:</span>{" "}
+            <span className="font-semibold">Categories :</span>{" "}
             {product.categories && product.categories.join(", ")}
           </p>
           <div>
@@ -321,9 +320,9 @@ const Product = () => {
       </div>
 
       {/* Right Section: Product Details */}
-      <div className="w-full font-custom">
+      <div className="w-full font-fira">
         <p className="product-description text-sm text-gray-600 mt-1">
-          <h2 className="font-semibold text-lg mb-2">Description:</h2>
+          <h2 className="font-semibold text-lg mb-2"> Product Description:</h2>
           <p
             dangerouslySetInnerHTML={{
               __html: product.prodDescription
