@@ -287,10 +287,10 @@ const Product = () => {
           </p>
 
           <p className="product-min-age text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Minimum Age:</span> {product.minAge}
+            <span className="font-semibold">Minimum Age:</span> {product.minAge} years
           </p>
           <p className="product-max-age text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Maximum Age:</span> {product.maxAge}
+            <span className="font-semibold">Maximum Age:</span> {product.maxAge} years
           </p>
           <p className="product-real-mrp text-sm text-gray-600 mt-1 py-2">
             <span className="font-semibold">Real MRP:</span> ₹{product.realMrp}
