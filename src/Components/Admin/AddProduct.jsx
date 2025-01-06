@@ -1,5 +1,10 @@
+import 'quill/dist/quill.snow.css';
 import React, { useState } from "react";
+import InputField from "../validations/InputField";
+import { validateInput } from "../validations/validateInput";
 
+
+import ReactQuill from "react-quill";
 const AddProductPage = () => {
   const [formData, setFormData] = useState({
     image: null,
@@ -12,7 +17,7 @@ const AddProductPage = () => {
     maxAge: "",
     realMrp: "",
     discountMrp: "",
-    description: "",
+    prodDescription: "",
     comments: "",
     categories: "",
   });
@@ -63,9 +68,9 @@ const AddProductPage = () => {
   //         realMrp: "",
   //         discountMrp: "",
   //         category: "",
-  //         description: "",
+  //         prodDescription: "",
   //         comments: ""
-          
+
   //       });
   //     } else {
   //       setMessage("Failed to add product. Please try again.");
@@ -75,75 +80,85 @@ const AddProductPage = () => {
   //   }
   // };
 
+  const handleQuillChange = (value) => {
+    setFormData((prev) => ({ ...prev, prodDescription: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Prepare productCatalogueDTO as JSON
     const productCatalogueDTO = {
-        imageName: formData.imageName || "",
-        imageType: formData.imageType || "",
-        quantity: formData.quantity,
-        price: formData.price,
-        discount: formData.discount,
-        companyName: formData.companyName,
-        medicineName: formData.medicineName,
-        minAge: formData.minAge,
-        maxAge: formData.maxAge,
-        realMrp: formData.realMrp,
-        discountMrp: formData.discountMrp,
-        prodDescription: formData.description,
-        comments: formData.comments,
-        categories: formData.categories.split(","), // Convert categories to an array
+      imageName: formData.imageName || "",
+      imageType: formData.imageType || "",
+      quantity: formData.quantity,
+      price: formData.price,
+      discount: formData.discount,
+      companyName: formData.companyName,
+      medicineName: formData.medicineName,
+      minAge: formData.minAge,
+      maxAge: formData.maxAge,
+      realMrp: formData.realMrp,
+      discountMrp: formData.discountMrp,
+      prodDescription: formData.prodDescription,
+
+      comments: formData.comments,
+      categories: formData.categories.split(","), // Convert categories to an array
     };
 
     const data = new FormData();
-    data.append("productCatlogueDTO", new Blob([JSON.stringify(productCatalogueDTO)], { type: "application/json" }));
+    data.append(
+      "productCatlogueDTO",
+      new Blob([JSON.stringify(productCatalogueDTO)], {
+        type: "application/json",
+      })
+    );
     data.append("image", formData.image); // Assuming formData.image is a File object
 
     const token = localStorage.getItem("token");
 
     try {
-        const response = await fetch("http://localhost:8080/admin/add-product", {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`, // Don't set Content-Type manually
-            },
-            body: data,
+      const response = await fetch("http://localhost:8080/admin/add-product", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`, // Don't set Content-Type manually
+        },
+        body: data,
+      });
+
+      if (response.ok) {
+        setMessage("Product added successfully!");
+        setFormData({
+          imageName: "",
+          imageType: "",
+          image: null,
+          quantity: "",
+          price: "",
+          discount: "",
+          companyName: "",
+          medicineName: "",
+          minAge: "",
+          maxAge: "",
+          realMrp: "",
+          discountMrp: "",
+          categories: "",
+          prodDescription: "",
+
+          comments: "",
         });
+      } else {
+        const errorData = await response.json();
 
-        if (response.ok) {
-            setMessage("Product added successfully!");
-            setFormData({
-                imageName: "",
-                imageType: "",
-                image: null,
-                quantity: "",
-                price: "",
-                discount: "",
-                companyName: "",
-                medicineName: "",
-                minAge: "",
-                maxAge: "",
-                realMrp: "",
-                discountMrp: "",
-                categories: "",
-                description: "",
-                comments: "",
-            });
-        } else {
-            const errorData = await response.json();
-            setMessage(`Failed to add product. Error: ${errorData.message || "Unknown error"}`);
-        }
+        setMessage(
+          `Failed to add product. Error: ${errorData.message || "Unknown error"
+          }`
+        );
+      }
     } catch (error) {
-        setMessage("Error occurred: " + error.message);
+      setMessage("Error occurred: " + error.message);
     }
-};
-
-
-  
+  };
   return (
-
     <div>
       <section className="flex flex-col items-center pt-6 font-custom">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-3xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -152,7 +167,11 @@ const AddProductPage = () => {
               {" "}
               Add Product
             </h1>
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" method="POST">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 md:space-y-6"
+              method="POST"
+            >
               <div>
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Image
@@ -184,11 +203,13 @@ const AddProductPage = () => {
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Price
                   </label>
-                  <input
+                  <InputField
                     type="number"
                     name="price"
                     value={formData.price}
                     onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
+                    
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=""
                     required
@@ -198,10 +219,77 @@ const AddProductPage = () => {
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Discount
                   </label>
-                  <input
+                  <InputField
                     type="number"
                     name="discount"
                     value={formData.discount}
+                    onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
+                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter discount"
+                    required
+                  />
+                </div>
+              </div>
+
+
+              <div className="grid grid-flow-col">
+                <div className="pr-1">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                    Company Name
+                  </label>
+                  <InputField
+                    type="text"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleChange}
+                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Ex. Cipla"
+                    validate={(name,value)=>{validateInput(name,value);
+                    }
+                    }
+                    required
+                  />
+                </div>
+                 <div className="pl-1">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                    Medicine Name
+                  </label>
+                  <InputField
+                    type="text"
+                    name="medicineName"
+                    value={formData.medicineName}
+                    onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
+                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter discount"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="grid grid-flow-col">
+                <div className="pr-1">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                    Minimum Age
+                  </label>
+                  <input
+                    type="number"
+                    name="minAge"
+                    value={formData.minAge}
+                    onChange={handleChange}
+                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div className="pl-1">
+                  <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
+                    Maximam Age
+                  </label>
+                  <input
+                    type="number"
+                    name="maxAge"
+                    value={formData.maxAge}
                     onChange={handleChange}
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=""
@@ -212,96 +300,37 @@ const AddProductPage = () => {
               <div className="grid grid-flow-col">
                 <div className="pr-1">
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                    Company Name
+                    Real Mrp
                   </label>
                   <input
-                    type="text"
-                    name="companyName"
-                    value={formData.companyName}
+                    type="number"
+                    name="realMrp"
+                    value={formData.realMrp}
                     onChange={handleChange}
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Ex. Cipla"
+                    placeholder=""
                     required
                   />
                 </div>
                 <div className="pl-1">
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                    Medicine Name
+                    Discount Mrp
                   </label>
                   <input
-                    type="text"
-                    name="medicineName"
-                    value={formData.medicineName}
+                    type="number"
+                    name="discountMrp"
+                    value={formData.discountMrp}
                     onChange={handleChange}
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Ex. Dolo"
+                    placeholder=""
                     required
                   />
                 </div>
               </div>
-              <div className="grid grid-flow-col">
-              <div className="pr-1">
-                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Minimum Age
-                </label>
-                <input
-                  type="number"
-                  name="minAge"
-                  value={formData.minAge}
-                  onChange={handleChange}
-                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className="pl-1">
-                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Maximam Age
-                </label>
-                <input
-                  type="number"
-                  name="maxAge"
-                  value={formData.maxAge}
-                  onChange={handleChange}
-                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  required
-                />
-              </div>
-              </div>
-              <div className="grid grid-flow-col">
-              <div className="pr-1">
-                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Real Mrp
-                </label>
-                <input
-                  type="number"
-                  name="realMrp"
-                  value={formData.realMrp}
-                  onChange={handleChange}
-                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  required
-                />
-              </div>
-              <div className="pl-1">
-                <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Discount Mrp
-                </label>
-                <input
-                  type="number"
-                  name="discountMrp"
-                  value={formData.discountMrp}
-                  onChange={handleChange}
-                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  required
-                />
-              </div>
-              </div>
+              
               <div>
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                Categories
+                  Categories
                 </label>
                 <input
                   type="text"
@@ -313,21 +342,34 @@ const AddProductPage = () => {
                   required
                 />
               </div>
+
               <div>
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
-                  Description
+                  Descriptioin
                 </label>
-                <textarea
-                  rows="5"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
+                <ReactQuill
+                  name="prodDescription"
+                  value={formData.prodDescription}
+                  onChange={handleQuillChange}
+                  modules={{
+                    toolbar: [
+                      ["bold", "italic", "underline"], // Formatting options
+                      [{ color: [] }, { background: [] }], // Text and background color
+                      [{ list: "ordered" }, { list: "bullet" }], // Ordered and unordered list buttons
+                      ["clean"], // Clear formatting
+                    ],
+                  }}
+                  theme="snow"
                   className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-[#007cb9] dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Description....."
+                  placeholder="Product Description....."
                   required
-                ></textarea>
+                />
+              </div> 
+               <div>
+              
               </div>
               <div>
+
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Comments
                 </label>

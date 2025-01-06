@@ -2,7 +2,7 @@
 // import { Link, useParams } from 'react-router-dom';
 // import AddToCartButton from '../Button/AddToCart'; // Assuming this button is a separate component
 // import { MyContext } from '../MyContext';
-// import { categoriesData } from './categoriesData'; // Mock categories data
+// // import { categoriesData } from './categoriesData'; // Mock categories data
 
 // const CategoryDetailPage = () => {
 //   const { categoryName } = useParams();
@@ -15,7 +15,7 @@
 
 //   useEffect(() => {
 //     // Debug logs
-//     console.log('categoryObject:', categoriesData);
+//     // console.log('categoryObject:', categoriesData);
 
 //     const loadCategoryData = async () => {
 //       try {

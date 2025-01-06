@@ -2,7 +2,7 @@ import React from "react";
 
 const ReturnPolicy = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-10 min-h-screen font-roboto">
+    <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-10 min-h-screen font-merriWeather">
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-lg p-10">
         <h1 className="text-4xl font-extrabold text-center text-indigo-600 mb-8">
           Return & Refund Policy

@@ -31,15 +31,27 @@ const App = () => {
   const [role, setRole] = useState(null);
 
   // Function to add an item to the cart
-  const addToCart = (productToAdd) => {
+  const addToCart = (product) => {
+    // Set the quantity to a fixed value, for example, 1
+    const quantity = 1;  // You can replace this with any dynamic value if needed
+  
+    // Create a new product object with the desired quantity
+    const productWithUpdatedQuantity = { ...product, quantity };
+  
     setCart((prevCart) => {
-      const existingProductIndex = prevCart.findIndex((item) => item.id === productToAdd.id);
-      if (existingProductIndex >= 0) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += productToAdd.quantity;
-        return updatedCart;
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+  
+      if (existingProduct) {
+        // If product already exists, increase the quantity by the new value (1)
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      } else {
+        // If product doesn't exist in the cart, add it with the new quantity
+        return [...prevCart, productWithUpdatedQuantity];
       }
-      return [...prevCart, productToAdd]; // productToAdd already includes quantity
     });
   };
 

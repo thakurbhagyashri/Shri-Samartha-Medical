@@ -197,11 +197,11 @@ const Product = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
-   const { addToCart } = useContext(MyContext);
-    const [notification, setNotification] = useState("");
+  const { addToCart } = useContext(MyContext);
+  const [notification, setNotification] = useState("");
 
   useEffect(() => {
-    
+
     const fetchProductDetails = async () => {
       setLoading(true);
       const token = localStorage.getItem("token");
@@ -238,7 +238,7 @@ const Product = () => {
     };
 
 
-   
+
 
     fetchProductDetails();
   }, [productId]);
@@ -264,68 +264,71 @@ const Product = () => {
     <div className="product-details-container max-w-5xl mx-auto p-8 bg-white shadow-md rounded-lg flex flex-col gap-6">
       {/* Left Section: Image */}
       <div className="flex">
-      <div className="w-1/2 flex items-center justify-center bg-gray-100 rounded-lg">
-            {product.imageData ? (
-                <img
-                    src={`data:${product.imageType};base64,${product.imageData}`}
-                    alt={product.imageName}
-                    className="w-40 h-40 rounded-md object-cover"
-                />
-            ) : (
-                <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
-                    Image Placeholder
-                </div>
-            )}
+        <div className="w-1/2 flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
+          {product.imageData ? (
+            <img
+              src={`data:${product.imageType};base64,${product.imageData}`}
+              alt={product.imageName}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="placeholder w-full h-full bg-gray-300 flex items-center justify-center text-gray-500">
+              Image Placeholder
+            </div>
+          )}
         </div>
+
         <div className="p-7 font-fira">
-          <h1 className="product-title text-3xl font-bold text-gray-800 mb-5 ">
+          <h1 className="product-title text-3xl font-bold text-gray-800 mb-5 font-noto ">
             {product.medicineName}
           </h1>
           <p className="product-company text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Company:</span>{" "}
+            <span className="font-semibold">Company :</span>{" "}
             {product.companyName}
           </p>
 
           <p className="product-min-age text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Minimum Age:</span> {product.minAge}
+            <span className="font-semibold">Minimum Age :</span> {product.minAge} years
           </p>
           <p className="product-max-age text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Maximum Age:</span> {product.maxAge}
+            <span className="font-semibold">Maximum Age :</span> {product.maxAge} years
           </p>
           <p className="product-real-mrp text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Real MRP:</span> ₹{product.realMrp}
+            <span className="font-semibold"> Price : </span> ₹ {product.realMrp}/-
           </p>
           <p className="product-discount-mrp text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Discounted MRP:</span> ₹
-            {product.discountMrp}
-            <span className="text-green-600">({product.discount}% off)</span>
+            <span className="font-semibold">Discounted MRP :</span> ₹ {product.discountMrp}/- 
+             <span className="text-green-600 ml-1">({product.discount}% off)</span>
           </p>
           <p className="product-categories text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Categories:</span>{" "}
+            <span className="font-semibold">Categories :</span>{" "}
             {product.categories && product.categories.join(", ")}
           </p>
           <div>
-            <button 
-             onClick={() => handleAddToCart(product)} 
-            className="add-to-cart-button w-full bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700">
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="add-to-cart-button w-full bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700">
               Add to Cart
             </button>
             {notification && (
-                    <div className="fixed top-1/4 right-5 bg-green-500 text-white text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out">
-                      {notification}
-                    </div>
-                  )}
+              <div className="fixed top-1/4 right-5 bg-green-500 text-white text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out">
+                {notification}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Right Section: Product Details */}
-      <div className="w-full font-custom">
+      <div className="w-full font-fira">
         <p className="product-description text-sm text-gray-600 mt-1">
-          <h2 className="font-semibold text-lg mb-2">Description:</h2>
+          <h2 className="font-semibold text-lg mb-2"> Product Description:</h2>
           <p
             dangerouslySetInnerHTML={{
-              __html: product.prodDescription.replace(/\n/g, "<br />"),
+              __html: product.prodDescription
+                .replace(/\n/g, "<br />")
+                .replace(/<li>/g, "<ul><li>") // Ensure list items are wrapped in <ul>
+                .replace(/<\/li>/g, "</li></ul>"), // Close the <ul> properly
             }}
           ></p>
         </p>
