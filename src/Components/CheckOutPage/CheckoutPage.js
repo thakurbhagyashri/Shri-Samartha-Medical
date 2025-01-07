@@ -1,6 +1,6 @@
 // src/pages/CheckoutPage.js
 import React, { useContext } from 'react';
-import { MyContext } from '../Components/MyContext';
+import { MyContext } from '../MyContext';
 
 const CheckoutPage = () => {
   const { cart } = useContext(MyContext);
