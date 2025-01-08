@@ -31,12 +31,12 @@ const Start = () => {
             {/* Full-width ad image */}
             <img src={ads} alt="Advertisement" className="full-width-ad" />
 
-            <h2 className="title font-custom">Trending Products</h2>
+            <h2 className="title font-noto">Trending Products</h2>
             {/* Add Cart component here */}
             {/* <TrendingProducts /> */}
            
 
-            <div className="card font-custom">
+            <div className="card font-noto">
                     <img src={AdDevices} alt="Product Image" className="card-image" />
              
                 <p className="card-text">Flat 25% Off Medicine Order</p>

@@ -44,7 +44,6 @@ const LoginPage = () => {
 
       navigate("/");
 
-      alert("Login successful!");
     } catch (error) {
       console.error("Error:", error.message || error);
       alert("Login failed! Please try again.");

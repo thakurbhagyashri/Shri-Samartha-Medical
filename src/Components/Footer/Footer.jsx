@@ -47,7 +47,7 @@ const Footer = () => {
         {/* Policies Section */}
         <div className="footer-section">
           <h3 className="font-bold  hover:underline hover:text-2xl text-blue-500">
-            OUR POLOCIES
+            OUR POLICIES
           </h3>
           <ul>
             <li className="hover:font-bold">
@@ -294,10 +294,13 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="copyright">
-        <p>
+      <div className="copyright flex flex-row justify-between">
+        <p className="text-left ml-5 ">
           &copy; {new Date().getFullYear()} Shri Samarth Pharmaceuticals. All
           rights reserved.
+        </p>
+        <p className="text-right mr-5 text-sm">
+          Created by <a href="https://sinfolix.com/"  target="_blank" className="text-blue-500"> Sinfolix Technologies</a>
         </p>
       </div>
       {isChatPopupOpen && (

@@ -1,3 +1,4 @@
+import 'quill/dist/quill.snow.css';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,7 +20,7 @@ const AdminPanel = () => {
   const [currentProduct, setCurrentProduct] = useState({
     name: "",
     brand: "",
-    category: "",
+    categorries: "",
     price: "",
     quantity: "",
     discount: "",
@@ -33,6 +34,8 @@ const AdminPanel = () => {
     comments: "",
     image: null,
   });
+
+ 
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
@@ -149,17 +152,23 @@ const AdminPanel = () => {
   }, []);
 
   // Handle Add Product
+  // const handleAddProduct = () => {
+  //   navigate("/add");
+  // };
+
+
   const handleAddProduct = () => {
-    navigate("/add");
+   navigate("/add")
   };
+  
 
   // Handle Edit Product
 
   const handleEditProduct = (product) => {
-    setModalType("edit"); // Set the modal type to edit
+    setModalType("edit"); // Set modal type to "edit"
     setCurrentProduct({
-      ...product, // Load the product data into the modal
-      categories: product.categories ? product.categories.join(",") : "", // Convert array to string for input field
+      ...product,
+      image: null, // Reset image to null initially (to handle cases where no new image is uploaded)
     });
     setShowModal(true); // Open the modal
   };
@@ -217,78 +226,152 @@ const AdminPanel = () => {
   //   setShowModal(false);
   // };
 
-  const handleSaveProduct = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("No token found. Please log in.");
-      return;
-    }
+  // const handleSaveProduct = async (e) => {
+  //   e.preventDefault(); // Prevent default form submission
+  
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     alert("No token found. Please log in.");
+  //     return;
+  //   }
+  
+  //   const formData = new FormData();
+  //   formData.append(
+  //     "productCatlogueDTO",
+  //     JSON.stringify({
+  //       imageName: currentProduct.imageName || "",
+  //   imageType: currentProduct.imageType || "",
+  //   quantity: currentProduct.quantity,
+  //   price: currentProduct.price,
+  //   discount: currentProduct.discount,
+  //   companyName: currentProduct.companyName,
+  //   medicineName: currentProduct.medicineName,
+  //   minAge: currentProduct.minAge,
+  //   maxAge: currentProduct.maxAge,
+  //   realMrp: currentProduct.realMrp,
+  //   discountMrp: currentProduct.discountMrp,
+  //   prodDescription: currentProduct.prodDescription,
+  //   comments: currentProduct.comments,
+  //   categories: currentProduct.categories.split(","),
+  //     })
+  //   );
+  
+  //   if (currentProduct.image) {
+  //     formData.append("imageFile", currentProduct.image);
+  //   }
+  
+  //   console.log("FormData Entries:");
+  //   for (let pair of formData.entries()) {
+  //     console.log(pair[0], pair[1]);
+  //   }
+  
+  //   const url =
+  //     modalType === "edit"
+  //       ? `http://localhost:8080/admin/update-product/${currentProduct.id}`
+  //       : "http://localhost:8080/admin/add-product";
+  
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: modalType === "edit" ? "PUT" : "POST",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: formData,
+  //     });
+  
+  //     if (response.ok) {
+  //       alert(modalType === "edit" ? "Product updated successfully!" : "Product added successfully!");
+  //       setShowModal(false); // Close modal after successful submission
+  //     } else {
+  //       const errorText = await response.text();
+  //       console.error("Error Response:", errorText);
+  //       alert(`Error: ${errorText}`);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //     alert(`Error: ${error.message || "Failed to connect to the server."}`);
+  //   }
+  // };
 
-    const formData = new FormData();
-    formData.append(
+  const handleSaveProduct = async (e) => {
+    e.preventDefault();
+  
+    const productCatalogueDTO = {
+      imageName: currentProduct.imageName || "",
+      imageType: currentProduct.imageType || "",
+      quantity: currentProduct.quantity,
+      price: currentProduct.price,
+      discount: currentProduct.discount,
+      companyName: currentProduct.companyName,
+      medicineName: currentProduct.medicineName,
+      minAge: currentProduct.minAge,
+      maxAge: currentProduct.maxAge,
+      realMrp: currentProduct.realMrp,
+      discountMrp: currentProduct.discountMrp,
+      prodDescription: currentProduct.prodDescription,
+      comments: currentProduct.comments,
+      categories: Array.isArray(currentProduct.categories)
+        ? currentProduct.categories
+        : currentProduct.categories.split(","), // Convert categories to an array
+    };
+  
+    const data = new FormData();
+    data.append(
       "productCatlogueDTO",
-      JSON.stringify({
-        medicineName: currentProduct.medicineName || "",
-        companyName: currentProduct.companyName || "",
-        categories: currentProduct.categories
-          ? currentProduct.categories.split(",")
-          : [], // Convert string back to array
-        price: currentProduct.price || 0,
-        quantity: currentProduct.quantity || 0,
-        discount: currentProduct.discount || 0,
-        minAge: currentProduct.minAge || 0,
-        maxAge: currentProduct.maxAge || 0,
-        realMrp: currentProduct.realMrp || 0,
-        discountMrp: currentProduct.discountMrp || 0,
-        prodDescription: currentProduct.prodDescription || "",
-        comments: currentProduct.comments || "",
+      new Blob([JSON.stringify(productCatalogueDTO)], {
+        type: "application/json",
       })
     );
-
+  
     if (currentProduct.image) {
-      formData.append("imageFile", currentProduct.image);
+      data.append("imageFile", currentProduct.image); // Append new image file if present
+    } else if (modalType === "edit" && currentProduct.imageName) {
+      // Add empty image if no new image is uploaded but imageName exists
+      data.append("imageFile", new Blob([]), currentProduct.imageName);
     }
-
-    const url =
-      modalType === "edit"
-        ? `http://localhost:8080/admin/update-product/${currentProduct.id}`
-        : "http://localhost:8080/admin/add-product";
-
+  
+    const token = localStorage.getItem("token");
+  
     try {
-      const response = await fetch(url, {
-        method: modalType === "edit" ? "PUT" : "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        if (modalType === "edit") {
-          // Update the product in the local state
-          setProducts((prevProducts) =>
-            prevProducts.map((product) =>
-              product.id === currentProduct.id ? result : product
-            )
-          );
-          alert("Product updated successfully!");
-        } else {
-          // Add the new product to the local state
-          setProducts((prevProducts) => [...prevProducts, result]);
-          alert("Product added successfully!");
+      const response = await fetch(
+        modalType === "add"
+          ? `http://localhost:8080/admin/add-product`
+          : `http://localhost:8080/admin/update-product/${currentProduct.id}`,
+        {
+          method: modalType === "add" ? "POST" : "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`, // Don't set Content-Type manually
+          },
+          body: data,
         }
-        setShowModal(false); // Close the modal
+      );
+  
+      if (response.ok) {
+        const successMessage =
+          modalType === "add"
+            ? "Product added successfully!"
+            : "Product updated successfully!";
+        alert(successMessage);
+        setShowModal(false); // Close modal after successful submission
       } else {
-        const errorText = await response.text(); // Use text in case response is not JSON
-        console.error("Error response:", errorText);
-        alert(`Error: ${errorText}`);
+        const errorData = await response.json();
+        alert(
+          `Failed to ${modalType === "add" ? "add" : "update"} product. Error: ${
+            errorData.message || "Unknown error"
+          }`
+        );
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert(`Error: ${error.message || "Failed to connect to the server."}`);
+      alert("Error occurred: " + error.message);
     }
   };
+  
+  
+  
+
+
+
+
 
   const convertHTMLToPlainText = (htmlString) => {
     const tempElement = document.createElement("div");
@@ -302,7 +385,7 @@ const AdminPanel = () => {
       .map((line) => `<p>${line}</p>`) // Wrap lines in <p> tags
       .join("");
   };
-  
+
 
   return (
     <div className="flex h-screen bg-gray-100 font-custom">
@@ -347,11 +430,10 @@ const AdminPanel = () => {
               {suggestions.map((suggestion, index) => (
                 <li
                   key={suggestion.id}
-                  className={`px-4 py-2 cursor-pointer ${
-                    highlightedIndex === index
-                      ? "bg-gray-200"
-                      : "hover:bg-gray-100"
-                  }`}
+                  className={`px-4 py-2 cursor-pointer ${highlightedIndex === index
+                    ? "bg-gray-200"
+                    : "hover:bg-gray-100"
+                    }`}
                   onClick={() => handleSuggestionClick(suggestion.id)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
@@ -396,279 +478,398 @@ const AdminPanel = () => {
         </div>
 
         {/* Product List */}
-        <div>
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4 mx-16"
-            >
-              <div className="flex space-x-10 ">
-                <div className=" bg-gray-300 rounded">
-                  {product.imageData ? (
-                    <img
-                      src={`data:${product.imageType};base64,${product.imageData}`}
-                      alt={product.imageName}
-                      className="w-40 h-40 rounded-md object-cover"
-                    />
-                  ) : (
-                    <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
-                      Image Placeholder
-                    </div>
-                  )}
+        <div className="flex flex-col max-h-screen">
+  {/* Main Content */}
+  <div className="flex-1 overflow-y-auto">
+    <div className="p-4">
+      {products.map((product) => (
+        <div
+          key={product.id}
+          className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4 mx-16"
+        >
+          <div className="flex space-x-10 ">
+            <div className=" bg-gray-300 rounded">
+              {product.imageData ? (
+                <img
+                  src={`data:${product.imageType};base64,${product.imageData}`}
+                  alt={product.imageName}
+                  className="w-40 h-40 rounded-md object-cover"
+                />
+              ) : (
+                <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
+                  Image Placeholder
                 </div>
-                <div className="mt-3">
-                  <h3 className="font-bold text-lg">{product.medicineName}</h3>
-                  <h3 className="font-medium text-sm pt-1">
-                    {product.companyName}
-                  </h3>
-                  <p className="text-sm text-gray-600 pt-1">{product.brand}</p>
-                  <p className="text-sm text-gray-600 ">
-                    {" "}
-                    {product.categories && product.categories.join(", ")}
-                  </p>
-                  <p className=" text-sm text-gray-800 mt-5">
-                    Price ₹{product.price}/-
-                  </p>
-                </div>
-              </div>
-              <div className="flex space-x-4">
-                <button
-                  onClick={() => handleEditProduct(product)}
-                  className="bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500 transition-all"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDeleteProduct(product.id)}
-                  className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition-all"
-                >
-                  Delete
-                </button>
-              </div>
+              )}
             </div>
-          ))}
+            <div className="mt-3">
+              <h3 className="font-bold text-lg">{product.medicineName}</h3>
+              <h3 className="font-medium text-sm pt-1">
+                {product.companyName}
+              </h3>
+              <p className="text-sm text-gray-600 pt-1">{product.brand}</p>
+              <p className="text-sm text-gray-600 ">
+                {product.categories && product.categories.join(", ")}
+              </p>
+              <p className="text-sm text-gray-800 mt-5">
+                Price ₹{product.price}/-
+              </p>
+            </div>
+          </div>
+          <div className="flex space-x-4">
+            <button
+              onClick={() => handleEditProduct(product)}
+              className="bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500 transition-all"
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => handleDeleteProduct(product.id)}
+              className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition-all"
+            >
+              Delete
+            </button>
+          </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
         {/* Modal for Add/Edit */}
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm z-50">
             <div
-              className="bg-white p-6 rounded-lg shadow-2xl transform transition-transform scale-95 animate-fade-in w-full max-w-4xl" // Increased form width
+              className="bg-white rounded-lg shadow-2xl transform transition-transform scale-95 animate-fade-in w-full max-w-4xl"
             >
-              <h2 className="text-2xl font-bold mb-4 text-gray-700">
+              <h2 className="text-2xl font-bold p-6 text-gray-700">
                 {modalType === "add" ? "Add Product" : "Edit Product"}
               </h2>
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Categories"
-                    value={currentProduct.categories}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        categories: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Price"
-                    value={currentProduct.price}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        price: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-
-                {/* Row 3: Two fields */}
-                <div>
-                  <input
-                    type="number"
-                    placeholder="Quantity"
-                    value={currentProduct.quantity}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        quantity: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Discount"
-                    value={currentProduct.discount}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        discount: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-
-                {/* Row 4: Two fields */}
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Company Name"
-                    value={currentProduct.companyName}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        companyName: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Medicine Name"
-                    value={currentProduct.medicineName}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        medicineName: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-
-                {/* Row 5: Two fields */}
-                <div>
-                  <input
-                    type="number"
-                    placeholder="Min Age"
-                    value={currentProduct.minAge}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        minAge: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    placeholder="Max Age"
-                    value={currentProduct.maxAge}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        maxAge: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-
-                {/* Row 6: Two fields */}
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Real MRP"
-                    value={currentProduct.realMrp}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        realMrp: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Discounted MRP"
-                    value={currentProduct.discountMrp}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        discountMrp: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-
-                {/* Row 7: Description & Comments */}
-                <div className="col-span-2">
-                  <textarea
-                    placeholder="Description"
-                    rows="10"
-                    value={convertHTMLToPlainText(
-                      currentProduct.prodDescription
-                    )} // Show plain text in textarea
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        prodDescription: convertPlainTextToHTML(e.target.value), // Convert back to HTML when saving
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  ></textarea>
-                </div>
-
-                <div className="col-span-2">
-                  <textarea
-                    placeholder="Comments"
-                    value={currentProduct.comments}
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        comments: e.target.value,
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  ></textarea>
-                </div>
-
-                {/* Image Upload */}
-                <div className="col-span-2">
-                  <input
-                    type="file"
-                    onChange={(e) =>
-                      setCurrentProduct({
-                        ...currentProduct,
-                        image: e.target.files[0],
-                      })
-                    }
-                    className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                  />
-                </div>
-              </div>
-
-              {/* Buttons */}
-              <div className="mt-6 flex justify-between">
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+              <div
+                className="overflow-y-auto max-h-[80vh] px-6 pb-6"
+                style={{ scrollbarWidth: "thin", scrollbarColor: "#D1D5DB #F3F4F6" }}
+              >
+                <form
+                  onSubmit={handleSaveProduct} // Use a single submission handler
+                  className="grid grid-cols-2 gap-6"
                 >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleSaveProduct}
-                  className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
-                >
-                  {modalType === "add" ? "Save" : "Update"}
-                </button>
+
+                  {/* Medicine Name Field */}
+                  <div>
+                    <label
+                      htmlFor="medicineName"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Medicine Name
+                    </label>
+                    <input
+                      type="text"
+                      id="medicineName"
+                      placeholder="Medicine Name"
+                      value={currentProduct.medicineName}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          medicineName: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Company Name Field */}
+                  <div>
+                    <label
+                      htmlFor="companyName"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      placeholder="Company Name"
+                      value={currentProduct.companyName}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          companyName: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Price Field */}
+                  <div>
+                    <label
+                      htmlFor="price"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Price
+                    </label>
+                    <input
+                      type="text"
+                      id="price"
+                      placeholder="Price"
+                      value={currentProduct.price}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          price: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Discount Field */}
+                  <div>
+                    <label
+                      htmlFor="discount"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Discount
+                    </label>
+                    <input
+                      type="text"
+                      id="discount"
+                      placeholder="Discount"
+                      value={currentProduct.discount}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          discount: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Minimum Age Field */}
+                  <div>
+                    <label
+                      htmlFor="minAge"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Minmium Age
+                    </label>
+                    <input
+                      type="number"
+                      id="minAge"
+                      placeholder="Minimum Age"
+                      value={currentProduct.minAge}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          minAge: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+
+                  {/* Maximum Age Field */}
+                  <div>
+                    <label
+                      htmlFor="maxAge"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Maximum Age
+                    </label>
+                    <input
+                      type="number"
+                      id="maxAge"
+                      placeholder="Maximum Age"
+                      value={currentProduct.maxAge}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          maxAge: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Real Mrp  Field */}
+                  <div>
+                    <label
+                      htmlFor="realMrp"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Real MRP
+                    </label>
+                    <input
+                      type="number"
+                      id="realMrp"
+                      placeholder="Real Mrp"
+                      value={currentProduct.realMrp}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          realMrp: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Discount Mrp  Field */}
+                  <div>
+                    <label
+                      htmlFor="discountMrp"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Discount MRP
+                    </label>
+                    <input
+                      type="number"
+                      id="discountMrp"
+                      placeholder="Discount Mrp"
+                      value={currentProduct.discountMrp}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          discountMrp: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Quantity Field */}
+                  <div>
+                    <label
+                      htmlFor="quantity"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Quantity
+                    </label>
+                    <input
+                      type="number"
+                      id="quantity"
+                      placeholder="Quantity"
+                      value={currentProduct.quantity}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          quantity: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Categories Field */}
+                  <div>
+                    <label
+                      htmlFor="categories"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Categories
+                    </label>
+                    <input
+                      type="text"
+                      id="categories"
+                      placeholder="Categories"
+                      value={currentProduct.categories}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          categories: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+
+                  {/* Description Field */}
+                  <div className="col-span-2">
+                    <label
+                      htmlFor="prodDescription"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      id="prodDescription"
+                      placeholder="Description"
+                      rows="5"
+                      value={convertHTMLToPlainText(currentProduct.prodDescription)}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          prodDescription: e.target.value,
+                        })
+                      }
+                     
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                      ></textarea>
+                  </div>
+
+                  {/* Comments Field */}
+                  <div>
+                    <label
+                      htmlFor="comments"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Comments
+                    </label>
+                    <input
+                      type="text"
+                      id="comments"
+                      placeholder="Comments"
+                      value={currentProduct.comments}
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          comments: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  {/* Image Upload Field */}
+                  <div>
+                    <label
+                      htmlFor="imageFile"
+                      className="block text-gray-700 font-medium mb-2"
+                    >
+                      Upload Image
+                    </label>
+                    <input
+                      type="file"
+                      id="imageFile"
+                      onChange={(e) =>
+                        setCurrentProduct({
+                          ...currentProduct,
+                          image: e.target.files[0],
+                        })
+                      }
+                      className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
+                    />
+                  </div>
+
+                  <div className="col-span-2 mt-6 flex justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setShowModal(false)}
+                      className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
+                    >
+                      {modalType === "add" ? "Save" : "Update"}
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

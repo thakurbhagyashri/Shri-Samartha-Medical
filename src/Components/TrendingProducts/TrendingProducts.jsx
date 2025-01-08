@@ -1,12 +1,11 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
+import { FaHeart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import AddToCartButton from '../Button/AddToCart'; // Assuming this button is a separate component
 import { MyContext } from '../MyContext';
 import cartData from './TrendingProductsJs';
-import { FaHeart, FaStar } from "react-icons/fa";
-import Product from '../Product/Product';
 const TrendingProducts = () => {
   const { addToCart } = useContext(MyContext); // Use the addToCart function from context
   const [notification, setNotification] = useState(''); // Notification state

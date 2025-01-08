@@ -260,6 +260,11 @@ const Product = () => {
   if (!product)
     return <div>No product found. Check if the product ID is valid.</div>;
 
+  const calculateDiscount = (product) =>{
+
+  }
+
+
   return (
     <div className="product-details-container max-w-5xl mx-auto p-8 bg-white shadow-md rounded-lg flex flex-col gap-6">
       {/* Left Section: Image */}
@@ -283,8 +288,8 @@ const Product = () => {
             {product.medicineName}
           </h1>
           <p className="product-company text-sm text-gray-600 mt-1 py-2">
-            <span className="font-semibold">Company :</span>{" "}
-            {product.companyName}
+            <span className="font-semibold text-[#ff6f61]"> {product.companyName}</span>{" "}
+           
           </p>
 
           <p className="product-min-age text-sm text-gray-600 mt-1 py-2">
@@ -298,13 +303,13 @@ const Product = () => {
           </p>
           <p className="product-discount-mrp text-sm text-gray-600 mt-1 py-2">
             <span className="font-semibold">Discounted MRP :</span> ₹ {product.discountMrp}/- 
-             <span className="text-green-600 ml-1">({product.discount}% off)</span>
+             <span className="text-green-600 ml-1">({Math.round(((product.realMrp - product.discountMrp) / product.realMrp) * 100)}% off)</span>
           </p>
           <p className="product-categories text-sm text-gray-600 mt-1 py-2">
             <span className="font-semibold">Categories :</span>{" "}
             {product.categories && product.categories.join(", ")}
           </p>
-          <div>
+          <div className="w-1/2">
             <button
               onClick={() => handleAddToCart(product)}
               className="add-to-cart-button w-full bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700">

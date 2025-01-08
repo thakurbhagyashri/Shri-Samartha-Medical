@@ -58,7 +58,7 @@ const Search = ({ menuOpen }) => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`, // Include the JWT token
+                        Authorization: `Bearer ${token}`,       // Include the JWT token
                     },
                 }
             );
@@ -68,7 +68,7 @@ const Search = ({ menuOpen }) => {
             }
 
             const data = await response.json();
-            setSuggestions(data); // Assuming data is an array of product objects
+            setSuggestions(data);                         // Assuming data is an array of product objects
         } catch (error) {
             console.error('Error fetching suggestions:', error);
             setSuggestions([]);
@@ -150,9 +150,9 @@ const Search = ({ menuOpen }) => {
                                     <div className="text-sm text-gray-500 font-noto">{suggestion.companyName}</div>
                                     <div className="text-sm text-gray-500 font-noto ">₹{suggestion.price}</div>
                                 </div>
-                                <div className="ml-5">
+                                {/* <div className="ml-5">
                                     <div className="text-sm text-gray-500 font-noto ">{suggestion.comments}</div>
-                                </div>
+                                </div> */}
                             </div>
                         </li>
                     ))}
