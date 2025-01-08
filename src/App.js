@@ -21,6 +21,8 @@ const Product = React.lazy(() => import('./Components/Product/Product'));
 const TrendingProducts = React.lazy(() => import('./Components/TrendingProducts/TrendingProducts'));
 const CategoriesPage = React.lazy(() => import('./Components/ShopByCategory/CategoriesPage'));
 const CategoryDetailPage = React.lazy(() => import('./Components/ShopByCategory/CategoryDetailPage'));
+const CheckOutPage = React.lazy(() => import('./Components/CheckOutPage/CheckoutPage'));
+const UserProfile = React.lazy(() => import('./Components/Admin/UserProfile'));
 const Start = React.lazy(() => import('./Start'));
 
 // Fallback Component for Lazy Loading
@@ -103,6 +105,8 @@ const App = () => {
             <Route path="/all-categories" element={<CategoriesPage />} />
             <Route path="/add" element={<AddProductPage />} />
             <Route path="/category/:categoryName" element={<CategoryDetailPage />} />
+            <Route path="/checkout" element={<CheckOutPage />}/>
+            <Route path="/profile" element={<UserProfile />}/>
           </Routes>
         </Suspense>
         <Footer />

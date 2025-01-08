@@ -2,7 +2,7 @@
 // import { Link, useParams } from 'react-router-dom';
 // import AddToCartButton from '../Button/AddToCart'; // Assuming this button is a separate component
 // import { MyContext } from '../MyContext';
-// // import { categoriesData } from './categoriesData'; // Mock categories data
+// import { categoriesData } from './categoriesData'; // Mock categories data
 
 // const CategoryDetailPage = () => {
 //   const { categoryName } = useParams();
@@ -411,37 +411,35 @@ const CategoryDetailPage = () => {
                     </p>
                   )}
                 </div>
-                <div className="p-4 flex flex-col">
-                  <div>
-
-                    <h3 className="text-lg font-semibold cursor-pointer text-center"
-                      onClick={() => handleProductDetails(product.id)}
-                    >
-                      {product.medicineName || "Unnamed Product"}
-                    </h3>
-                  </div>
-                  <div>
-                    <p className="text-sm text-orange-500 hover:text-orange-700 text-center"> Company:
-                      {product.companyName || "No price available"}
-                    </p>
-                    <p className="text-sm text-orange-500 hover:text-orange-700 text-center"> Price:
-                      ₹{product.price || "No price available"}
-                    </p>
-                  </div>
-                  <div>
-
-                    <AddToCartButton
-                      text="Add to Cart"
-                      onClick={() => handleAddToCart(product)} // Add the item to the cart
-                    />
-                    {notification && (
-                      <div className="fixed top-1/4 right-5 bg-green-500 text-white text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out">
-                        {notification}
-                      </div>
-                    )}
-                  </div>
-
-                  </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold cursor-pointer"
+                   onClick={() => handleProductDetails(product.id)}
+                  >
+                    {product.medicineName || "Unnamed Product"}
+                  </h3>
+                  <p className="text-sm text-orange-500 hover:text-orange-700"> Company:
+                  {product.companyName|| "No price available"}
+                  </p>
+                  <p className="text-sm text-orange-500 hover:text-orange-700"> Price:
+                  ₹{product.price|| "No price available"}
+                  </p>
+                 
+                  {/* <p
+                    dangerouslySetInnerHTML={{
+                      __html: product.prodDescription.replace(/\n/g, "<br />"),
+                    }}
+                  ></p> */}
+                  {/* <p className="text-sm font-medium">Quantity: {product.quantity || 'N/A'}</p> */}
+                  <AddToCartButton
+                    text="Add to Cart"
+                    onClick={() => handleAddToCart(product)} // Add the item to the cart
+                  />
+                  {notification && (
+                    <div className="fixed top-1/4 right-5 bg-green-500 text-white text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out">
+                      {notification}
+                    </div>
+                  )}
+                </div>
               </div>
             ))
           ) : (
