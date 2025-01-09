@@ -6,7 +6,7 @@ export const validationRules = {
 
   companyName: {
     // regex: /^[A-Za-z][A-Za-z0-9&',.-\s]{1,98}[A-Za-z0-9]$/,
-    regex: /^[1-9]\d*$/,
+    regex: /^[a-zA-Z\s]+$/,
     errorMessage: "Please Enter a Valid Company Name.",
   },
   
