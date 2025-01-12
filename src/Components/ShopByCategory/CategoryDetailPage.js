@@ -421,7 +421,7 @@ const CategoryDetailPage = () => {
                   {product.companyName|| "No price available"}
                   </p>
                   <p className="text-sm text-orange-500 hover:text-orange-700"> Price:
-                  ₹{product.price|| "No price available"}
+                  ₹{product.price|| "No price available"}/-
                   </p>
                  
                   {/* <p

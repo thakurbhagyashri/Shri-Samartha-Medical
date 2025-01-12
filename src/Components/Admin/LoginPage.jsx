@@ -10,7 +10,7 @@ const LoginPage = () => {
 
   // Hardcoded credentials for admin
   const adminUsername = "admin";
-  const adminPassword = "admin123";
+  const adminPassword = "admin";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +44,6 @@ const LoginPage = () => {
 
       navigate("/");
 
-      alert("Login successful!");
     } catch (error) {
       console.error("Error:", error.message || error);
       alert("Login failed! Please try again.");
@@ -149,7 +148,7 @@ const LoginPage = () => {
 
       {/* Admin Success Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 backdrop-blur-md z-50">
+        <div className="fixed  font-merriWeather inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 backdrop-blur-md z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg w-80">
             <h3 className="text-2xl font-semibold text-center text-green-500">
               Admin Login Successful!
