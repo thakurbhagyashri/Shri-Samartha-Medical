@@ -309,6 +309,9 @@ const Product = () => {
             <span className="font-semibold">Categories :</span>{" "}
             {product.categories && product.categories.join(", ")}
           </p>
+          <p className="product-comments text-sm  mt-1 py-2 text-[#ff6f61]">
+            <span className="font-semibold "></span>  {product.comments}
+          </p>
           <div className="w-1/2">
             <button
               onClick={() => handleAddToCart(product)}

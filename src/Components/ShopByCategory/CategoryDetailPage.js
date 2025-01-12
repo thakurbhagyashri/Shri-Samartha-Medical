@@ -198,6 +198,18 @@ const CategoryDetailPage = () => {
                       ? `${product.description.substring(0, 100)}...`
                       : product.description || "No description available"}
                   </p>
+<<<<<<< HEAD
+                  <p className="text-sm text-orange-500 hover:text-orange-700"> Price:
+                  ₹{product.price|| "No price available"}/-
+                  </p>
+                 
+                  {/* <p
+                    dangerouslySetInnerHTML={{
+                      __html: product.prodDescription.replace(/\n/g, "<br />"),
+                    }}
+                  ></p> */}
+                  {/* <p className="text-sm font-medium">Quantity: {product.quantity || 'N/A'}</p> */}
+=======
                   <p className="text-sm font-merriWeather text-gray-600">{product.price}</p>
 
                   {/* Add to Wishlist */}
@@ -218,6 +230,7 @@ const CategoryDetailPage = () => {
                     />
                   </div>
 
+>>>>>>> aea340aad66efa634600048dc41ba0695ce27aca
                   <AddToCartButton
                     text="Add to Cart"
                     onClick={() => handleAddToCart(product)} // Add the item to the cart

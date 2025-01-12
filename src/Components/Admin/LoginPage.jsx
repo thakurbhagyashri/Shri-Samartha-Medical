@@ -8,9 +8,15 @@
 //   const [showModal, setShowModal] = useState(false); // State to control modal visibility
 //   const navigate = useNavigate();
 
+<<<<<<< HEAD
+  // Hardcoded credentials for admin
+  const adminUsername = "admin";
+  const adminPassword = "admin";
+=======
 //   // Hardcoded credentials for admin
 //   const adminUsername = "admin";
 //   const adminPassword = "admin123";
+>>>>>>> aea340aad66efa634600048dc41ba0695ce27aca
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
@@ -44,12 +50,20 @@
 
 //       navigate("/");
 
+<<<<<<< HEAD
+    } catch (error) {
+      console.error("Error:", error.message || error);
+      alert("Login failed! Please try again.");
+    }
+  };
+=======
 //       alert("Login successful!");
 //     } catch (error) {
 //       console.error("Error:", error.message || error);
 //       alert("Login failed! Please try again.");
 //     }
 //   };
+>>>>>>> aea340aad66efa634600048dc41ba0695ce27aca
 
 //   const handleGoogleLogin = () => {
 //     window.location.href = "http://localhost:8080/oauth2/authorization/google";
@@ -147,6 +161,32 @@
 //         </div>
 //       </div>
 
+// <<<<<<< HEAD
+//       {/* Admin Success Modal */}
+//       {showModal && (
+//         <div className="fixed  font-merriWeather inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 backdrop-blur-md z-50">
+//           <div className="bg-white p-8 rounded-lg shadow-lg w-80">
+//             <h3 className="text-2xl font-semibold text-center text-green-500">
+//               Admin Login Successful!
+//             </h3>
+//             <p className="text-center text-gray-700 mt-4">
+//               You have logged in as an Admin. You will be redirected to the Admin Panel shortly.
+//             </p>
+//             <div className="mt-6 flex justify-center">
+//               <button
+//                 onClick={closeModal}
+//                 className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+//               >
+//                 Close
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
 //       {/* Admin Success Modal */}
 //       {showModal && (
 //         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 backdrop-blur-md z-50">
@@ -173,6 +213,7 @@
 // };
 
 // export default LoginPage;
+
 
 // import { jwtDecode } from "jwt-decode";
 // import React, { useEffect, useState } from "react";

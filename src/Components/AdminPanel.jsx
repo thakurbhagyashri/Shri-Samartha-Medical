@@ -1,5 +1,5 @@
-import 'quill/dist/quill.snow.css';
-import React, { useEffect, useState } from "react";
+import "quill/dist/quill.snow.css";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
@@ -17,6 +17,7 @@ const AdminPanel = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState("");
+  const searchRef = useRef(null);
   const [currentProduct, setCurrentProduct] = useState({
     name: "",
     brand: "",
@@ -34,8 +35,20 @@ const AdminPanel = () => {
     comments: "",
     image: null,
   });
-
- 
+  
+  
+      useEffect(() => {
+          const handleClickOutside = (event) => {
+              if (searchRef.current && !searchRef.current.contains(event.target)) {
+                  setSuggestions([]); // Clear the suggestions
+              }
+          };
+  
+          document.addEventListener('mousedown', handleClickOutside);
+          return () => {
+              document.removeEventListener('mousedown', handleClickOutside);
+          };
+      }, []);
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
@@ -119,7 +132,6 @@ const AdminPanel = () => {
     const fetchProducts = async () => {
       const token = localStorage.getItem("token"); // Retrieve token from local storage
       if (!token) {
-        alert("No token found. Please log in.");
         return;
       }
 
@@ -141,10 +153,9 @@ const AdminPanel = () => {
           // Assuming response contains the products list
         } else {
           const error = await response.json();
-          alert(`Error fetching products: ${error.message || "Unknown error"}`);
         }
       } catch (error) {
-        alert(`Error: ${error.message || "Failed to connect to the server."}`);
+        console.log(error);
       }
     };
 
@@ -156,11 +167,9 @@ const AdminPanel = () => {
   //   navigate("/add");
   // };
 
-
   const handleAddProduct = () => {
-   navigate("/add")
+    navigate("/add");
   };
-  
 
   // Handle Edit Product
 
@@ -177,7 +186,6 @@ const AdminPanel = () => {
   const handleDeleteProduct = async (id) => {
     const token = localStorage.getItem("token"); // Retrieve token from local storage
     if (!token) {
-      alert("No token found. Please log in.");
       return;
     }
 
@@ -205,10 +213,10 @@ const AdminPanel = () => {
         setProducts(products.filter((product) => product.id !== id));
       } else {
         const error = await response.json();
-        alert(`Error deleting product: ${error.message || "Unknown error"}`);
+        console.log(error);
       }
     } catch (error) {
-      alert(`Error: ${error.message || "Failed to connect to the server."}`);
+      console.log(error);
     }
   };
 
@@ -228,13 +236,13 @@ const AdminPanel = () => {
 
   // const handleSaveProduct = async (e) => {
   //   e.preventDefault(); // Prevent default form submission
-  
+
   //   const token = localStorage.getItem("token");
   //   if (!token) {
   //     alert("No token found. Please log in.");
   //     return;
   //   }
-  
+
   //   const formData = new FormData();
   //   formData.append(
   //     "productCatlogueDTO",
@@ -255,21 +263,21 @@ const AdminPanel = () => {
   //   categories: currentProduct.categories.split(","),
   //     })
   //   );
-  
+
   //   if (currentProduct.image) {
   //     formData.append("imageFile", currentProduct.image);
   //   }
-  
+
   //   console.log("FormData Entries:");
   //   for (let pair of formData.entries()) {
   //     console.log(pair[0], pair[1]);
   //   }
-  
+
   //   const url =
   //     modalType === "edit"
   //       ? `http://localhost:8080/admin/update-product/${currentProduct.id}`
   //       : "http://localhost:8080/admin/add-product";
-  
+
   //   try {
   //     const response = await fetch(url, {
   //       method: modalType === "edit" ? "PUT" : "POST",
@@ -278,7 +286,7 @@ const AdminPanel = () => {
   //       },
   //       body: formData,
   //     });
-  
+
   //     if (response.ok) {
   //       alert(modalType === "edit" ? "Product updated successfully!" : "Product added successfully!");
   //       setShowModal(false); // Close modal after successful submission
@@ -295,7 +303,7 @@ const AdminPanel = () => {
 
   const handleSaveProduct = async (e) => {
     e.preventDefault();
-  
+
     const productCatalogueDTO = {
       imageName: currentProduct.imageName || "",
       imageType: currentProduct.imageType || "",
@@ -314,7 +322,7 @@ const AdminPanel = () => {
         ? currentProduct.categories
         : currentProduct.categories.split(","), // Convert categories to an array
     };
-  
+
     const data = new FormData();
     data.append(
       "productCatlogueDTO",
@@ -322,16 +330,16 @@ const AdminPanel = () => {
         type: "application/json",
       })
     );
-  
+
     if (currentProduct.image) {
       data.append("imageFile", currentProduct.image); // Append new image file if present
     } else if (modalType === "edit" && currentProduct.imageName) {
       // Add empty image if no new image is uploaded but imageName exists
       data.append("imageFile", new Blob([]), currentProduct.imageName);
     }
-  
+
     const token = localStorage.getItem("token");
-  
+
     try {
       const response = await fetch(
         modalType === "add"
@@ -345,7 +353,7 @@ const AdminPanel = () => {
           body: data,
         }
       );
-  
+
       if (response.ok) {
         const successMessage =
           modalType === "add"
@@ -356,22 +364,15 @@ const AdminPanel = () => {
       } else {
         const errorData = await response.json();
         alert(
-          `Failed to ${modalType === "add" ? "add" : "update"} product. Error: ${
-            errorData.message || "Unknown error"
-          }`
+          `Failed to ${
+            modalType === "add" ? "add" : "update"
+          } product. Error: ${errorData.message || "Unknown error"}`
         );
       }
     } catch (error) {
       alert("Error occurred: " + error.message);
     }
   };
-  
-  
-  
-
-
-
-
 
   const convertHTMLToPlainText = (htmlString) => {
     const tempElement = document.createElement("div");
@@ -386,11 +387,10 @@ const AdminPanel = () => {
       .join("");
   };
 
-
   return (
     <div className="flex h-screen bg-gray-100 font-custom">
       {/* Sidebar */}
-      <aside className="w-1/5 bg-[#e1e1e1] p-4 font-merriWeather">
+      <aside className="w-1/5 bg-[#e1e1e1] p-4 font-noto">
         <h1 className="text-2xl font-semibold mb-4  pl-4">
           Shri Samartha Pharmaceuticals
         </h1>
@@ -416,24 +416,26 @@ const AdminPanel = () => {
       {/* Main Content */}
       <div className="flex-1 p-4 relative">
         {/* Header */}
-        <div className="flex mb-6">
+        <div className="flex mb-6 " >
           <input
+           ref={searchRef}
             type="text"
             placeholder="Search Products"
             value={keyword}
             onChange={handleInputChange}
-            className="border border-gray-400 pl-5 rounded-xl w-[45%] h-12 focus:outline-none focus:ring focus:ring-green-300"
+            className="border border-gray-400 pl-5 rounded-xl w-[45%] h-12 focus:outline-none focus:ring focus:ring-green-300 font-noto"
           />
           {loading && <div className="loading-spinner">Loading...</div>}
           {suggestions.length > 0 && (
-            <ul className="absolute bg-white border border-gray-300 rounded-lg mt-2 w-2/4 shadow-lg z-10">
+            <ul className="absolute bg-white border border-gray-300 rounded-lg mt-12  w-2/4 shadow-lg z-10 max-h-[65vh] overflow-y-auto">
               {suggestions.map((suggestion, index) => (
                 <li
                   key={suggestion.id}
-                  className={`px-4 py-2 cursor-pointer ${highlightedIndex === index
-                    ? "bg-gray-200"
-                    : "hover:bg-gray-100"
-                    }`}
+                  className={`px-4 py-2 cursor-pointer ${
+                    highlightedIndex === index
+                      ? "bg-gray-200"
+                      : "hover:bg-gray-100"
+                  }`}
                   onClick={() => handleSuggestionClick(suggestion.id)}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
@@ -478,82 +480,85 @@ const AdminPanel = () => {
         </div>
 
         {/* Product List */}
-        <div className="flex flex-col max-h-screen">
-  {/* Main Content */}
-  <div className="flex-1 overflow-y-auto">
-    <div className="p-4">
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4 mx-16"
-        >
-          <div className="flex space-x-10 ">
-            <div className=" bg-gray-300 rounded">
-              {product.imageData ? (
-                <img
-                  src={`data:${product.imageType};base64,${product.imageData}`}
-                  alt={product.imageName}
-                  className="w-40 h-40 rounded-md object-cover"
-                />
-              ) : (
-                <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
-                  Image Placeholder
+        <div className="flex flex-col ">
+          {/* Main Content */}
+          <div className="flex-1 overflow-y-auto max-h-[83vh]">
+            <div className="p-4">
+              {products.map((product) => (
+                <div
+                  key={product.id}
+                  className="flex justify-between items-center bg-white shadow-lg rounded-lg p-4 mb-4 mx-16"
+                >
+                  <div className="flex space-x-10 ">
+                    <div className=" bg-gray-300 rounded">
+                      {product.imageData ? (
+                        <img
+                          src={`data:${product.imageType};base64,${product.imageData}`}
+                          alt={product.imageName}
+                          className="w-40 h-40 rounded-md object-cover"
+                        />
+                      ) : (
+                        <div className="placeholder w-40 h-40 bg-gray-300 rounded-md flex items-center justify-center text-gray-500">
+                          Image Placeholder
+                        </div>
+                      )}
+                    </div>
+                    <div className="mt-3">
+                      <h3 className="font-bold text-lg">
+                        {product.medicineName}
+                      </h3>
+                      <h3 className="font-medium text-sm pt-1">
+                        {product.companyName}
+                      </h3>
+                      <p className="text-sm text-gray-600 pt-1">
+                        {product.brand}
+                      </p>
+                      <p className="text-sm text-gray-600 ">
+                        {product.categories && product.categories.join(", ")}
+                      </p>
+                      <p className="text-sm text-gray-800 mt-5">
+                        Price ₹{product.price}/-
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex space-x-4">
+                    <button
+                      onClick={() => handleEditProduct(product)}
+                      className="bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500 transition-all"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteProduct(product.id)}
+                      className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition-all"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-              )}
+              ))}
             </div>
-            <div className="mt-3">
-              <h3 className="font-bold text-lg">{product.medicineName}</h3>
-              <h3 className="font-medium text-sm pt-1">
-                {product.companyName}
-              </h3>
-              <p className="text-sm text-gray-600 pt-1">{product.brand}</p>
-              <p className="text-sm text-gray-600 ">
-                {product.categories && product.categories.join(", ")}
-              </p>
-              <p className="text-sm text-gray-800 mt-5">
-                Price ₹{product.price}/-
-              </p>
-            </div>
-          </div>
-          <div className="flex space-x-4">
-            <button
-              onClick={() => handleEditProduct(product)}
-              className="bg-yellow-400 text-white px-4 py-1 rounded hover:bg-yellow-500 transition-all"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => handleDeleteProduct(product.id)}
-              className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition-all"
-            >
-              Delete
-            </button>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
-
 
         {/* Modal for Add/Edit */}
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm z-50">
-            <div
-              className="bg-white rounded-lg shadow-2xl transform transition-transform scale-95 animate-fade-in w-full max-w-4xl"
-            >
+            <div className="bg-white rounded-lg shadow-2xl transform transition-transform scale-95 animate-fade-in w-full max-w-4xl">
               <h2 className="text-2xl font-bold p-6 text-gray-700">
                 {modalType === "add" ? "Add Product" : "Edit Product"}
               </h2>
               <div
                 className="overflow-y-auto max-h-[80vh] px-6 pb-6"
-                style={{ scrollbarWidth: "thin", scrollbarColor: "#D1D5DB #F3F4F6" }}
+                style={{
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "#D1D5DB #F3F4F6",
+                }}
               >
                 <form
                   onSubmit={handleSaveProduct} // Use a single submission handler
                   className="grid grid-cols-2 gap-6"
                 >
-
                   {/* Medicine Name Field */}
                   <div>
                     <label
@@ -668,7 +673,6 @@ const AdminPanel = () => {
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
                   </div>
-
 
                   {/* Maximum Age Field */}
                   <div>
@@ -785,7 +789,6 @@ const AdminPanel = () => {
                     />
                   </div>
 
-
                   {/* Description Field */}
                   <div className="col-span-2">
                     <label
@@ -798,16 +801,17 @@ const AdminPanel = () => {
                       id="prodDescription"
                       placeholder="Description"
                       rows="5"
-                      value={convertHTMLToPlainText(currentProduct.prodDescription)}
+                      value={convertHTMLToPlainText(
+                        currentProduct.prodDescription
+                      )}
                       onChange={(e) =>
                         setCurrentProduct({
                           ...currentProduct,
                           prodDescription: e.target.value,
                         })
                       }
-                     
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
-                      ></textarea>
+                    ></textarea>
                   </div>
 
                   {/* Comments Field */}

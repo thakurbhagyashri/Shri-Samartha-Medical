@@ -105,8 +105,9 @@ const Search = ({ menuOpen }) => {
 
     return (
         <div
-            className={`search-bar-container ${menuOpen ? 'shift-down' : ''}`} ref={searchRef} >
+            className="search-bar-container"  >
             <input
+            ref={searchRef}
                 type="text"
                 placeholder="Search..."
                 className="search-input"
@@ -118,7 +119,7 @@ const Search = ({ menuOpen }) => {
             </button>
             {loading && <div className="loading-spinner">Loading...</div>}
             {suggestions.length > 0 && (
-                <ul className="absolute bg-white border border-gray-300 rounded-lg mt-2 w-2/4 shadow-lg z-10">
+                <ul className="absolute bg-white border border-gray-300 rounded-lg mt-12 ml-10 w-1/2 shadow-lg z-10">
                     {suggestions.map((suggestion, index) => (
                         <li
                             key={suggestion.id}
