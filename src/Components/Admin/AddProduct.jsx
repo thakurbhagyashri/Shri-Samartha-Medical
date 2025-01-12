@@ -189,11 +189,13 @@ const AddProductPage = () => {
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Quantity
                   </label>
-                  <input
+                  <InputField
                     type="number"
                     name="quantity"
                     value={formData.quantity}
                     onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
+
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=""
                     required
@@ -209,7 +211,7 @@ const AddProductPage = () => {
                     value={formData.price}
                     onChange={handleChange}
                     validate={(name, value) => validateInput(name, value)}
-                    
+
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=""
                     required
@@ -243,15 +245,13 @@ const AddProductPage = () => {
                     name="companyName"
                     value={formData.companyName}
                     onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Ex. Cipla"
-                    validate={(name,value)=>{validateInput(name,value);
-                    }
-                    }
+                    placeholder="Enter discount"
                     required
                   />
                 </div>
-                 <div className="pl-1">
+                <div className="pl-1">
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Medicine Name
                   </label>
@@ -316,30 +316,33 @@ const AddProductPage = () => {
                   <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                     Discount Mrp
                   </label>
-                  <input
+                  <InputField
                     type="number"
                     name="discountMrp"
                     value={formData.discountMrp}
                     onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
+
                     className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=""
                     required
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label className="block mb-2 text-md font-medium text-gray-900 dark:text-white">
                   Categories
                 </label>
-                <input
-                  type="text"
-                  name="categories"
-                  value={formData.categories}
-                  onChange={handleChange}
-                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder=""
-                  required
+                <InputField
+                    type="text"
+                    name="categories"
+                    value={formData.categories}
+                    onChange={handleChange}
+                    validate={(name, value) => validateInput(name, value)}
+                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter categories"
+                    required
                 />
               </div>
 
@@ -364,9 +367,9 @@ const AddProductPage = () => {
                   placeholder="Product Description....."
                   required
                 />
-              </div> 
-               <div>
-              
+              </div>
+              <div>
+
               </div>
               <div>
 
