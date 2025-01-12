@@ -6,6 +6,7 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import { MyContext } from './Components/MyContext';
 import ScrollToTop from './Components/ScrollToTop';
+import WishlistPage from './Components/Wishlist/WishlistPage';
 
 // Lazy-loaded Components
 const AboutUs = React.lazy(() => import('./Components/AboutPage/AboutUs'));
@@ -91,6 +92,7 @@ const App = () => {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Start />} />
+            <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/products" element={<TrendingProducts />} />

@@ -71,7 +71,7 @@ const CategoryPage = () => {
               <div className="bg-white shadow-lg rounded-lg overflow-hidden">
                 <Link to={`/category/${category.name}`} className="block p-4 ">
                   <div className="h-40 w-full mb-4 bg-gray-200 rounded-lg">
-                    <img
+                    <img 
                       src={category.imageUrl}
                       alt={category.name}
                       className="w-full h-full object-cover rounded-lg"

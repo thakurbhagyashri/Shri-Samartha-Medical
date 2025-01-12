@@ -7,7 +7,16 @@ export const MyContext = createContext();
 // Create the provider
 export const MyProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  
+  const [wishlist, setWishlist] = useState({});
 
+  const handleWishlist = (productId) => {
+    setWishlist((prevWishlist) => ({
+      ...prevWishlist,
+      [productId]: !prevWishlist[productId], // Toggle wishlist state
+    }));
+  };
+  
   // Function to update quantity
   const updateQuantity = (id, newQuantity) => {
     setCart((prevCart) =>
@@ -53,7 +62,7 @@ export const MyProvider = ({ children }) => {
 
   return (
     <MyContext.Provider
-      value={{ cart, updateQuantity, removeFromCart, addToCart }}
+      value={{ cart, updateQuantity, removeFromCart , addToCart, removeFromCart, wishlist, handleWishlist}}
     >
       {children}
     </MyContext.Provider>

@@ -230,7 +230,7 @@ const CategoryDetailPage = () => {
         <FaCheck className="text-ButtonGreen text-xl" />
         <span className="font-medium">{notification}</span>
       </div>
-      
+    
       <button
         className="text-black font-semibold text-xl leading-none"
         onClick={() => setNotification(null)}
