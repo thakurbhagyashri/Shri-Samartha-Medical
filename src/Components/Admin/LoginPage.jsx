@@ -8,15 +8,10 @@
 //   const [showModal, setShowModal] = useState(false); // State to control modal visibility
 //   const navigate = useNavigate();
 
-<<<<<<< HEAD
+
   // Hardcoded credentials for admin
-  const adminUsername = "admin";
-  const adminPassword = "admin";
-=======
-//   // Hardcoded credentials for admin
-//   const adminUsername = "admin";
-//   const adminPassword = "admin123";
->>>>>>> aea340aad66efa634600048dc41ba0695ce27aca
+  // const adminUsername = "admin";
+  // const adminPassword = "admin";
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
@@ -50,20 +45,20 @@
 
 //       navigate("/");
 
-<<<<<<< HEAD
-    } catch (error) {
-      console.error("Error:", error.message || error);
-      alert("Login failed! Please try again.");
-    }
-  };
-=======
+
+//     } catch (error) {
+//       console.error("Error:", error.message || error);
+//       alert("Login failed! Please try again.");
+//     }
+//   };
+
 //       alert("Login successful!");
 //     } catch (error) {
 //       console.error("Error:", error.message || error);
 //       alert("Login failed! Please try again.");
 //     }
 //   };
->>>>>>> aea340aad66efa634600048dc41ba0695ce27aca
+
 
 //   const handleGoogleLogin = () => {
 //     window.location.href = "http://localhost:8080/oauth2/authorization/google";
