@@ -23,7 +23,15 @@ const TrendingProducts = React.lazy(() => import('./Components/TrendingProducts/
 const CategoriesPage = React.lazy(() => import('./Components/ShopByCategory/CategoriesPage'));
 const CategoryDetailPage = React.lazy(() => import('./Components/ShopByCategory/CategoryDetailPage'));
 const CheckOutPage = React.lazy(() => import('./Components/CheckOutPage/CheckoutPage'));
-const UserProfile = React.lazy(() => import('./Components/Admin/UserProfile'));
+const PaymentPage = React.lazy(() => import('./Components/CheckOutPage/PaymentPage'));
+const UserAccount = React.lazy(() => import('./Components/User/UserAccount'));
+const OrderStatus = React.lazy(() => import('./Components/User/OrderStatus'));
+const OrderHistory = React.lazy(() => import('./Components/User/OrderHistory'));
+const PrescriptionManagement = React.lazy(() => import('./Components/User/PrescriptionManagement'));
+const PaymentMethods = React.lazy(() => import('./Components/User/PaymentMethods'));
+const PharmacyServices = React.lazy(() => import('./Components/User/PharmacyServices'));
+const SecuritySettings = React.lazy(() => import('./Components/User/SecuritySettings'));
+const CustomerSupport = React.lazy(() => import('./Components/User/CustomerSupport'));
 const Start = React.lazy(() => import('./Start'));
 
 // Fallback Component for Lazy Loading
@@ -111,7 +119,15 @@ const App = () => {
             <Route path="/add" element={<AddProductPage />} />
             <Route path="/category/:categoryName" element={<CategoryDetailPage />} />
             <Route path="/checkout" element={<CheckOutPage />}/>
-            <Route path="/profile" element={<UserProfile />}/>
+            <Route path="/payment" element={<PaymentPage />}/>
+            <Route path="/profile" element={<UserAccount />}/>
+            <Route path="/orderstatus" element={<OrderStatus />}/>
+            <Route path="/orderhistory" element={<OrderHistory />}/>
+            <Route path="/prescriptions" element={<PrescriptionManagement />}/>
+            <Route path="/paymentmMethods" element={<PaymentMethods />}/>
+            <Route path="/pharmacyservices" element={<PharmacyServices />}/>
+            <Route path="/securitysettings" element={<SecuritySettings />}/>
+            <Route path="/customersupport" element={<CustomerSupport />}/>
           </Routes>
         </Suspense>
         <Footer />
