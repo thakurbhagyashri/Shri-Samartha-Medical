@@ -391,54 +391,38 @@
 
 // export default LoginPage;
 
-//07-01-2025 10:37
+//14-01-2025 00:07
 import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../CheckOutPage/AuthContext"; // Update with the correct path
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const { login } = useAuth(); // Use login function from AuthContext
   const navigate = useNavigate();
-
-  // Hardcoded credentials for user
-  const userEmail = "user@sinfolix.com";
-  const userPassword = "Sinfolix";
-
-  // Hardcoded credentials for admin
-  const adminEmail = "admin@sinfolix.com";
-  const adminPassword = "admin";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check for the hardcoded credentials for user
-    if (email === userEmail && password === userPassword) {
-      const token = "mock-token"; // Replace with actual token if needed
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", "user");
-
-      // Redirect based on intended destination
-      const redirectPath = localStorage.getItem("redirectPath") || "/";
-      localStorage.removeItem("redirectPath");
-      navigate(redirectPath);
-
-      alert("User login successful!");
+    // Hardcoded user credentials for user login
+    if (email === "user@sinfolix.com" && password === "Sinfolix") {
+      login("user", "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"); // Call login with role and profilePic
+      navigate("/"); // Redirect after login
+      // alert("User login successful!");
       return;
     }
 
-    // Check for the hardcoded credentials for admin
-    if (email === adminEmail && password === adminPassword) {
-      const token = "admin-token"; // Replace with actual token if needed
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", "admin");
-
+    // Hardcoded admin credentials for admin login
+    if (email === "admin@sinfolix.com" && password === "admin") {
+      login("admin", "https://www.w3schools.com/w3images/avatar2.png"); // Call login with role and profilePic
       setShowModal(true); // Show the modal on successful admin login
       return;
     }
 
-    // Handle login with API (this can be modified as needed)
+    // If credentials don't match, call the API for login
     try {
       const response = await fetch("http://localhost:8080/public/login", {
         method: "POST",
@@ -458,13 +442,15 @@ const LoginPage = () => {
       console.log("Decoded token:", decoded);
 
       localStorage.setItem("token", token);
-
-      navigate("/");
+      localStorage.setItem("profilePic", "https://www.w3schools.com/w3images/avatar2.png"); // Placeholder image
+      localStorage.setItem("role", decoded.role); // Use the role from the decoded token
 
       // Redirect based on intended destination
       const redirectPath = localStorage.getItem("redirectPath") || "/";
       localStorage.removeItem("redirectPath");
       navigate(redirectPath);
+
+      alert("Login successful!");
     } catch (error) {
       console.error("Error:", error.message || error);
       alert("Login failed! Please try again.");

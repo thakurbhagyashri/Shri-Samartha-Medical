@@ -73,7 +73,7 @@ const CheckoutPage = () => {
               <div className="flex items-center">
                 <img
                   src={item.imageUrl}
-                  alt={item.medicineName}
+                  alt={item.name}
                   className="w-12 h-12 object-cover rounded mr-4"
                 />
                 <div>
@@ -99,9 +99,11 @@ const CheckoutPage = () => {
         >
           Back to Cart
         </Link>
-        <button className="btn btn-primary bg-blue-600 text-white px-4 py-2 rounded">
+        <Link to="/payment" 
+        state={{ cart, totalPrice }}
+        className="btn btn-primary bg-blue-600 text-white px-4 py-2 rounded">
           Proceed to Payment
-        </button>
+        </Link>
       </div>
     </div>
   );

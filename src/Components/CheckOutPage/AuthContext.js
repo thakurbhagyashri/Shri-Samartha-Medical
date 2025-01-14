@@ -41,47 +41,68 @@
 //   );
 // };
 
-// 07-01-2025 10:37
+//14-01-2025 00:07
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  console.log('AuthContext:', context); // Debug the context value
-  return context;
-};
+// Custom hook for accessing the AuthContext
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState(null);
+  const [profilePic, setProfilePic] = useState(null);
+
+  // Read from localStorage on mount to set initial state
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
+    const storedRole = localStorage.getItem('role');
+    const storedProfilePic = localStorage.getItem('profilePic');
+
+    if (token && storedRole) {
       try {
         const decoded = jwtDecode(token);
         setIsLoggedIn(true);
-        setRole(decoded.role);
+        setRole(storedRole);  // Use the role from localStorage
+        setProfilePic(storedProfilePic || 'https://www.w3schools.com/w3images/avatar2.png');  // Default profile pic
       } catch (error) {
         console.error('Invalid token:', error);
         setIsLoggedIn(false);
         setRole(null);
+        setProfilePic(null);
       }
     } else {
       setIsLoggedIn(false);
       setRole(null);
+      setProfilePic(null);
     }
-  }, []);
+  }, []); // Empty dependency array ensures this runs only once after the component mounts
 
+  // Login function to update the AuthContext state
+  const login = (role, profilePic) => {
+    localStorage.setItem('token', 'mock-token'); // Replace with actual token if needed
+    localStorage.setItem('role', role);
+    localStorage.setItem('profilePic', profilePic);
+
+    setIsLoggedIn(true);
+    setRole(role);
+    setProfilePic(profilePic);
+  };
+
+  // Logout function to clear the AuthContext state and localStorage
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('profilePic');
     setIsLoggedIn(false);
     setRole(null);
+    setProfilePic(null);
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, role, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, role, profilePic, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
