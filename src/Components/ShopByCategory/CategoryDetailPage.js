@@ -120,12 +120,19 @@ const CategoryDetailPage = () => {
   };
 
   const handleWishlist = (productId) => {
-    setWishlisted((prevWishlisted) => ({
-      ...prevWishlisted,
-      [productId]: !prevWishlisted[productId], // Toggle the wishlist state for the specific product
-    }));
+    setWishlisted((prevWishlisted) => {
+      const updatedWishlist = {
+        ...prevWishlisted,
+        [productId]: !prevWishlisted[productId], // Toggle the wishlist state for the specific product
+      };
+      
+      // Store the updated wishlist in localStorage
+      localStorage.setItem('wishlisted', JSON.stringify(updatedWishlist));
+  
+      return updatedWishlist;
+    });
   };
-
+  
   return (
     <div className="flex">
       {/* Left-side Category Navigation */}

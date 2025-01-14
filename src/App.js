@@ -70,6 +70,9 @@ const App = () => {
     addToCart,
     removeFromCart, // Add removeFromCart to the context
   };
+  const [wishlist, setWishlist] = useState([]);
+
+
 
   // Check for User Role using JWT
   useEffect(() => {

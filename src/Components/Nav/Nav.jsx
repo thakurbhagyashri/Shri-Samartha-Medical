@@ -105,6 +105,7 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
 import { useAuth } from '../CheckOutPage/AuthContext';
 import './Nav.css';
+import WishlistPage from '../Wishlist/WishlistPage';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -173,6 +174,10 @@ const Nav = () => {
           <Link to="/contact">Contact Us</Link>
           <Upload />
           <ShoppingCart />
+          
+          {/* wishlist section:need to update  */}
+          <Link to="/wishlist">wishlist</Link>
+              
           {isLoggedIn ? (
             <div className="flex">
               <button

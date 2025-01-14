@@ -8,7 +8,19 @@ export const MyContext = createContext();
 export const MyProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   
-  const [wishlist, setWishlist] = useState({});
+  const [wishlist, setWishlist] = useState([]);
+
+  const addToWishlist = (product) => {
+    if (!wishlist.find((item) => item.id === product.id)) {
+      setWishlist([...wishlist, product]);
+    } else {
+      alert('Product is already in the wishlist!');
+    }
+  };
+
+  const removeFromWishlist = (id) => {
+    setWishlist(wishlist.filter((item) => item.id !== id));
+  };
 
   const handleWishlist = (productId) => {
     setWishlist((prevWishlist) => ({
@@ -16,6 +28,7 @@ export const MyProvider = ({ children }) => {
       [productId]: !prevWishlist[productId], // Toggle wishlist state
     }));
   };
+  
   
   // Function to update quantity
   const updateQuantity = (id, newQuantity) => {
@@ -62,7 +75,7 @@ export const MyProvider = ({ children }) => {
 
   return (
     <MyContext.Provider
-      value={{ cart, updateQuantity, removeFromCart , addToCart, removeFromCart, wishlist, handleWishlist}}
+      value={{ cart, updateQuantity, removeFromCart , addToCart, removeFromCart, wishlist, handleWishlist,addToWishlist, removeFromWishlist }}
     >
       {children}
     </MyContext.Provider>
