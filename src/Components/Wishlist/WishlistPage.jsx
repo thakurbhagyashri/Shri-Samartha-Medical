@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AddToCartButton from '../Button/AddToCart';
+import { MyContext } from '../MyContext';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const WishlistPage = () => {
   const [wishlistedProducts, setWishlistedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+ const {addToCart}=useContext(MyContext);
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem('wishlisted')) || {};
     setWishlistedProducts(Object.values(storedWishlist)); // Fetch and set products
-    setIsLoading(false); // Mark as loaded
+    setIsLoading(false); 
   }, []);
 
   const handleRemoveFromWishlist = (productId) => {
@@ -23,7 +26,12 @@ const WishlistPage = () => {
     console.log('Moving product to cart:', product);
     handleRemoveFromWishlist(product.id); 
   };
-
+  // To handle to product cart
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    // showNotification('Product added to cart successfully');
+    alert("Product Move to Cart Successfully!");
+  };
   if (isLoading) {
     return <p>Loading your wishlist...</p>;
   }
@@ -39,29 +47,57 @@ const WishlistPage = () => {
           wishlistedProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 "
             >
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                className="w-full h-64 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h3>
-              <p className="text-sm text-gray-600">Price: ${product.price}</p>
+              {/* hover:text-2xl blur-xl */}
+
+              {/* for plain wishlist part */}
+              {/* <Link to={`/categoryDetails/${product.id}`} className="block">
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="w-full h-64 object-cover rounded-lg mb-4 cursor-pointer"
+                />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h3>
+                <p className="text-sm text-gray-600">Price: ${product.price}</p>
+              </Link> */}
+              <Link to={`/product/${product.id}`} className="block hover:text-2xl text-cyan-600">
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="w-full h-64  mb-4 cursor-pointer"
+                />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h3>
+                <p className="text-sm text-gray-600">Price: ${product.price}</p>
+              </Link>
 
               <div className="mt-4 flex justify-between">
-                <button
-                  onClick={() => handleMoveToCart(product)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-                >
-                  Move to Cart
-                </button>
-                <button
+                <AddToCartButton
+                  onClick={() => handleAddToCart(product)}
+                 
+                    text="Move To Cart"
+                />
+                
+                
+                {/* <AddToCartButton
+                    text="Add to Cart"
+                    onClick={() => handleAddToCart(product)} // Add the item to the cart
+                  /> */}
+                {/* <button
                   onClick={() => handleRemoveFromWishlist(product.id)}
                   className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition"
                 >
                   Remove
+                </button> */}
+
+
+                <button
+                  onClick={() => handleRemoveFromWishlist(product.id)}
+                  className="text-red-500 hover:text-red-700 focus:outline-none"
+                >
+                  <FaTrashAlt size={20} /> {/* React Icon trash */}
                 </button>
+             
               </div>
             </div>
           ))
@@ -69,8 +105,9 @@ const WishlistPage = () => {
       </div>
 
       <div className="mt-8 flex justify-center">
-      
-       <Link to={"/all-categories"}  className="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 transition">Continue Shopping</Link>
+        <Link  to={"/all-categories"} className="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 transition">
+          Continue Shopping
+        </Link>
       </div>
     </div>
   );
