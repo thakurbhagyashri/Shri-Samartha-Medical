@@ -118,18 +118,27 @@ const CategoryDetailPage = () => {
     addToCart(product);
     showNotification('Product added to cart successfully');
   };
-
-  const handleWishlist = (productId) => {
+  
+  const handleWishlist = (productId, productName) => {
     setWishlisted((prevWishlisted) => {
       const updatedWishlist = {
         ...prevWishlisted,
-        [productId]: !prevWishlisted[productId], // Toggle the wishlist state for the specific product
+        [productId]: prevWishlisted[productId]
+          ? undefined // Remove the product if already wishlisted
+          : { id: productId, name: productName }, // Add the product with ID and name
       };
       
-      // Store the updated wishlist in localStorage
-      localStorage.setItem('wishlisted', JSON.stringify(updatedWishlist));
+      // Remove undefined entries from the wishlist
+      const cleanedWishlist = Object.fromEntries(
+        Object.entries(updatedWishlist).filter(([_, value]) => value !== undefined)
+      );
   
-      return updatedWishlist;
+      console.log("Wishlist is:", cleanedWishlist);
+  
+      // Store the updated wishlist in localStorage
+      localStorage.setItem('wishlisted', JSON.stringify(cleanedWishlist));
+  
+      return cleanedWishlist;
     });
   };
   
@@ -212,7 +221,7 @@ const CategoryDetailPage = () => {
                     className={`absolute top-2 right-2 m-1 p-2 text-1xl cursor-pointer transition-colors duration-300 ${
                       Wishlisted[product.id] ? 'text-red-500' : 'text-black'
                     }`}
-                    onClick={() => handleWishlist(product.id)} // Use 'product.id' here
+                    onClick={() => handleWishlist(product.id,product.name)} // Use 'product.id' here
                   >
                     <FaHeart
                       style={{
