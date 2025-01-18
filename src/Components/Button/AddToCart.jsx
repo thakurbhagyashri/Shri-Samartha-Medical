@@ -12,7 +12,7 @@ const AddToCartButton = ({ text, onClick, link, extraClasses = '', showNotificat
   return (
     <div className="mt-4 text-center font-custom">
       {link ? (
-        <Link
+        <Link 
           to={link}
           className={`px-4 py-2 text-white text-sm rounded-lg bg-[#497E06] hover:bg-[#5ea328] hover:font-bold transition duration-300 w-full sm:w-auto ${extraClasses}`}
         >
@@ -25,7 +25,7 @@ const AddToCartButton = ({ text, onClick, link, extraClasses = '', showNotificat
         >
           {text}
         </button>
-      )}
+      ) }
     </div>
   );
 };

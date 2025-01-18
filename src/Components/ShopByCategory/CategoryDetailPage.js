@@ -16,82 +16,129 @@ const CategoryDetailPage = () => {
   const [notification, setNotification] = useState('');
   const [Wishlisted, setWishlisted] = useState({});
 
+  // useEffect(() => {
+  //   const loadCategoryData = async () => {
+  //     try {
+  //       setLoading(true);
+
+  //       // Retrieve the token from localStorage
+  //       const token = localStorage.getItem('jwtToken');
+  //       if (!token) {
+  //         throw new Error('Authentication token not found.');
+  //       }
+
+  //       const response = await fetch(`http://localhost:8080/product/category?name=${categoryName}`, {
+  //         method: 'GET',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: `Bearer ${token}`, // Include the JWT token
+  //         },
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch category data');
+  //       }
+
+  //       const data = await response.json();
+
+  //       // Convert image bytes to Base64
+  //       const categoryWithImages = {
+  //         ...data,
+  //         products: data.products.map((product) => ({
+  //           ...product,
+  //           imageUrl: `data:image/jpeg;base64,${btoa(
+  //             String.fromCharCode(...new Uint8Array(product.image))
+  //           )}`,
+  //         })),
+  //       };
+  //       setCategory(categoryWithImages);
+  //     } catch (error) {
+  //       console.error('Error fetching category data:', error);
+  //       setCategory(null);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   // Find the category based on the categoryName
+  //   const foundCategory = categoriesData.find(
+  //     (cat) => cat.name.toLowerCase() === categoryName.toLowerCase()
+  //   );
+
+  //   setCategory(foundCategory || null);
+  //   setLoading(false);
+  // }, [categoryName]);
   useEffect(() => {
     const loadCategoryData = async () => {
       try {
         setLoading(true);
-
-        // Retrieve the token from localStorage
+  
         const token = localStorage.getItem('jwtToken');
         if (!token) {
           throw new Error('Authentication token not found.');
         }
-
+  
         const response = await fetch(`http://localhost:8080/product/category?name=${categoryName}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`, // Include the JWT token
+            Authorization: `Bearer ${token}`,
           },
         });
+  
         if (!response.ok) {
           throw new Error('Failed to fetch category data');
         }
-
+  
         const data = await response.json();
-
-        // Convert image bytes to Base64
+  
         const categoryWithImages = {
           ...data,
           products: data.products.map((product) => ({
             ...product,
-            imageUrl: `data:image/jpeg;base64,${btoa(
-              String.fromCharCode(...new Uint8Array(product.image))
-            )}`,
+            imageUrl: `data:image/jpeg;base64,${btoa(String.fromCharCode(...new Uint8Array(product.image)))}`,
           })),
         };
         setCategory(categoryWithImages);
       } catch (error) {
         console.error('Error fetching category data:', error);
-        setCategory(null);
+        // You can fallback to mock data if fetching fails
+        const foundCategory = categoriesData.find(
+          (cat) => cat.name.toLowerCase() === categoryName.toLowerCase()
+        );
+        setCategory(foundCategory || null);
       } finally {
         setLoading(false);
       }
     };
-
-    // Find the category based on the categoryName
-    const foundCategory = categoriesData.find(
-      (cat) => cat.name.toLowerCase() === categoryName.toLowerCase()
-    );
-
-    setCategory(foundCategory || null);
-    setLoading(false);
+  
+    loadCategoryData();
   }, [categoryName]);
+
 
   const filterProducts = () => {
     const products = category?.products || [];
     let filteredProducts = products;
-
+  
     if (searchTerm) {
       filteredProducts = filteredProducts.filter((product) =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-
+  
     if (priceFilter !== 'all') {
       filteredProducts = filteredProducts.filter((product) => {
-        if (!product || product.price === undefined) return false; // Skip if price is undefined
-        const priceString = String(product.price); // Ensure it's a string
-        const price = parseFloat(priceString.replace('$', ''));
+        if (!product || product.price === undefined) return false;
+        const price = parseFloat(product.price.replace('$', ''));
+  
         if (priceFilter === 'low') return price < 20;
         if (priceFilter === 'medium') return price >= 20 && price < 50;
         return price >= 50;
       });
     }
-
+  
     return filteredProducts;
   };
-
+  
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -113,34 +160,32 @@ const CategoryDetailPage = () => {
       setNotification(null);
     }, 3000);
   };
+  
 
   const handleAddToCart = (product) => {
     addToCart(product);
     showNotification('Product added to cart successfully');
-  };
-  
-  const handleWishlist = (productId, productName) => {
+  };const handleWishlist = (productId, productName) => {
     setWishlisted((prevWishlisted) => {
       const updatedWishlist = {
         ...prevWishlisted,
-        [productId]: prevWishlisted[productId]
-          ? undefined // Remove the product if already wishlisted
-          : { id: productId, name: productName }, // Add the product with ID and name
+        [productId]: prevWishlisted[productId] ? undefined : { id: productId, name: productName },
       };
-      
-      // Remove undefined entries from the wishlist
+  
+      // Clean up undefined entries
       const cleanedWishlist = Object.fromEntries(
         Object.entries(updatedWishlist).filter(([_, value]) => value !== undefined)
       );
   
-      console.log("Wishlist is:", cleanedWishlist);
-  
       // Store the updated wishlist in localStorage
       localStorage.setItem('wishlisted', JSON.stringify(cleanedWishlist));
+      showNotification("Wishlist Updated!");
   
       return cleanedWishlist;
     });
   };
+  
+  
   
   return (
     <div className="flex">
@@ -194,11 +239,12 @@ const CategoryDetailPage = () => {
               <div key={product.id} className="bg-white shadow-lg rounded-lg overflow-hidden relative">
                 <div className="h-40 w-full mb-4 bg-gray-200 rounded-lg">
                   <Link to={`/product/${product.id}`}>
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
+                  <img
+  src={product.imageUrl}
+  alt={product.name}
+  className="w-full h-full object-cover rounded-lg"
+/>
+
                   </Link>
                 </div>
                 <div className="p-4">
