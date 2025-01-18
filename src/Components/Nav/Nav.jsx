@@ -97,13 +97,13 @@
 // export default Nav;
 
 //14-01-2025 00:07
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../CheckOutPage/AuthContext'; // Update with correct path
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
 import Upload from '../Upload/Upload';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import './Nav.css';
 
 const Nav = () => {

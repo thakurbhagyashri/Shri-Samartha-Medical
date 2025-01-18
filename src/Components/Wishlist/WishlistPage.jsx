@@ -1,13 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import AddToCartButton from '../Button/AddToCart';
-import { MyContext } from '../MyContext';
-<<<<<<< HEAD
-=======
-import { FaTrashAlt } from 'react-icons/fa';
-import { categoriesData } from '../ShopByCategory/categoriesData'; // Assuming categoriesData is exported from a separate file
->>>>>>> ebe9c5bf1e077b906a162409d335f0fda7e92344
+import React, { useContext, useEffect, useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import AddToCartButton from "../Button/AddToCart";
+import { MyContext } from "../MyContext";
+import { categoriesData } from "../ShopByCategory/categoriesData"; // Assuming categoriesData is exported from a separate file
 
 const WishlistPage = () => {
   const [wishlistedProducts, setWishlistedProducts] = useState([]);
@@ -16,21 +12,25 @@ const WishlistPage = () => {
 
   // Fetch the wishlisted products from localStorage
   useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem('wishlisted')) || {};
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlisted")) || {};
     // Fetch all products from categoriesData that are wishlisted
     const wishlistedProductIds = Object.keys(storedWishlist);
-    const allProducts = categoriesData.flatMap(category => category.products); // Assuming your data structure has products in categories
-    const productsInWishlist = allProducts.filter(product => wishlistedProductIds.includes(product.id.toString()));
-    
+    const allProducts = categoriesData.flatMap((category) => category.products); // Assuming your data structure has products in categories
+    const productsInWishlist = allProducts.filter((product) =>
+      wishlistedProductIds.includes(product.id.toString())
+    );
+
     setWishlistedProducts(productsInWishlist); // Set wishlisted products
     setIsLoading(false);
   }, []);
 
   const handleRemoveFromWishlist = (productId) => {
-    const storedWishlist = JSON.parse(localStorage.getItem('wishlisted')) || {};
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlisted")) || {};
     delete storedWishlist[productId];
-    localStorage.setItem('wishlisted', JSON.stringify(storedWishlist));
-    setWishlistedProducts(prevProducts => prevProducts.filter(product => product.id !== productId)); // Remove product from state
+    localStorage.setItem("wishlisted", JSON.stringify(storedWishlist));
+    setWishlistedProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== productId)
+    ); // Remove product from state
   };
 
   const handleMoveToCart = (product) => {
@@ -43,31 +43,35 @@ const WishlistPage = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="p-6 bg-gray-50 min-h-screen font-noto">
-      <h2 className="text-3xl font-semibold text-center mb-8">Your Wishlist</h2>
-=======
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <h2 className="text-4xl text-white font-semibold text-center mb-8 tracking-wide">Your Wishlist</h2>
->>>>>>> ebe9c5bf1e077b906a162409d335f0fda7e92344
+    <div className="p-6 bg-gray-50 min-h-screen font-fira">
+      <h2 className="text-4xl text-white font-semibold text-center mb-8 tracking-wide">
+        Your Wishlist
+      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {wishlistedProducts.length === 0 ? (
-          <p className="text-center text-lg text-gray-200">Your wishlist is empty!</p>
+          <p className="text-center text-lg text-gray-200">
+            Your wishlist is empty!
+          </p>
         ) : (
           wishlistedProducts.map((product) => (
             <div
               key={product.id}
               className="bg-white w-32 sm:w-40 md:w-48 p-4 rounded-lg shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl duration-300"
             >
-              <Link to={`/product/${product.id}`} className="block hover:text-cyan-600 transition-all">
+              <Link
+                to={`/product/${product.id}`}
+                className="block hover:text-cyan-600 transition-all"
+              >
                 <img
                   src={product.imageUrl}
                   alt={product.name}
                   className="w-full h-32 object-cover mb-4 rounded-lg shadow-md hover:scale-105 transition-all duration-300"
                 />
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.name}</h3>
-                <p className="text-sm text-gray-600">Price: ${product.price}</p>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-gray-600">Price: ₹{product.price}</p>
               </Link>
 
               <div className="mt-4 flex justify-between items-center">
@@ -78,7 +82,7 @@ const WishlistPage = () => {
                 />
                 <button
                   onClick={() => handleRemoveFromWishlist(product.id)}
-                  className="text-red-600 hover:text-red-700 focus:outline-none transform transition-all duration-200"
+                  className="text-red-600 hover:text-red-700 focus:outline-none transform transition-all duration-200 pt-3"
                 >
                   <FaTrashAlt size={20} />
                 </button>
@@ -89,11 +93,10 @@ const WishlistPage = () => {
       </div>
 
       <div className="mt-8 flex justify-center">
-<<<<<<< HEAD
-        <Link  to={"/all-categories"} className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 m-4">
-=======
-        <Link to={"/all-categories"} className="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 transition">
->>>>>>> ebe9c5bf1e077b906a162409d335f0fda7e92344
+        <Link
+          to={"/all-categories"}
+          className=" btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 "
+        >
           Continue Shopping
         </Link>
       </div>
