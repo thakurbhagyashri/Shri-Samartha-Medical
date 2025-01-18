@@ -42,7 +42,7 @@
 //             </div>
 //           </div>
 //           <Link to="/contact">Contact Us</Link>
-          
+
 //           {/* Admin button */}
 //           <button
 //             className="hover:font-bold hover:px-[18px] mr-5 p-2 rounded-md"
@@ -178,6 +178,18 @@ const Nav = () => {
           </div>
           <Upload />
           <ShoppingCart />
+          {/* <WishlistLogo/> */}
+          <Link to="/wishlist" className="flex items-centertransition duration-300">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/4379/4379925.png" // Link to Flaticon wishlist icon
+              alt="Wishlist"
+              width="28"
+              height="28"
+              className="mr-2"
+            />
+            Wishlist
+          </Link>
+
           <Link to="/contact">Contact Us</Link>
           {/* If logged in, show profile picture, logout, and profile link */}
           {isLoggedIn ? (
@@ -231,7 +243,7 @@ const Nav = () => {
           </div>
           <Upload />
           <ShoppingCart />
-          <Link to="/wishlist"> wishlist</Link>
+
           <Link to="/contact">Contact Us</Link>
           {/* Show login/signup if not logged in */}
           <div className="flex">
