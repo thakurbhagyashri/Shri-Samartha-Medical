@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import AddToCartButton from '../Button/AddToCart';
 import { MyContext } from '../MyContext';
-import { FaTrashAlt } from 'react-icons/fa';
 
 const WishlistPage = () => {
   const [wishlistedProducts, setWishlistedProducts] = useState([]);
@@ -37,7 +37,7 @@ const WishlistPage = () => {
   }
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-6 bg-gray-50 min-h-screen font-noto">
       <h2 className="text-3xl font-semibold text-center mb-8">Your Wishlist</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -105,7 +105,7 @@ const WishlistPage = () => {
       </div>
 
       <div className="mt-8 flex justify-center">
-        <Link  to={"/all-categories"} className="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 transition">
+        <Link  to={"/all-categories"} className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 m-4">
           Continue Shopping
         </Link>
       </div>

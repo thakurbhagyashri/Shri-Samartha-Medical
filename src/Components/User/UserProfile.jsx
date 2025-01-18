@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import SideNav from './SideNav';
-import UserAccount from './UserAccount';
+import CustomerSupport from './CustomerSupport';
 import OrderHistory from './OrderHistory';
 import OrderStatus from './OrderStatus';
-import PrescriptionManagement from './PrescriptionManagement';
 import PaymentMethods from './PaymentMethods';
 import PharmacyServices from './PharmacyServices';
+import PrescriptionManagement from './PrescriptionManagement';
 import SecuritySettings from './SecuritySettings';
-import CustomerSupport from './CustomerSupport';
+import SideNav from './SideNav';
+import UserAccount from './UserAccount';
 
 const UserProfile = () => {
   // Initialize userInfo properly
@@ -37,7 +37,7 @@ const UserProfile = () => {
   console.log(userInfo); // Add this to check if it's being passed correctly
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row font-noto">
       {/* Sidebar */}
       <SideNav />
 

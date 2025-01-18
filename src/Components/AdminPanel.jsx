@@ -390,25 +390,25 @@ const AdminPanel = () => {
   return (
     <div className="flex h-screen bg-gray-100 font-custom">
       {/* Sidebar */}
-      <aside className="w-1/5 bg-[#e1e1e1] p-4 font-noto">
-        <h1 className="text-2xl font-semibold mb-4  pl-4">
+      <aside className="w-1/5 bg-[#1f2937] p-4 font-noto">
+        <h1 className="text-2xl text-white font-semibold mb-4  pl-4">
           Shri Samartha Pharmaceuticals
         </h1>
         <ul className="ml-5 ">
-          <li className="text-xl text-gray-800 hover:text-blue-500 p-3">
+          <li className="text-xl text-white hover:text-green-400 p-3">
             Dashboard
           </li>
-          <li className="text-xl text-gray-800 hover:text-blue-500 p-3">
+          <li className="text-xl text-white hover:text-green-400 p-3">
             Products
           </li>
-          <li className="text-xl text-gray-800 hover:text-blue-500 p-3">
+          <li className="text-xl text-white hover:text-green-400 p-3">
             Orders
           </li>
-          <li className="text-xl text-gray-800 hover:text-blue-500 p-3">
+          <li className="text-xl text-white hover:text-green-400 p-3">
             Employee
           </li>
         </ul>
-        <div className="text-xl text-gray-800 hover:text-blue-500 p-8 my-4">
+        <div className="text-xl text-white hover:text-green-400 p-8 my-4">
           Logout
         </div>
       </aside>
@@ -455,7 +455,7 @@ const AdminPanel = () => {
                       )}
                     </div>
                     <div className="ml-5">
-                      <div className="font-semibold text-gray-800 font-fira">
+                      <div className="font-semibold text-white font-fira">
                         {suggestion.medicineName}
                       </div>
                       <div className="text-sm text-gray-500 font-custom">
@@ -516,7 +516,7 @@ const AdminPanel = () => {
                       <p className="text-sm text-gray-600 ">
                         {product.categories && product.categories.join(", ")}
                       </p>
-                      <p className="text-sm text-gray-800 mt-5">
+                      <p className="text-sm text-white mt-5">
                         Price ₹{product.price}/-
                       </p>
                     </div>

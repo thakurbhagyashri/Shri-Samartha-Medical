@@ -192,7 +192,7 @@ const Footer = () => {
                 style={{ height: "10%", width: "10%" }}
                 className="mr-2"
               />
-              <a href="https://instagram.com" className="hover:font-bold">
+              <a href="https://www.instagram.com/shrisamarthpharma?igsh=MTAyY2pqNXNucnV0bg==" target="_blank" className="hover:font-bold">
                 Instagram
               </a>
             </li>

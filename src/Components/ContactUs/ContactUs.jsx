@@ -81,11 +81,11 @@
 // export default Contact;
 
 import React from "react";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaUser } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaUser } from "react-icons/fa";
 
 const Contact = () => {
   return (
-    <div className="bg-gray-50 py-10 px-6 sm:px-12 lg:px-24">
+    <div className="bg-gray-50 py-10 px-6 sm:px-12 lg:px-24 font-noto">
       <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-lg p-8">
         {/* Header */}
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">
