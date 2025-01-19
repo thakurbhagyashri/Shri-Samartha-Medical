@@ -1,6 +1,7 @@
 import "quill/dist/quill.snow.css";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SideBar from "./SideBar";
 
 const AdminPanel = () => {
   const [products, setProducts] = useState([]);
@@ -390,7 +391,7 @@ const AdminPanel = () => {
   return (
     <div className="flex h-screen bg-gray-100 font-custom">
       {/* Sidebar */}
-      <aside className="w-1/5 bg-[#1f2937] p-4 font-noto">
+      {/* <aside className="w-1/5 bg-[#1f2937] p-4 font-noto">
         <h1 className="text-2xl text-white font-semibold mb-4  pl-4">
           Shri Samartha Pharmaceuticals
         </h1>
@@ -403,6 +404,7 @@ const AdminPanel = () => {
           </li>
           <li className="text-xl text-white hover:text-green-400 p-3">
             Orders
+           
           </li>
           <li className="text-xl text-white hover:text-green-400 p-3">
             Employee
@@ -411,12 +413,14 @@ const AdminPanel = () => {
         <div className="text-xl text-white hover:text-green-400 p-8 my-4">
           Logout
         </div>
-      </aside>
-
+      </aside> */}
+  
+      <SideBar />
+      
       {/* Main Content */}
       <div className="flex-1 p-4 relative">
         {/* Header */}
-        <div className="flex mb-6 " >
+        {/* <div className="flex mb-6 " >
           <input
            ref={searchRef}
             type="text"
@@ -455,7 +459,7 @@ const AdminPanel = () => {
                       )}
                     </div>
                     <div className="ml-5">
-                      <div className="font-semibold text-white font-fira">
+                      <div className="font-semibold text-gray-600 font-fira">
                         {suggestion.medicineName}
                       </div>
                       <div className="text-sm text-gray-500 font-custom">
@@ -477,13 +481,13 @@ const AdminPanel = () => {
           >
             ADD PRODUCT
           </button>
-        </div>
+        </div> */}
 
         {/* Product List */}
-        <div className="flex flex-col ">
+        {/* <div className="flex flex-col "> */}
           {/* Main Content */}
-          <div className="flex-1 overflow-y-auto max-h-[83vh]">
-            <div className="p-4">
+          {/* <div className="flex-1 overflow-y-auto max-h-[83vh]">
+            <div className="p-">
               {products.map((product) => (
                 <div
                   key={product.id}
@@ -539,10 +543,10 @@ const AdminPanel = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Modal for Add/Edit */}
-        {showModal && (
+        {/* {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm z-50">
             <div className="bg-white rounded-lg shadow-2xl transform transition-transform scale-95 animate-fade-in w-full max-w-4xl">
               <h2 className="text-2xl font-bold p-6 text-gray-700">
@@ -558,9 +562,9 @@ const AdminPanel = () => {
                 <form
                   onSubmit={handleSaveProduct} // Use a single submission handler
                   className="grid grid-cols-2 gap-6"
-                >
+                > */}
                   {/* Medicine Name Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="medicineName"
                       className="block text-gray-700 font-medium mb-2"
@@ -580,10 +584,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Company Name Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="companyName"
                       className="block text-gray-700 font-medium mb-2"
@@ -603,10 +607,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Price Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="price"
                       className="block text-gray-700 font-medium mb-2"
@@ -626,10 +630,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Discount Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="discount"
                       className="block text-gray-700 font-medium mb-2"
@@ -649,10 +653,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Minimum Age Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="minAge"
                       className="block text-gray-700 font-medium mb-2"
@@ -672,10 +676,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Maximum Age Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="maxAge"
                       className="block text-gray-700 font-medium mb-2"
@@ -695,10 +699,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Real Mrp  Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="realMrp"
                       className="block text-gray-700 font-medium mb-2"
@@ -718,10 +722,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Discount Mrp  Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="discountMrp"
                       className="block text-gray-700 font-medium mb-2"
@@ -741,10 +745,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Quantity Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="quantity"
                       className="block text-gray-700 font-medium mb-2"
@@ -764,10 +768,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Categories Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="categories"
                       className="block text-gray-700 font-medium mb-2"
@@ -787,10 +791,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Description Field */}
-                  <div className="col-span-2">
+                  {/* <div className="col-span-2">
                     <label
                       htmlFor="prodDescription"
                       className="block text-gray-700 font-medium mb-2"
@@ -812,10 +816,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     ></textarea>
-                  </div>
+                  </div> */}
 
                   {/* Comments Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="comments"
                       className="block text-gray-700 font-medium mb-2"
@@ -835,10 +839,10 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Image Upload Field */}
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="imageFile"
                       className="block text-gray-700 font-medium mb-2"
@@ -856,9 +860,9 @@ const AdminPanel = () => {
                       }
                       className="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-300"
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-span-2 mt-6 flex justify-between">
+                  {/* <div className="col-span-2 mt-6 flex justify-between">
                     <button
                       type="button"
                       onClick={() => setShowModal(false)}
@@ -877,7 +881,7 @@ const AdminPanel = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

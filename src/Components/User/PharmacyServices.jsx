@@ -10,7 +10,7 @@ const PharmacyServices = () => {
       <h2 className="text-2xl font-semibold mb-4">Pharmacy Services</h2>
       <p className="p-2">Medicine Delivery Subscription: Active</p>
       <p className="p-2">Next Delivery: 2025-01-15</p>
-      <button className="bg-blue-600 text-white py-2 px-4 rounded-md justify-end">Manage Subscription</button>
+      <button className="bg-blue-600 text-white py-2 px-4 rounded-md">Manage Subscription</button>
       <p  className="p-2">Health Consultations: No upcoming appointments</p>
       <button className="bg-blue-600 text-white py-2 px-4 rounded-md">Book Consultation</button>
     </section>

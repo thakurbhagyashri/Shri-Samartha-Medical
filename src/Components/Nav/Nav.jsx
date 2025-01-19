@@ -109,7 +109,7 @@ import './Nav.css';
 const Nav = () => {
   const navigate = useNavigate();
   const { isLoggedIn, role, profilePic, logout } = useAuth(); // Get role from AuthContext
-  console.log('Role:', role);
+  
 
   // Handle Login Button Click
   const handleLogin = () => {

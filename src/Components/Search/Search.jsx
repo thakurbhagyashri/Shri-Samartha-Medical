@@ -105,9 +105,9 @@ const Search = ({ menuOpen }) => {
 
     return (
         <div
-            className="search-bar-container"  >
+            className="search-bar-container" ref={searchRef}  >
             <input
-            ref={searchRef}
+            
                 type="text"
                 placeholder="Search..."
                 className="search-input"
