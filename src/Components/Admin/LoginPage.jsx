@@ -285,12 +285,12 @@ const LoginPage = () => {
   useEffect(() => {
     // Check if the user is logged in and has the correct role
     if (isLoggedIn) {
-      if (role.includes('ADMIN')) {
+      if (role.includes("ADMIN")) {
         console.log('Redirecting to admin panel');
-        navigate('/admin'); // Redirect to admin panel if role is 'ADMIN'
-      } else if (role.includes('USER')) {
+        navigate("/admin"); // Redirect to admin panel if role is 'ADMIN'
+      } else if (role.includes("USER")) {
         console.log('Redirecting to user homepage');
-        navigate('/home'); // Redirect to user homepage
+        navigate("/home"); // Redirect to user homepage
       }
     }
   }, [isLoggedIn, role, navigate]);
