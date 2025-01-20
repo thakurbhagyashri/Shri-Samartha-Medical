@@ -396,6 +396,8 @@ import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../CheckOutPage/AuthContext"; // Update with the correct path
+import InputField from "../validations/InputField";
+import { validateInput } from "../validations/validateInput";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -495,15 +497,17 @@ const LoginPage = () => {
           {/* Email Input */}
           <div className="mb-4">
             <label className="block text-xl font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full text-lg mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
+           
+             <InputField
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    validate={(name, value) => validateInput(name, value)}
+                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter your email"
+                    required
+                  />
           </div>
 
           {/* Password Input */}
@@ -516,7 +520,7 @@ const LoginPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full text-lg mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              required
+               required
             />
           </div>
 

@@ -285,7 +285,7 @@ const CategoryDetailPage = () => {
                     onClick={() => handleAddToCart(product)} // Add the item to the cart
                   />
 {notification && (
-  <div className="fixed top-1/4 right-5 Opacity-20 bg-gray-200 text-b text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out transform Opacity-100">
+  <div className="fixed top-1/4 right-5 Opacity-20 bg-gray-200 text-b text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-300 ease-in-out transform Opacity-100">
     <div className="flex justify-between items-center">
       {/* Green checkmark icon */}
       <div className="flex items-center space-x-2">
