@@ -36,7 +36,7 @@ const AdminProfile = () => {
       }, []);
   return (
     
-       <div className="bg-gray-300 w-[12%] rounded-3xl flex flex-row p-2 items-end">
+       <div className="bg-gray-300 w-[14%] rounded-3xl flex flex-row p-2 items-end">
                   <div>
                     <p className="text-lg font-fira px-2 py-1">{userName}</p>
                   </div>

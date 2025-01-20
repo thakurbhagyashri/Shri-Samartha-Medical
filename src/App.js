@@ -35,6 +35,7 @@ const PrescriptionManagement = React.lazy(() => import('./Components/User/Prescr
 const PaymentMethods = React.lazy(() => import('./Components/User/PaymentMethods'));
 const PharmacyServices = React.lazy(() => import('./Components/User/PharmacyServices'));
 const SecuritySettings = React.lazy(() => import('./Components/User/SecuritySettings'));
+
 const CustomerSupport = React.lazy(() => import('./Components/User/CustomerSupport'));
 const Start = React.lazy(() => import('./Start'));
 
@@ -136,6 +137,7 @@ const App = () => {
             <Route path="/dashboard" element={<AdminDashboard />}/>
             <Route path="/allProducts" element={<AllProducts />}/>
             <Route path="/manageAdmin" element={<ManageAdmin />}/>
+          
           </Routes>
         </Suspense>
         <Footer />

@@ -318,12 +318,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import AddToCartButton from "../Button/AddToCart";
 import { MyContext } from "../MyContext"; // Replace with the correct path to your context
+import Notification from "../Notification";
 
 const CategoryDetailPage = () => {
   const { categoryName } = useParams();
   const [category, setCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [priceFilter, setPriceFilter] = useState("all");
+  
   const [loading, setLoading] = useState(true);
   const { addToCart } = useContext(MyContext);
   const [notification, setNotification] = useState("");
@@ -430,15 +432,12 @@ const CategoryDetailPage = () => {
   const filteredProducts = filterProducts();
 
   const showNotification = (message) => {
-    setNotification(message);
-    setTimeout(() => {
-      setNotification(null);
-    }, 3000);
+    setNotification({ message: "Product added to cart successfully", type: "success",});
   };
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    showNotification("Product added to cart successfully");
+    setNotification({ message: "Product added to cart successfully", type: "success",});
   };
 
   const handleProductDetails = (productId) => {
@@ -528,10 +527,12 @@ const CategoryDetailPage = () => {
                     onClick={() => handleAddToCart(product)} // Add the item to the cart
                   />
                   {notification && (
-                    <div className="fixed top-1/4 right-5 bg-green-500 text-white text-lg py-4 px-6 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out">
-                      {notification}
-                    </div>
-                  )}
+          <Notification
+            message={notification.message}
+            type={notification.type}
+            onClose={() => setNotification(null)}
+          />
+        )}
                 </div>
               </div>
             ))
