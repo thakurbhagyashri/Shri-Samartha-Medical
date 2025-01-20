@@ -10,7 +10,7 @@ const AddToCartButton = ({ text, onClick, link, extraClasses = '', showNotificat
     }
   };
   return (
-    <div className="mt-4 text-center font-custom">
+    <div className="mt-4 text-center font-noto">
       {link ? (
         <Link 
           to={link}

@@ -3,7 +3,7 @@ import SideNav from './SideNav';
 
 const SecuritySettings = ({ securitySettings, setSecuritySettings }) => {
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row font-noto">
       {/* Sidebar */}
       <SideNav />
     <section className="mb-8">

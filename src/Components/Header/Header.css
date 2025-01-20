@@ -1,6 +1,6 @@
 .header {
     background: linear-gradient(90deg, #3c8b59 0%, #30749c 100%); /* Blue to Green Gradient */
-    padding: 2px 0;
+    padding:0px,0px;
     transition: background 0.3s ease;
     color: white;
   }

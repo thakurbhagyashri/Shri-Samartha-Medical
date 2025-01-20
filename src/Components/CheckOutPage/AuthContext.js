@@ -42,8 +42,8 @@
 // };
 
 //14-01-2025 00:07
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
 
@@ -58,15 +58,12 @@ export const AuthProvider = ({ children }) => {
   // Read from localStorage on mount to set initial state
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const storedRole = localStorage.getItem('role');
-    const storedProfilePic = localStorage.getItem('profilePic');
-
-    if (token && storedRole) {
+    if (token) {
       try {
-        const decoded = jwtDecode(token);
+        const decoded = jwtDecode(token); // Decode the JWT token
         setIsLoggedIn(true);
-        setRole(storedRole);  // Use the role from localStorage
-        setProfilePic(storedProfilePic || 'https://www.w3schools.com/w3images/avatar2.png');  // Default profile pic
+        setRole(decoded.roles);  // Set role from the decoded JWT token
+        setProfilePic(localStorage.getItem('profilePic') || 'https://www.w3schools.com/w3images/avatar2.png');  // Default profile pic if none exists
       } catch (error) {
         console.error('Invalid token:', error);
         setIsLoggedIn(false);
@@ -78,17 +75,17 @@ export const AuthProvider = ({ children }) => {
       setRole(null);
       setProfilePic(null);
     }
-  }, []); // Empty dependency array ensures this runs only once after the component mounts
+  }, []); // This runs only once after the component mounts
 
   // Login function to update the AuthContext state
-  const login = (role, profilePic) => {
-    localStorage.setItem('token', 'mock-token'); // Replace with actual token if needed
-    localStorage.setItem('role', role);
-    localStorage.setItem('profilePic', profilePic);
+  const login = (token, role, profilePic) => {
+    localStorage.setItem('token', token); // Save the token in localStorage
+    localStorage.setItem('role', role); // Save the role in localStorage
+    localStorage.setItem('profilePic', profilePic); // Save profilePic in localStorage
 
     setIsLoggedIn(true);
-    setRole(role);
-    setProfilePic(profilePic);
+    setRole(role); // Update the role in state
+    setProfilePic(profilePic); // Update the profile pic in state
   };
 
   // Logout function to clear the AuthContext state and localStorage

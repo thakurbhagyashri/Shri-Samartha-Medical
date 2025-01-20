@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 
 import Call from "../Footer/Call.svg";
 import facebook from "../Footer/facebook.svg";
+import GooglePay from "../Footer/GooglePay.png";
 import Instagram from "../Footer/Instagram.svg";
 import Linkedin from "../Footer/Linkedin.svg";
+import Mastercard from "../Footer/Mastercard.jpg";
+import paytm from "../Footer/paytm.png";
+import phonepe from "../Footer/phonepe.png";
 import twitter from "../Footer/Twitter.svg";
+import visa from "../Footer/visa.png";
 import WhatsApp from "../Footer/WhatsApp.svg";
 import YouTube from "../Footer/Youtube.svg";
 import "./Footer.css"; // Assuming you will create a separate CSS file for the footer
@@ -192,7 +197,7 @@ const Footer = () => {
                 style={{ height: "10%", width: "10%" }}
                 className="mr-2"
               />
-              <a href="https://instagram.com" className="hover:font-bold">
+              <a href="https://www.instagram.com/shrisamarthpharma?igsh=MTAyY2pqNXNucnV0bg==" target="_blank" className="hover:font-bold">
                 Instagram
               </a>
             </li>
@@ -215,8 +220,8 @@ const Footer = () => {
               <img
                 src={Call}
                 alt="Call"
-                style={{ height: "10%", width: "10%" }}
-                className="mr-2 bg-slate-300 rounded-md"
+                style={{ height: "11%", width: "11%" }}
+                className="mr-2 bg-slate-300 rounded-md p-0.5"
               />
               <a href="tel:+919876543210" className="hover:font-bold">
                 Call Now
@@ -230,7 +235,7 @@ const Footer = () => {
         <h2 className="payment-partners-title">Our Payment Partners</h2>
 
         <div className="payment-logos">
-          <a
+          {/* <a
             href="https://pay.google.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -289,7 +294,42 @@ const Footer = () => {
               style={{ fontSize: "48px", color: "#1A1F71" }}
             ></i>
             <span className="tooltip">Visa</span>
-          </a>
+          </a> */}
+           
+           <img
+                src={Mastercard}
+                alt="Instagram"
+                style={{ height: "7%", width: "7%" }}
+                className="rounded-md"
+              />
+              
+              <img
+                src={visa}
+                alt="Instagram"
+                style={{ height: "10%", width: "10%" }}
+                className="rounded-md"
+              />
+               <img
+                src={GooglePay}
+                alt="Instagram"
+                style={{ height: "9%", width: "9%" }}
+                className="rounded-md"
+              /> 
+              <img
+                src={phonepe}
+                alt="Instagram"
+                style={{ height: "12%", width: "12%" }}
+                className="rounded-md"
+              /> 
+              <img
+                src={paytm}
+                alt="Instagram"
+                style={{ height: "10%", width: "10%" }}
+                className="rounded-md pt-1"
+              />
+              
+
+
         </div>
       </div>
 

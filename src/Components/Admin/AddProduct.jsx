@@ -5,7 +5,10 @@ import { validateInput } from "../validations/validateInput";
 
 
 import ReactQuill from "react-quill";
+import Notification from '../Notification';
 const AddProductPage = () => {
+
+  const [notification, setNotification] = useState(null);
   const [formData, setFormData] = useState({
     image: null,
     quantity: "",
@@ -127,7 +130,7 @@ const AddProductPage = () => {
       });
 
       if (response.ok) {
-        setMessage("Product added successfully!");
+        setNotification({ message: "Product added successfully!", type: "success" });
         setFormData({
           imageName: "",
           imageType: "",
@@ -149,18 +152,15 @@ const AddProductPage = () => {
       } else {
         const errorData = await response.json();
 
-        setMessage(
-          `Failed to add product. Error: ${errorData.message || "Unknown error"
-          }`
-        );
+        setNotification({ message: "Failed to delete product.", type: "error" });
       }
     } catch (error) {
-      setMessage("Error occurred: " + error.message);
+      setNotification({ message: "Failed to add product.", type: "error" });
     }
   };
   return (
     <div>
-      <section className="flex flex-col items-center pt-6 font-custom">
+      <section className="flex flex-col items-center pt-6 font-noto">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-3xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl text-center  p-2 bg-[#005689] rounded-md  font-thin leading-tight tracking-tight text-white md:text-2xl dark:text-white">
@@ -335,14 +335,14 @@ const AddProductPage = () => {
                   Categories
                 </label>
                 <InputField
-                    type="text"
-                    name="categories"
-                    value={formData.categories}
-                    onChange={handleChange}
-                    validate={(name, value) => validateInput(name, value)}
-                    className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Enter categories"
-                    required
+                  type="text"
+                  name="categories"
+                  value={formData.categories}
+                  onChange={handleChange}
+                  validate={(name, value) => validateInput(name, value)}
+                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter categories"
+                  required
                 />
               </div>
 
@@ -363,7 +363,7 @@ const AddProductPage = () => {
                     ],
                   }}
                   theme="snow"
-                  className="bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-[#007cb9] dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className=" bg-gray-50 border border-[#007cb9] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-[#007cb9] dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Product Description....."
                   required
                 />
@@ -394,13 +394,12 @@ const AddProductPage = () => {
                 Add Product
               </button>
             </form>
-            {message && (
-              <div
-                className="mt-4 p-4 bg-green-100 border border-green-400 text-green-800 rounded-lg text-center"
-                role="alert"
-              >
-                {message}
-              </div>
+            {notification && (
+              <Notification
+                message={notification.message}
+                type={notification.type}
+                onClose={() => setNotification(null)}
+              />
             )}
           </div>
         </div>

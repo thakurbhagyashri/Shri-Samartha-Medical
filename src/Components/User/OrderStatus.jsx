@@ -10,7 +10,7 @@ const OrderStatus = () => {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row font-noto">
       {/* Sidebar */}
       <SideNav />
     <div className="flex-1 p-6">

@@ -2,6 +2,10 @@ import { jwtDecode } from 'jwt-decode';
 import React, { Suspense, useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AddProductPage from './Components/Admin/AddProduct';
+import AdminDashboard from './Components/AdminPannel/AdminDashboard';
+import AdminOrder from './Components/AdminPannel/AdminOrder';
+import AllProducts from './Components/AdminPannel/AllProducts';
+import ManageAdmin from './Components/AdminPannel/ManageAdmin';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import { MyContext } from './Components/MyContext';
@@ -12,7 +16,7 @@ import WishlistPage from './Components/Wishlist/WishlistPage';
 const AboutUs = React.lazy(() => import('./Components/AboutPage/AboutUs'));
 const LoginPage = React.lazy(() => import('./Components/Admin/LoginPage'));
 const Signup = React.lazy(() => import('./Components/Admin/Signup'));
-const AdminPanel = React.lazy(() => import('./Components/AdminPanel'));
+const AdminPanel = React.lazy(() => import('./Components/AdminPannel/AdminPanel'));
 const CartList = React.lazy(() => import('./Components/Button/CartList'));
 const ContactUs = React.lazy(() => import('./Components/ContactUs/ContactUs'));
 const PrivacyPolicy = React.lazy(() => import('./Components/Privacy/PrivacyPolicy'));
@@ -104,7 +108,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Start />} />
             <Route path="/wishlist" element={<WishlistPage />} />
-            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/products" element={<TrendingProducts />} />
             <Route path="/product/:productId" element={<Product />} />
@@ -128,6 +132,10 @@ const App = () => {
             <Route path="/pharmacyservices" element={<PharmacyServices />}/>
             <Route path="/securitysettings" element={<SecuritySettings />}/>
             <Route path="/customersupport" element={<CustomerSupport />}/>
+            <Route path="/adminOrder" element={<AdminOrder />}/>
+            <Route path="/dashboard" element={<AdminDashboard />}/>
+            <Route path="/allProducts" element={<AllProducts />}/>
+            <Route path="/manageAdmin" element={<ManageAdmin />}/>
           </Routes>
         </Suspense>
         <Footer />
