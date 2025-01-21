@@ -4,23 +4,25 @@ import { Link } from "react-router-dom";
 import AddToCartButton from "../Button/AddToCart";
 import { MyContext } from "../MyContext";
 import { categoriesData } from "../ShopByCategory/categoriesData"; // Assuming categoriesData is exported from a separate file
-
+import ConfirmationModal from "../PopUp/ConfirmationModal";
 const WishlistPage = () => {
   const [wishlistedProducts, setWishlistedProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null); // Track the selected product for the confirmation
   const { addToCart } = useContext(MyContext);
 
   // Fetch the wishlisted products from localStorage
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlisted")) || {};
-    // Fetch all products from categoriesData that are wishlisted
     const wishlistedProductIds = Object.keys(storedWishlist);
-    const allProducts = categoriesData.flatMap((category) => category.products); // Assuming your data structure has products in categories
+    const allProducts = categoriesData.flatMap((category) => category.products);
     const productsInWishlist = allProducts.filter((product) =>
       wishlistedProductIds.includes(product.id.toString())
     );
 
-    setWishlistedProducts(productsInWishlist); // Set wishlisted products
+    setWishlistedProducts(productsInWishlist);
     setIsLoading(false);
   }, []);
 
@@ -30,12 +32,40 @@ const WishlistPage = () => {
     localStorage.setItem("wishlisted", JSON.stringify(storedWishlist));
     setWishlistedProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== productId)
-    ); // Remove product from state
+    );
   };
 
   const handleMoveToCart = (product) => {
-    addToCart(product); // Add product to cart
-    handleRemoveFromWishlist(product.id); // Remove from wishlist
+    setSelectedProduct(product);
+    setShowConfirmation(true);
+  };
+
+  const handleDeleteProduct = (product) => {
+    setSelectedProduct(product);
+    setShowDeleteConfirmation(true);
+  };
+
+  const confirmAddToCart = () => {
+    if (selectedProduct) {
+      addToCart(selectedProduct); // Add product to cart
+      handleRemoveFromWishlist(selectedProduct.id); // Remove from wishlist
+    }
+    setShowConfirmation(false); // Close confirmation modal
+  };
+
+  const cancelAddToCart = () => {
+    setShowConfirmation(false); // Close confirmation modal
+  };
+
+  const confirmDeleteProduct = () => {
+    if (selectedProduct) {
+      handleRemoveFromWishlist(selectedProduct.id); // Remove from wishlist
+    }
+    setShowDeleteConfirmation(false); // Close delete confirmation modal
+  };
+
+  const cancelDeleteProduct = () => {
+    setShowDeleteConfirmation(false); // Close delete confirmation modal
   };
 
   if (isLoading) {
@@ -81,7 +111,7 @@ const WishlistPage = () => {
                   className="px-6 py-2 text-white rounded-lg shadow-md transition-all duration-200"
                 />
                 <button
-                  onClick={() => handleRemoveFromWishlist(product.id)}
+                  onClick={() => handleDeleteProduct(product)}
                   className="text-red-600 hover:text-red-700 focus:outline-none transform transition-all duration-200 pt-3"
                 >
                   <FaTrashAlt size={20} />
@@ -95,11 +125,30 @@ const WishlistPage = () => {
       <div className="mt-8 flex justify-center">
         <Link
           to={"/all-categories"}
-          className=" btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 "
+          className="btn btn-primary text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
         >
           Continue Shopping
         </Link>
       </div>
+
+      {/* Confirmation Modals */}
+      <ConfirmationModal
+        isOpen={showConfirmation}
+        message={`Are you sure you want to move ${selectedProduct?.name} to your cart?`}
+        onConfirm={confirmAddToCart}
+        onCancel={cancelAddToCart}
+        actionText="Yes, Add to Cart"
+        cancelText="No, Cancel"
+      />
+
+      <ConfirmationModal
+        isOpen={showDeleteConfirmation}
+        message={`Are you sure you want to remove ${selectedProduct?.name} from your wishlist?`}
+        onConfirm={confirmDeleteProduct}
+        onCancel={cancelDeleteProduct}
+        actionText="Yes, Remove"
+        cancelText="No, Cancel"
+      />
     </div>
   );
 };

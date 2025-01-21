@@ -6,9 +6,6 @@ import SideBar from "./SideBar";
 const AdminDashboard = () => {
 
   const [userName, setUserName] = useState('');
- 
-
-
   const toCamelCase = (name) => {
     return name
       .toLowerCase()
