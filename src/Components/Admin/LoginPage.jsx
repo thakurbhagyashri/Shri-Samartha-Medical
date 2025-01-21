@@ -251,52 +251,47 @@ const LoginPage = () => {
       // Store the token in localStorage
       localStorage.setItem("token", token);
 
-      // Extract roles from the decoded token (roles is an array)
-      const roles = decoded.roles || [];
-      console.log("User roles:", roles);
+      // Extract the role from decoded token (use first role if roles is an array)
+      const userRole = Array.isArray(decoded.roles) && decoded.roles.length > 0
 
-      // Save roles to localStorage for later use (in Nav.jsx or elsewhere)
-      localStorage.setItem("roles", JSON.stringify(roles));
+        ? decoded.roles[0] // Use the first role if it's an array
+        : decoded.role || null; // Fallback to single role if provided
+      console.log("User role:", userRole);
 
-      // Check if the user has the "ADMIN" role and redirect accordingly
-      if (roles.includes("ADMIN")) {
-        console.log("Redirecting to admin panel");
-        navigate("/admin"); // Redirect to the admin panel
-      } else if (roles.includes("USER")) {
-        console.log("Redirecting to home page");
-        navigate("/"); // Redirect to the home page
-      } else {
-        alert("Unknown role. Access denied.");
+      // Save role to localStorage
+      localStorage.setItem("role", userRole);
+
+      // Check role and navigate
+      if (userRole === "ADMIN") {
+        
+        navigate("/admin");
+      } else if (userRole === "USER") {
+      
+        navigate("/");
+        
       }
-
-      // Optional: If there's an intended path (saved in localStorage), redirect to that path
-      const redirectPath = localStorage.getItem("redirectPath") || "/";
-      localStorage.removeItem("redirectPath");
-      navigate(redirectPath);
 
     } catch (error) {
       console.error("Error:", error.message || error);
       alert("Login failed! Please try again.");
     }
   };
-   
-  const { isLoggedIn, role, login } = useAuth();  // Get role and isLoggedIn state
+
+  const { isLoggedIn, role, login } = useAuth(); // Get role and isLoggedIn state
 
   useEffect(() => {
-    // Check if the user is logged in and has the correct role
-    if (isLoggedIn) {
-      if (role.includes("ADMIN")) {
-        console.log('Redirecting to admin panel');
-        navigate("/admin"); // Redirect to admin panel if role is 'ADMIN'
-      } else if (role.includes("USER")) {
-        console.log('Redirecting to user homepage');
-        navigate("/home"); // Redirect to user homepage
+   
+    if (isLoggedIn && role) {
+      if (role === "ADMIN") {
+        
+        navigate("/admin"); 
+      } else if (role === "USER") {
+       
+        navigate("/home");
       }
     }
   }, [isLoggedIn, role, navigate]);
-  
-  
-  
+
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:8080/oauth2/authorization/google";
   };

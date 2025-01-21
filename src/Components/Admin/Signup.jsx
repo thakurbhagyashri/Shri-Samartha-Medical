@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignIn from "../Admin/SignIn.png";
 
 const Signup = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName:"",
     username: "",
@@ -36,6 +39,7 @@ const Signup = () => {
 
       const data = await response; // Parse the response
       console.log("Registration successful:", data);
+      navigate("/")
     } catch (error) {
       console.error("Error during registration:", error);
     }
