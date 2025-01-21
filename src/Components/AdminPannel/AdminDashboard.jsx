@@ -43,7 +43,7 @@ const AdminDashboard = () => {
           <div className="w-[85%]"></div>
          <AdminProfile />
         </div>
-        <div className="flex items-center justify-center py-5">
+        <div className="flex items-center justify-center py-3">
           <div className="text-center">
             {/* Logo */}
             <img
@@ -54,9 +54,10 @@ const AdminDashboard = () => {
             />
 
             {/* Welcome Text */}
-            <h1 className="text-4xl font-bold font-noto bg-gradient-to-r from-[#c248f0] to-[#2fcc84] bg-clip-text text-transparent">Welcome to</h1>
+            <h1 className="text-4xl font-bold font-noto bg-gradient-to-r from-[#c248f0] to-[#2fcc84] bg-clip-text text-transparent">Welcome to </h1>
             <h1 className="text-4xl font-bold font-noto bg-gradient-to-r from-[#c248f0] to-[#2fcc84] bg-clip-text text-transparent">
               Shri Samarth Pharmaceuticals
+            <h1 className="text-4xl font-bold font-noto bg-gradient-to-r from-[#6a8cce] to-[#ff2f00] bg-clip-text text-transparent"> {userName}</h1>
             </h1>
           </div>
         </div>

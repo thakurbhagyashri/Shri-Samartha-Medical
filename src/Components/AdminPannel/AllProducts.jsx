@@ -406,7 +406,7 @@ const AllProducts = () => {
         <div className="flex">
             <SideBar />
             <div className="w-full bg-gray-100 ">
-                <div className="flex bg-gray-200 pl-3 py-2">
+                <div className="flex bg-gray-200 pl-3 py-2 border-b-4 border-[#5ba4a4]">
                     <div className="w-[65%]" ref={searchRef}>
                         <input
                             type="text"

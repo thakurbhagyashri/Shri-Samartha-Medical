@@ -270,17 +270,46 @@ const LoginPage = () => {
       localStorage.setItem("profilePic", "https://www.w3schools.com/w3images/avatar2.png"); // Placeholder image
       localStorage.setItem("role", decoded.role); // Use the role from the decoded token
 
-      // Redirect based on intended destination
-      const redirectPath = localStorage.getItem("redirectPath") || "/";
-      localStorage.removeItem("redirectPath");
-      navigate(redirectPath);
+      // Extract the role from decoded token (use first role if roles is an array)
+      const userRole = Array.isArray(decoded.roles) && decoded.roles.length > 0
 
-      alert("Login successful!");
+        ? decoded.roles[0] // Use the first role if it's an array
+        : decoded.role || null; // Fallback to single role if provided
+      console.log("User role:", userRole);
+
+      // Save role to localStorage
+      localStorage.setItem("role", userRole);
+
+      // Check role and navigate
+      if (userRole === "ADMIN") {
+        
+        navigate("/admin");
+      } else if (userRole === "USER") {
+      
+        navigate("/");
+        
+      }
+
     } catch (error) {
       console.error("Error:", error.message || error);
       alert("Login failed! Please try again.");
     }
   };
+
+  const { isLoggedIn, role } = useAuth(); // Get role and isLoggedIn state
+
+  useEffect(() => {
+   
+    if (isLoggedIn && role) {
+      if (role === "ADMIN") {
+        
+        navigate("/admin"); 
+      } else if (role === "USER") {
+       
+        navigate("/home");
+      }
+    }
+  }, [isLoggedIn, role, navigate]);
 
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:8080/oauth2/authorization/google";

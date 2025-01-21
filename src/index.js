@@ -22,9 +22,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { AuthProvider } from './Components/CheckOutPage/AuthContext';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from './Components/CheckOutPage/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
