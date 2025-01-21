@@ -109,7 +109,7 @@ import './Nav.css';
 const Nav = () => {
   const navigate = useNavigate();
   const { isLoggedIn, role, profilePic, logout } = useAuth(); // Get role from AuthContext
-  
+
 
   // Handle Login Button Click
   const handleLogin = () => {
@@ -169,7 +169,7 @@ const Nav = () => {
               Services <FontAwesomeIcon icon={faAngleDown} />
             </a>
             <div className="submenu">
-              <a href="#medicine">Medicine</a>
+              <a href="">Medicine</a>
               <a href="#wellness">Wellness</a>
               <a href="#labtest">Lab Test</a>
               <a href="#beauty">Beauty</a>
@@ -234,7 +234,12 @@ const Nav = () => {
               Services <FontAwesomeIcon icon={faAngleDown} />
             </a>
             <div className="submenu">
-              <a href="#medicine">Medicine</a>
+              <Link
+                to={`/category/Medicine`}  // Redirect to Category Detail Page
+                className="text-xl text-gray-800 hover:text-blue-500"
+              >
+                Medicine
+              </Link>
               <a href="#wellness">Wellness</a>
               <a href="#labtest">Lab Test</a>
               <a href="#beauty">Beauty</a>
